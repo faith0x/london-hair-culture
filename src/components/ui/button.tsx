@@ -20,6 +20,8 @@ const buttonVariants = cva(
           "relative bg-white/15 text-foreground backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.25),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:bg-white/25 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300",
         "glass-dark":
           "relative bg-foreground/85 text-background backdrop-blur-xl border border-foreground/20 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.15)] hover:bg-foreground hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300",
+      },
+
 
       size: {
         default: "h-9 px-4 py-2",

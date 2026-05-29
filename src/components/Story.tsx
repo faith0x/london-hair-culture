@@ -18,9 +18,11 @@ export function Story() {
           </p>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             Here at Dazzle Me we celebrate the meaning, beauty and heritage of Black
-            hair. Every braid we create is a continuation of generations of
-            craft — a quiet act of pride, care and belonging.
+            hair. From intricate braids and protective styles to beautifully crafted
+            wigs, every look is a continuation of generations of craft — a quiet
+            act of pride, care and belonging.
           </p>
+
         </Reveal>
 
         <motion.div

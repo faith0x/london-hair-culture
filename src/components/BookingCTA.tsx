@@ -20,7 +20,7 @@ export function BookingCTA() {
                 time that works for you.
               </p>
               <div className="mt-9 flex flex-wrap justify-center gap-4">
-                <Button asChild size="lg" variant="secondary" className="rounded-full px-8 text-base">
+                <Button asChild size="lg" variant="glass" className="rounded-full px-8 text-base text-primary-foreground">
                   <a href={whatsappUrl} target="_blank" rel="noreferrer">
                     <MessageCircle className="size-5" />
                     Book on WhatsApp
@@ -38,6 +38,7 @@ export function BookingCTA() {
                   </a>
                 </Button>
               </div>
+
             </div>
           </div>
         </Reveal>
