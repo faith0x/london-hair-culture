@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
+import logo from "@/assets/logo-dazzlemehair.png";
 
 const links = [
   { label: "Braiding", href: "#braiding" },
@@ -24,15 +25,24 @@ export function SalonHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
+          ? "left-1/2 top-3 w-[calc(100%-1.5rem)] max-w-6xl -translate-x-1/2 rounded-full border border-white/30 bg-background/70 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] backdrop-blur-xl md:top-4 md:w-[calc(100%-2rem)]"
+          : "inset-x-0 top-0 w-full bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <a href="#top" className="font-display text-2xl font-semibold tracking-tight text-foreground">
-          {salon.name}
+      <nav className={`mx-auto flex max-w-6xl items-center justify-between ${scrolled ? "px-4 py-2.5 md:px-6 md:py-3" : "px-5 py-4"}`}>
+        <a href="#top" className="flex items-center gap-2">
+          <img
+            src={logo}
+            alt={salon.name}
+            className={`h-9 w-auto transition-all duration-500 md:h-10 ${
+              scrolled
+                ? "[filter:invert(15%)_sepia(8%)_saturate(800%)_hue-rotate(350deg)_brightness(40%)]"
+                : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+            }`}
+          />
+          <span className="sr-only">{salon.name}</span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -50,7 +60,7 @@ export function SalonHeader() {
         </ul>
 
         <div className="hidden md:block">
-          <Button asChild className="rounded-full px-6">
+          <Button asChild variant="glass-dark" className="rounded-full px-6">
             <a href={whatsappUrl} target="_blank" rel="noreferrer">
               Book Appointment
             </a>
@@ -58,7 +68,7 @@ export function SalonHeader() {
         </div>
 
         <button
-          className="md:hidden text-foreground"
+          className={`md:hidden ${scrolled ? "text-foreground" : "text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"}`}
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
         >
@@ -67,7 +77,7 @@ export function SalonHeader() {
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md">
+        <div className="md:hidden mt-2 mx-3 rounded-3xl border border-white/30 bg-background/90 shadow-lg backdrop-blur-xl">
           <ul className="flex flex-col px-5 py-3">
             {links.map((link) => (
               <li key={link.href}>
@@ -80,8 +90,8 @@ export function SalonHeader() {
                 </a>
               </li>
             ))}
-            <li className="pt-2">
-              <Button asChild className="w-full rounded-full">
+            <li className="pt-2 pb-1">
+              <Button asChild variant="glass-dark" className="w-full rounded-full">
                 <a href={whatsappUrl} target="_blank" rel="noreferrer">
                   Book Appointment
                 </a>

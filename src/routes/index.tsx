@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SalonHeader } from "@/components/SalonHeader";
 import { Hero } from "@/components/Hero";
+import { Divider } from "@/components/Divider";
 import { BraidingServices } from "@/components/BraidingServices";
 import { Story } from "@/components/Story";
 import { Gallery } from "@/components/Gallery";
@@ -8,6 +9,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { BookingCTA } from "@/components/BookingCTA";
 import { LocationMap } from "@/components/LocationMap";
 import { SalonFooter } from "@/components/SalonFooter";
+
 import { salon, fullAddress } from "@/lib/salon";
 
 const title = "Dazzlemehair — Black Hair Braiding in Middlesbrough";
@@ -63,7 +65,9 @@ function Index() {
       <SalonHeader />
       <main>
         <Hero />
+        <Divider />
         <BraidingServices />
+
         <Story />
         <Gallery />
         <Testimonials />

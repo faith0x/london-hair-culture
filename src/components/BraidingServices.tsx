@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
-import { Sparkles } from "lucide-react";
 import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
-import { whatsappUrl } from "@/lib/salon";
+
 
 const services = [
   {
@@ -48,11 +47,12 @@ export function BraidingServices() {
             Braiding is our craft
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Every style is created by hand with patience and precision. Here's a
-            taste of what we offer — book a consultation and we'll find the look
-            that's right for you.
+            Every style is created by hand with patience and precision — braids,
+            protective styles and wigs alike. Here's a taste of what we offer;
+            book a consultation and we'll find the look that's right for you.
           </p>
         </Reveal>
+
 
         <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
@@ -71,31 +71,8 @@ export function BraidingServices() {
           ))}
         </Stagger>
 
-        {/* Secondary: wigs */}
-        <Reveal delay={0.1}>
-          <div className="mt-12 flex flex-col items-start justify-between gap-5 rounded-3xl border border-accent/40 bg-accent/15 p-7 sm:flex-row sm:items-center">
-            <div className="flex items-start gap-3">
-              <Sparkles className="mt-0.5 size-5 shrink-0 text-accent-foreground" />
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground">
-                  We do wigs too
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Wig installs, customisation and styling — just ask when you book.
-                </p>
-              </div>
-            </div>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="shrink-0 text-sm font-semibold text-primary underline-offset-4 hover:underline"
-            >
-              Enquire about wigs →
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
 }
+
