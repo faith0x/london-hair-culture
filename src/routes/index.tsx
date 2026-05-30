@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SalonHeader } from "@/components/SalonHeader";
 import { Hero } from "@/components/Hero";
 import { Divider } from "@/components/Divider";
-import { BraidingServices } from "@/components/BraidingServices";
+import { HomeServicesToggle } from "@/components/HomeServicesToggle";
 import { Story } from "@/components/Story";
 import { Gallery } from "@/components/Gallery";
 import { Testimonials } from "@/components/Testimonials";
@@ -12,14 +12,14 @@ import { SalonFooter } from "@/components/SalonFooter";
 
 import { salon, fullAddress } from "@/lib/salon";
 
-const title = "Dazzlemehair — Black Hair Braiding in Middlesbrough";
+const title = "Dazzle Me — Hair & African Fashion in Middlesbrough";
 const description =
-  "Dazzlemehair is a Middlesbrough braiding studio specialising in box braids, knotless braids, cornrows, twists and protective styles for Black hair. Wigs too. Book on WhatsApp.";
+  "Dazzle Me is a Middlesbrough atelier blending heritage Black hair — braids, wigs, locs, weaving, extensions — with custom-made African fashion and alterations. Book on WhatsApp.";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "HairSalon",
-  name: salon.name,
+  "@type": ["HairSalon", "ClothingStore"],
+  name: salon.fullName,
   description,
   address: {
     "@type": "PostalAddress",
@@ -30,12 +30,15 @@ const jsonLd = {
   telephone: `+${salon.phoneIntl}`,
   areaServed: salon.city,
   knowsAbout: [
-    "Box braids",
-    "Knotless braids",
-    "Cornrows",
-    "Twists",
-    "Protective styles",
-    "Wigs",
+    "Braiding",
+    "Wig making",
+    "Wig revamping",
+    "Dreadlocks",
+    "Weaving",
+    "Hair extensions",
+    "Custom-made clothing",
+    "Alterations",
+    "African fashion",
   ],
 };
 
@@ -47,8 +50,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -66,8 +71,7 @@ function Index() {
       <main>
         <Hero />
         <Divider />
-        <BraidingServices />
-
+        <HomeServicesToggle />
         <Story />
         <Gallery />
         <Testimonials />
