@@ -11,18 +11,18 @@ export function Story() {
             Our Story
           </span>
           <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-            Our crown, our culture
+            Our crown, our cloth, our culture
           </h2>
           <p className="mt-6 font-display text-2xl leading-snug text-foreground/90 sm:text-3xl">
-            Black hair is more than style — it is history, identity and culture.
+            Black hair and African fashion are more than style — they are
+            history, identity and belonging.
           </p>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Here at Dazzle Me we celebrate the meaning, beauty and heritage of Black
-            hair. From intricate braids and protective styles to beautifully crafted
-            wigs, every look is a continuation of generations of craft — a quiet
-            act of pride, care and belonging.
+            At Dazzle Me we celebrate both. From intricate braids, locs and
+            beautifully crafted wigs to ankara gowns and bespoke pieces sewn by
+            hand, every look is a continuation of generations of craft — a
+            quiet act of pride, care and self-expression.
           </p>
-
         </Reveal>
 
         <motion.div
