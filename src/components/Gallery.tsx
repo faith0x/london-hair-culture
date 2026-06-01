@@ -1,14 +1,16 @@
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
-import knotless from "@/assets/gallery-knotless.jpg";
-import boxbraids from "@/assets/gallery-boxbraids.jpg";
-import dreadlocks from "@/assets/gallery-dreadlocks.jpg";
-import wig from "@/assets/gallery-wig.jpg";
-import fashionAnkara from "@/assets/gallery-fashion-ankara.jpg";
-import fashionTailoring from "@/assets/gallery-fashion-tailoring.jpg";
-import fashionFabrics from "@/assets/gallery-fashion-fabrics.jpg";
-import twists from "@/assets/gallery-twists.jpg";
+
+// Default placeholder URLs — replace with final assets when ready
+const knotless = "https://placehold.co/1024x1280/9f1239/ffffff?text=Knotless+Braids";
+const boxbraids = "https://placehold.co/1024x1280/9f1239/ffffff?text=Box+Braids";
+const dreadlocks = "https://placehold.co/1024x1280/9f1239/ffffff?text=Dreadlocks";
+const wig = "https://placehold.co/1024x1280/9f1239/ffffff?text=Wig+Styling";
+const fashionAnkara = "https://placehold.co/1024x1280/b45309/ffffff?text=Ankara+Two-Piece";
+const fashionTailoring = "https://placehold.co/1024x1280/b45309/ffffff?text=Custom+Tailoring";
+const fashionFabrics = "https://placehold.co/1024x1280/b45309/ffffff?text=African+Prints";
+const twists = "https://placehold.co/1024x1280/9f1239/ffffff?text=Twists";
 
 type Item = {
   src: string;
