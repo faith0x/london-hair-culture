@@ -1,39 +1,27 @@
 import { motion } from "motion/react";
-import { MapPin } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { salon } from "@/lib/salon";
-import heroHair from "@/assets/hero-dazzlemehair.webp";
-import heroFashion from "@/assets/hero-fashion.jpg";
+import { Link } from "@tanstack/react-router";
+import { ServicePeek } from "@/components/ServicePeek";
+import heroHomeAsset from "@/assets/hero-home.jpg.asset.json";
+import heroFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
 
 export function Hero() {
   return (
     <section id="top" className="relative min-h-screen overflow-hidden">
-      {/* Diptych background: hair (left) + fashion (right) */}
-      <div className="absolute inset-0 grid grid-cols-2">
+      {/* Single full-bleed hero image */}
+      <div className="absolute inset-0">
         <img
-          src={heroHair}
-          alt="Heritage Black hair braiding"
-          width={1200}
-          height={2000}
+          src={heroHomeAsset.url}
+          alt="Heritage hair and African fashion at Dazzle Me"
           className="h-full w-full animate-hero-drift object-cover object-center"
-        />
-        <img
-          src={heroFashion}
-          alt="Custom-made African fashion"
-          width={1200}
-          height={2000}
-          loading="lazy"
-          className="h-full w-full animate-hero-drift object-cover object-center"
-          style={{ animationDelay: "-9s" }}
         />
       </div>
 
       {/* Color washes */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/20 to-background/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/10 to-background/50" />
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28">
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,34 +29,52 @@ export function Hero() {
           className="mx-auto max-w-3xl text-center"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/90 backdrop-blur-md">
-            <MapPin className="size-3.5 text-primary" />
-            {salon.city}
+            Dazzle Me — Hair &amp; Fashion
           </span>
 
           <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
-            <span className="block">Heritage hair.</span>
-            <span className="block text-primary">African fashion.</span>
-            <span className="block">One studio.</span>
+            <span className="block">Our crown,</span>
+            <span className="block">our story.</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-foreground/80">
-            Dazzle Me is a Middlesbrough atelier where braids, wigs, locs and
-            made-to-order African fashion are crafted by hand — a celebration
-            of culture, beauty and self-expression.
+          <p className="mt-5 flex flex-col items-center gap-1 font-display text-xl text-primary sm:flex-row sm:justify-center sm:gap-4 sm:text-2xl">
+            <span>Heritage hair.</span>
+            <span aria-hidden className="hidden text-foreground/30 sm:inline">·</span>
+            <span>Heritage fashion.</span>
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Button asChild size="lg" variant="glass-dark" className="rounded-full px-8 text-base">
-              <Link to="/hair">
-                Browse hair services
-                <span className="ml-1">→</span>
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="glass" className="rounded-full px-8 text-base">
-              <Link to="/fashion">
-                Browse our fashion collective
-                <span className="ml-1">→</span>
-              </Link>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <ServicePeek
+              imageUrl={heroHomeAsset.url}
+              label="Hair services"
+              href="/hair"
+              button={
+                <Button asChild size="lg" variant="glass-dark" className="w-full rounded-full px-8 text-base">
+                  <Link to="/hair">
+                    Browse hair services
+                    <span className="ml-1">→</span>
+                  </Link>
+                </Button>
+              }
+            />
+            <ServicePeek
+              imageUrl={heroFashionAsset.url}
+              label="Fashion collective"
+              href="/fashion"
+              button={
+                <Button asChild size="lg" variant="glass" className="w-full rounded-full px-8 text-base">
+                  <Link to="/fashion">
+                    Browse our fashion collective
+                    <span className="ml-1">→</span>
+                  </Link>
+                </Button>
+              }
+            />
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <Button asChild size="lg" variant="glass" className="rounded-full px-10 text-base">
+              <a href="#visit">Visit us</a>
             </Button>
           </div>
         </motion.div>

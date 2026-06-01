@@ -1,18 +1,34 @@
-import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { hairServices, fashionServices } from "@/lib/salon";
+import { useServiceFocus, type ServiceFocus } from "@/components/ServiceFocusContext";
 
-type Category = "hair" | "fashion";
-
-const categories: { id: Category; label: string; tagline: string; href: "/hair" | "/fashion" }[] = [
-  { id: "hair", label: "Hair", tagline: "Braids, wigs, locs & extensions", href: "/hair" },
-  { id: "fashion", label: "Fashion", tagline: "Custom African fashion & alterations", href: "/fashion" },
+const categories: {
+  id: ServiceFocus;
+  label: string;
+  heading: string;
+  tagline: string;
+  href: "/hair" | "/fashion";
+}[] = [
+  {
+    id: "hair",
+    label: "Hair",
+    heading: "Heritage hair",
+    tagline: "Braids, wigs, locs & extensions",
+    href: "/hair",
+  },
+  {
+    id: "fashion",
+    label: "Fashion",
+    heading: "Heritage fashion",
+    tagline: "Custom African fashion & alterations",
+    href: "/fashion",
+  },
 ];
 
 export function HomeServicesToggle() {
-  const [active, setActive] = useState<Category>("hair");
+  const { active, setActive } = useServiceFocus();
   const items = active === "hair" ? hairServices.slice(0, 4) : fashionServices;
   const current = categories.find((c) => c.id === active)!;
 
@@ -56,32 +72,43 @@ export function HomeServicesToggle() {
           </div>
         </div>
 
-        <p className="mt-4 text-center text-sm text-muted-foreground">{current.tagline}</p>
+        {/* Animated heading per selection */}
+        <div className="mt-8 flex h-12 items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.h3
+              key={current.heading}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            >
+              {current.heading}
+            </motion.h3>
+          </AnimatePresence>
+        </div>
+        <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
 
-        {/* Animated preview cards */}
+        {/* Sequential preview cards (one-by-one) */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {items.map((service) => (
-              <article
+          <div key={active} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {items.map((service, i) => (
+              <motion.article
                 key={service.name}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 className="group rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
               >
-                <h3 className="font-display text-xl font-semibold text-foreground">
+                <h4 className="font-display text-xl font-semibold text-foreground">
                   {service.name}
-                </h3>
+                </h4>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {service.blurb}
                 </p>
-              </article>
+              </motion.article>
             ))}
-          </motion.div>
+          </div>
         </AnimatePresence>
 
         <div className="mt-10 flex justify-center">

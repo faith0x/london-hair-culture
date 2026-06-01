@@ -9,6 +9,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { BookingCTA } from "@/components/BookingCTA";
 import { LocationMap } from "@/components/LocationMap";
 import { SalonFooter } from "@/components/SalonFooter";
+import { ServiceFocusProvider } from "@/components/ServiceFocusContext";
 
 import { salon, fullAddress } from "@/lib/salon";
 
@@ -66,20 +67,22 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background">
-      <SalonHeader />
-      <main>
-        <Hero />
-        <Divider />
-        <HomeServicesToggle />
-        <Story />
-        <Gallery />
-        <Testimonials />
-        <BookingCTA />
-        <LocationMap />
-      </main>
-      <SalonFooter />
-      <span className="sr-only">{fullAddress}</span>
-    </div>
+    <ServiceFocusProvider>
+      <div className="min-h-screen bg-background">
+        <SalonHeader />
+        <main>
+          <Hero />
+          <Divider />
+          <HomeServicesToggle />
+          <Story />
+          <Gallery />
+          <Testimonials />
+          <BookingCTA />
+          <LocationMap />
+        </main>
+        <SalonFooter />
+        <span className="sr-only">{fullAddress}</span>
+      </div>
+    </ServiceFocusProvider>
   );
 }

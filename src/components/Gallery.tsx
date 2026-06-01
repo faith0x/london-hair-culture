@@ -33,12 +33,12 @@ export function Gallery() {
   return (
     <section id="gallery" className="bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5">
-        <Reveal className="max-w-2xl">
+        <Reveal className="max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             Gallery
           </span>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-            A glimpse of our work
+          <h2 className="mt-3 font-display text-6xl font-semibold leading-[0.95] tracking-tight text-foreground sm:text-7xl md:text-8xl">
+            Our works
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Hair and fashion side by side — every tile a piece of the story.
