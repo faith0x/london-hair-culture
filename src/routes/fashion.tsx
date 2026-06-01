@@ -9,7 +9,7 @@ import { BookingCTA } from "@/components/BookingCTA";
 import { SalonFooter } from "@/components/SalonFooter";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import heroFashion from "@/assets/hero-fashion.jpg";
+import heroFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
 import fabricImg from "@/assets/gallery-fashion-fabrics.jpg";
 import ankaraImg from "@/assets/gallery-fashion-ankara.jpg";
 import tailoringImg from "@/assets/gallery-fashion-tailoring.jpg";
@@ -47,7 +47,7 @@ function FashionPage() {
         <section className="relative min-h-[80vh] overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src={heroFashion}
+              src={heroFashionAsset.url}
               alt="Custom-made African fashion atelier"
               className="h-full w-full animate-hero-drift object-cover object-center"
             />

@@ -9,6 +9,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { BookingCTA } from "@/components/BookingCTA";
 import { LocationMap } from "@/components/LocationMap";
 import { SalonFooter } from "@/components/SalonFooter";
+import { ServiceFocusProvider } from "@/components/ServiceFocusContext";
 
 import { salon, fullAddress } from "@/lib/salon";
 

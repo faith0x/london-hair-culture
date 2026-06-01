@@ -1,8 +1,17 @@
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "@/components/Reveal";
-import storyImage from "@/assets/story-braiding.jpg";
+import { useServiceFocus } from "@/components/ServiceFocusContext";
+import storyHairAsset from "@/assets/story-hair.jpg.asset.json";
+import storyFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
 
 export function Story() {
+  const { active } = useServiceFocus();
+  const image = active === "hair" ? storyHairAsset.url : storyFashionAsset.url;
+  const alt =
+    active === "hair"
+      ? "Braider creating heritage hair styles"
+      : "Custom-made African fashion piece";
+
   return (
     <section id="story" className="relative overflow-hidden bg-secondary/40 py-24 sm:py-32">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
@@ -25,25 +34,26 @@ export function Story() {
           </p>
         </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
-        >
-          <div className="overflow-hidden rounded-[2rem] border border-border shadow-[0_30px_70px_-30px_oklch(0.31_0.035_30_/_0.5)]">
-            <img
-              src={storyImage}
-              alt="Braider carefully creating knotless braids for a seated client"
-              width={1280}
-              height={1280}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
+        <div className="relative">
+          <div className="relative overflow-hidden rounded-[2rem] border border-border shadow-[0_30px_70px_-30px_oklch(0.31_0.035_30_/_0.5)]">
+            <div className="aspect-[4/5] w-full">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={image}
+                  src={image}
+                  alt={alt}
+                  loading="lazy"
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </AnimatePresence>
+            </div>
           </div>
           <div className="absolute -bottom-5 -left-5 -z-10 h-32 w-32 rounded-full bg-accent/40 blur-2xl" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
