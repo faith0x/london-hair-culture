@@ -3,7 +3,6 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import logo from "@/assets/logo-dazzlemehair.png";
 
 const logo = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
 
