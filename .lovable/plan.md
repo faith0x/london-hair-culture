@@ -1,84 +1,91 @@
-## Vision
+# Image, Copy & Interaction Refresh
 
-Dazzle Me is one studio with two equally celebrated crafts rooted in African heritage: **Hair** and **Fashion**. The shared home introduces both with equal weight, then routes users to a dedicated page for each discipline where the full services live.
+## 1. New image assets
 
-## Information architecture
+Download 3 Cloudinary images, upload via `lovable-assets`:
 
-```
-/           Shared home — unified intro, dual entry points
-/hair       Full hair services (braiding, wig making, wig revamping,
-            dreadlocks, weaving, hair extensions)
-/fashion    Full fashion services (custom-made clothing, alterations,
-            African fashion)
-```
+- `src/assets/hero-home.jpg` — new home hero (`b5e33a40...tekxua.jpg`)
+- `src/assets/hero-fashion.jpg` — fashion hero + fashion story (`9c997d9b...dih3tg.jpg`)
+- `src/assets/story-hair.jpg` — hair story (`52cc7d82...vh1kg3.jpg`)
 
-Each route has its own `head()` (title, description, og:title/description, og:image from its hero) for SEO and shareability.
+These same images are reused everywhere (hero, story, peek panels, modal) — no new image generation.
 
-## Shared home (/)
+## 2. Hero (`src/components/Hero.tsx`) — single image
 
-1. **Header** — logo lockup "Dazzle Me — Hair & Fashion". Nav: Hair · Fashion · Story · Visit · Book.
-2. **Unified hero** — a single composition that visually represents both crafts (split or diptych image: a braided crown on one side, an African-fabric garment on the other). Headline reflects both, e.g. *"Where heritage hair meets African fashion."* Two equally-weighted glass CTAs side by side:
-   - **Browse hair services →** `/hair`
-   - **Browse our fashion collective →** `/fashion`
-3. **Stylish divider** (existing diamond motif).
-4. **What we do — toggle section.** A single "Services" band with a Hair / Fashion category trigger (segmented pill). Selecting a category swaps in a small card preview (3–4 highlights) with a "See all [Hair|Fashion] services" link to the dedicated page. Animated transition between categories.
-5. **Our Story** — refreshed copy: Black hair *and* African fashion as identity, heritage and self-expression. Image pairs both worlds.
-6. **Editorial mosaic gallery** — single mixed mosaic blending hair and fashion tiles, each tile subtly tagged "Hair" or "Fashion" on hover. Tiles deep-link to the relevant discipline page.
-7. **Testimonials** — mixed reviews covering both services.
-8. **Booking CTA band** — single WhatsApp CTA; copy invites enquiries for either hair or fashion.
-9. **Location + Google Map** — unchanged (one studio, one address).
-10. **Footer** — two columns: Hair links / Fashion links, plus contact and socials.
+- Replace diptych with **single full-bleed** `hero-home.jpg` + existing gradient washes.
+- Copy:
+  - Chip: `Dazzle Me — Hair & Fashion`
+  - H1: `Our crown,` / `our story.`
+  - Taglines: `Heritage hair.` / `Heritage fashion.`
+- CTAs:
+  - Row 1: `Browse hair services` + `Browse our fashion collective` — each wrapped in a new `ServicePeek` component.
+  - Row 2 (centered): `Visit us` glass button → smooth scrolls to `#location`.
 
-## /hair page
+## 3. ServicePeek — responsive peek (no modal on desktop)
 
-- Hero specific to hair (existing hero image works) with a hair-focused headline and the Book CTA.
-- Full services grid with all six: **Braiding, Wig Making, Wig Revamping, Dreadlocks, Weaving, Hair Extensions** — each a card with a short blurb.
-- Short culture paragraph on heritage hair.
-- Hair-only gallery strip.
-- Cross-link band at the bottom: *"Love African fashion too? Browse our fashion collective →"* linking to `/fashion`.
-- Booking CTA + footer.
+New `src/components/ServicePeek.tsx`. Props: `image`, `label`, `href`, `cta`.
 
-## /fashion page
+**Desktop (`sm:` and up) — hover-expand panel, no modal:**
+- The Browse button + a collapsed peek panel live in a shared container.
+- On hover/focus of the container, an **inline panel** expands directly below the button:
+  - Width matches the button group; height grows from 0 → ~180px with `transition-[max-height,opacity] duration-500 ease-out`.
+  - Inside: the actual image pinned **left** (uses the new image asset directly — no separate generated thumb), fading right via `bg-gradient-to-r from-transparent via-background/70 to-background` to reveal label + `View →` link to `/hair` or `/fashion`.
+  - The whole panel is itself a `<Link>` so clicking anywhere on the image-area routes to the page.
+- Uses CSS `group-hover` / `group-focus-within` — no JS state needed.
 
-- Hero specific to fashion (new generated image — African-print garments, atelier feel).
-- Services grid: **Custom-Made Clothing, Alterations, African Fashion** — each a card with a short blurb. Since there are no products yet, copy frames it as a bespoke atelier ("made to order", "by appointment") rather than a catalogue.
-- Short story paragraph on African fashion as identity.
-- Fashion-only gallery strip (generated placeholders, swap with real lookbook later).
-- Cross-link band: *"Need your crown styled too? Browse our hair services →"* linking to `/hair`.
-- Booking CTA + footer.
+**Mobile (`< sm`) — tap-to-open modal:**
+- Small `Peek inside ↘` text trigger below each Browse button.
+- shadcn `Dialog` (`max-w-sm`, tall) with same image-left / fade-right / View arrow layout.
+- Hidden on `sm:` and up via `sm:hidden`; the inline panel is hidden on mobile via `hidden sm:block`.
 
-## Design system updates
+This satisfies "use the image link directly" — the same `hero-home.jpg` / `hero-fashion.jpg` assets back both the peek panel and the modal, no extra art.
 
-- Keep current "soft chic" palette (warm greige + champagne) — it suits both disciplines. Introduce a single **subtle accent shift per discipline** using existing tokens: hair sections lean on `--rose`, fashion sections lean on `--gold`. No new heavy colors.
-- Reuse glass buttons, diamond divider, Reveal/Stagger motion, Cormorant + Karla typography.
-- New shared component: `<ServiceCategoryToggle />` for the home services band.
-- New shared component: `<CrossLinkBand />` for the hair↔fashion cross-promo.
+## 4. HomeServicesToggle (`src/components/HomeServicesToggle.tsx`)
 
-## Copy direction
+- Show `Heritage hair` / `Heritage fashion` heading that swaps with active toggle (AnimatePresence fade).
+- **Sequential card animation**: each card uses `motion.article` with `transition={{ delay: i * 0.1, duration: 0.45, ease: [0.22,1,0.36,1] }}` so they appear one-by-one rather than together.
+- Lift `active` state to context (see #5).
 
-- Headline (home): *"Heritage hair. African fashion. One studio."*
-- Sub: *"Dazzle Me is a Middlesbrough atelier where braids, wigs, locs and made-to-order African fashion are crafted by hand."*
-- Story: extend current heritage paragraph to celebrate both hair and fashion as expressions of identity.
+## 5. Story image follows toggle (`src/components/Story.tsx` + new context)
 
-## SEO
+- New `src/components/ServiceFocusContext.tsx`: `{ active: 'hair'|'fashion', setActive }`. Default `hair`.
+- Wrap home page (`src/routes/index.tsx`) in `<ServiceFocusProvider>`.
+- `HomeServicesToggle` reads/writes context (replaces internal `useState`).
+- `Story` consumes context:
+  - `hair` → `story-hair.jpg`
+  - `fashion` → `hero-fashion.jpg`
+  - Cross-fade image via `AnimatePresence` keyed on `active`.
 
-- Per-route `head()` with unique title/description.
-- `HairSalon` JSON-LD on `/` and `/hair`; `ClothingStore` JSON-LD on `/fashion`. All share the same address/phone from `src/lib/salon.ts`.
-- Update `knowsAbout` to include all hair and fashion services.
+## 6. Gallery (`src/components/Gallery.tsx`)
+
+- Heading: `Our works` (was `A glimpse of our work`).
+- Bigger: `text-6xl sm:text-7xl md:text-8xl`, tighter tracking.
+
+## 7. Fashion route hero (`src/routes/fashion.tsx`)
+
+- Swap fashion hero background to new `hero-fashion.jpg`.
 
 ## Technical notes
 
-- Add routes: `src/routes/hair.tsx`, `src/routes/fashion.tsx`. Header `<Link>`s use type-safe `to="/hair"` / `to="/fashion"`.
-- Refactor `BraidingServices.tsx` → `HairServices.tsx` with the full 6-item list (kept under `/hair`).
-- New `FashionServices.tsx` for the 3-item fashion list (under `/fashion`).
-- New `HomeServicesToggle.tsx` for the home category-trigger preview.
-- Generate 3 new assets: `hero-fashion.jpg` (atelier/African-fabric scene), 2 fashion gallery tiles. Keep existing hero for `/hair`.
-- Update `src/lib/salon.ts` tagline to "Hair & African Fashion in Middlesbrough".
-- Update root layout meta to reflect the combined brand.
+- Asset upload: `curl -o /tmp/x.jpg <url> && lovable-assets create --file /tmp/x.jpg --filename <name>.jpg > src/assets/<name>.jpg.asset.json`, then `import x from "@/assets/<name>.jpg.asset.json"`; use `x.url`.
+- `Visit us` is `<a href="#location">`; verify/add `id="location"` to `LocationMap` root.
+- Glass button system preserved.
+- No edits to `src/lib/salon.ts` or `src/routeTree.gen.ts`.
 
-## Placeholders to confirm later
+## Files
 
-- Real fashion photos (lookbook).
-- Real wig / dreadlocks / weaving photos.
-- Phone/WhatsApp number (already a placeholder).
-- Whether fashion bookings use the same WhatsApp number (assumed yes).
+Create:
+- `src/components/ServicePeek.tsx`
+- `src/components/ServiceFocusContext.tsx`
+- `src/assets/hero-home.jpg.asset.json`
+- `src/assets/hero-fashion.jpg.asset.json`
+- `src/assets/story-hair.jpg.asset.json`
+
+Edit:
+- `src/components/Hero.tsx`
+- `src/components/HomeServicesToggle.tsx`
+- `src/components/Story.tsx`
+- `src/components/Gallery.tsx`
+- `src/components/LocationMap.tsx` (id check)
+- `src/routes/index.tsx` (wrap provider)
+- `src/routes/fashion.tsx` (image swap)
