@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
 import logo from "@/assets/logo-dazzlemehair.png";
 
+const logo = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+
 const links = [
   { label: "Hair", to: "/hair" as const, kind: "route" as const },
   { label: "Fashion", to: "/fashion" as const, kind: "route" as const },
