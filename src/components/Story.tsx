@@ -4,6 +4,10 @@ import { useServiceFocus } from "@/components/ServiceFocusContext";
 import storyHairAsset from "@/assets/story-hair.jpg.asset.json";
 import storyFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
 
+
+const storyFashionAsset = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+const storyHairAsset = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+
 export function Story() {
   const { active } = useServiceFocus();
   const image = active === "hair" ? storyHairAsset.url : storyFashionAsset.url;
