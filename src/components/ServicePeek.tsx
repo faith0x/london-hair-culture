@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { VisuallyHidden } from "@/components/ui/visually-hidden";
+import * as VisuallyHiddenPrimitive from "@radix-ui/react-visually-hidden";
 
 type Props = {
   /** The Browse CTA button */
@@ -71,9 +71,9 @@ export function ServicePeek({ button, imageUrl, label, href }: Props) {
             </button>
           </DialogTrigger>
           <DialogContent className="max-w-sm overflow-hidden rounded-3xl border-foreground/10 bg-card p-0">
-            <VisuallyHidden>
+            <VisuallyHiddenPrimitive.Root>
               <DialogTitle>{label}</DialogTitle>
-            </VisuallyHidden>
+            </VisuallyHiddenPrimitive.Root>
             <Link
               to={href}
               onClick={() => setOpen(false)}
