@@ -17,29 +17,32 @@ type Props = {
   href: "/hair" | "/fashion";
 };
 
-/**
- * Wraps a Browse CTA with a contextual image guide.
- * - Desktop (sm+): hover/focus expands an inline panel with the image (left)
- *   fading right to reveal a View arrow. Clicking the panel routes through.
- * - Mobile: a small "Peek inside" trigger opens a dialog with the same layout.
- */
 export function ServicePeek({ button, imageUrl, label, href }: Props) {
-  const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <div className="flex flex-col items-stretch">
+    <div
+      className="flex flex-col items-stretch"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
+    >
       {button}
 
       {/* Desktop: hover-expand inline panel */}
-      <div className="group/peek relative mt-3 hidden sm:block">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-foreground/10"
-        />
+      <div className="mt-3 hidden sm:block">
         <Link
           to={href}
           aria-label={`View ${label}`}
-          className="group/panel relative block overflow-hidden rounded-2xl border border-foreground/10 bg-card/40 backdrop-blur-md transition-[max-height,opacity,transform] duration-500 ease-out max-h-0 opacity-0 -translate-y-1 group-hover/peek:max-h-48 group-hover/peek:opacity-100 group-hover/peek:translate-y-0 focus-within:max-h-48 focus-within:opacity-100 focus-within:translate-y-0"
+          tabIndex={hovered ? 0 : -1}
+          style={{
+            maxHeight: hovered ? "11rem" : "0",
+            opacity: hovered ? 1 : 0,
+            transform: hovered ? "translateY(0)" : "translateY(-4px)",
+          }}
+          className="group/panel relative block overflow-hidden rounded-2xl border border-foreground/10 bg-card/40 backdrop-blur-md transition-[max-height,opacity,transform] duration-500 ease-out"
         >
           <div className="relative h-44 w-full">
             <img
@@ -61,7 +64,7 @@ export function ServicePeek({ button, imageUrl, label, href }: Props) {
 
       {/* Mobile: tap-to-open dialog */}
       <div className="mt-2 flex justify-center sm:hidden">
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
             <button
               type="button"
@@ -76,7 +79,7 @@ export function ServicePeek({ button, imageUrl, label, href }: Props) {
             </VisuallyHiddenPrimitive.Root>
             <Link
               to={href}
-              onClick={() => setOpen(false)}
+              onClick={() => setDialogOpen(false)}
               className="group/m relative block aspect-[3/4] w-full"
             >
               <img
