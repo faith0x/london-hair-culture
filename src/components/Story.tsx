@@ -4,7 +4,7 @@ import { useServiceFocus } from "@/components/ServiceFocusContext";
 
 
 const storyFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
-const storyHairAsset = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+const storyHairAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780335773/Picsart_26-06-01_18-42-01-996_bmux3e.jpg" };
 
 export function Story() {
   const { active } = useServiceFocus();
