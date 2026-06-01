@@ -3,7 +3,7 @@ import { Reveal } from "@/components/Reveal";
 import { useServiceFocus } from "@/components/ServiceFocusContext";
 
 
-const storyFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
+const storyFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/5ac922216e8b96e40199593d92f99a11_lpake2.jpg" };
 const storyHairAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780335773/Picsart_26-06-01_18-42-01-996_bmux3e.jpg" };
 
 export function Story() {
