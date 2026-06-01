@@ -2,8 +2,10 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { ServicePeek } from "@/components/ServicePeek";
-import heroHomeAsset from "@/assets/hero-home.jpg.asset.json";
-import heroFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
+
+// Default placeholder URLs — replace with final assets when ready
+const heroHomeAsset = { url: "https://placehold.co/1920x1080/1a1a1a/e8e8e8?text=Dazzle+Me+Hair+%26+Fashion" };
+const heroFashionAsset = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
 
 export function Hero() {
   return (
