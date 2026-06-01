@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
 
-const logo = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+const logo = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780073104/Picsart_26-05-29_06-07-56-040_buicng.png" };
 
 const links = [
   { label: "Hair", to: "/hair" as const, kind: "route" as const },
