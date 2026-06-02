@@ -253,26 +253,26 @@ export function HomeServicesToggle() {
       animate={{ height: "auto", opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      /* Swapped the gray tone out for a rich, saturated studio heritage cream background */
-      className="border-t border-[#DECFA7]/40 bg-[#EADFC9]/60 px-6 py-5 overflow-hidden"
+      /* Swapped to a solid, highly-saturated warm honey-biscuit tone with darker borders */
+      className="border-t border-[#CBB689]/40 bg-[#E6D2B1] px-6 py-5 overflow-hidden"
     >
-      {/* Internal details separator adjusted to a warm tone to blend naturally */}
-      <div className="grid grid-cols-2 gap-4 text-xs border-b border-[#DECFA7]/30 pb-4">
+      {/* internal content dividers shifted slightly darker to stay legible against the rich background */}
+      <div className="grid grid-cols-2 gap-4 text-xs border-b border-[#CBB689]/50 pb-4">
         <div>
-          <span className="block font-medium text-muted-foreground">Est. Duration</span>
-          <span className="text-foreground font-semibold">{details?.duration || "Variable"}</span>
+          <span className="block font-medium text-neutral-600">Est. Duration</span>
+          <span className="text-neutral-900 font-semibold">{details?.duration || "Variable"}</span>
         </div>
         <div>
-          <span className="block font-medium text-muted-foreground">Preparation</span>
-          <span className="text-foreground font-semibold">{details?.prep || "Standard"}</span>
+          <span className="block font-medium text-neutral-600">Preparation</span>
+          <span className="text-neutral-900 font-semibold">{details?.prep || "Standard"}</span>
         </div>
       </div>
 
       <div className="mt-4">
-        <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Service Execution:</span>
+        <span className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 mb-2">Service Execution:</span>
         <ul className="space-y-1.5">
           {details?.steps.map((step, idx) => (
-            <li key={idx} className="flex items-center gap-2 text-xs text-foreground/90">
+            <li key={idx} className="flex items-center gap-2 text-xs text-neutral-800 font-medium">
               <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
               {step}
             </li>
@@ -302,6 +302,7 @@ export function HomeServicesToggle() {
     </motion.div>
   )}
 </AnimatePresence>
+
 
                 </motion.article>
               );
