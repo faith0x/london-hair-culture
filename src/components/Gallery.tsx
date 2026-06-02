@@ -1,14 +1,8 @@
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
-import knotless from "@/assets/gallery-knotless.jpg.asset.json";
-import boxBraids from "@/assets/gallery-boxbraids.jpg.asset.json";
-import dreadlocks from "@/assets/gallery-dreadlocks.jpg.asset.json";
-import wig from "@/assets/gallery-wig.jpg.asset.json";
-import twists from "@/assets/gallery-twists.jpg.asset.json";
-import fashionAnkara from "@/assets/gallery-fashion-ankara.jpg.asset.json";
-import fashionTailoring from "@/assets/gallery-fashion-tailoring.jpg.asset.json";
-import fashionFabrics from "@/assets/gallery-fashion-fabrics.jpg.asset.json";
+import { gallery } from "@/lib/assets";
+const { knotless, boxBraids, dreadlocks, wig, twists, fashionAnkara, fashionTailoring, fashionFabrics } = gallery;
 
 type Item = {
   src: string;
