@@ -47,9 +47,9 @@ export const serviceAssets: Record<string, string> = {
   Dreadlocks: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157385/d9699b8184f25e1562ccbe96b73ab314_z9dchb.jpg",
   Weaving: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=600&auto=format&fit=crop",
   "Hair Extensions": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
-  "Custom-Made Clothing": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=600&auto=format&fit=crop",
+  "Custom-Made Clothing": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/2b95cc0f68a60ee1fea7b938574f6063_lbqf9s.jpg",
   Alterations: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop",
-  "African Fashion": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600&auto=format&fit=crop",
+  "African Fashion": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/5ac922216e8b96e40199593d92f99a11_lpake2.jpg",
 };
 
 // ─── Logo – now a Cloudinary URL (replace with your actual uploaded logo URL) ──
