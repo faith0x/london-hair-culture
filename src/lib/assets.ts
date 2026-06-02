@@ -43,7 +43,7 @@ export const fashion = {
 export const serviceAssets: Record<string, string> = {
   Braiding: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780337700/Picsart_26-06-01_19-14-14-903_lbdftq.jpg",
   "Wig Making": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157411/69bd8bfcfccb54d856991d13c6a5a4d8_q7noe1.jpg",
-  "Wig Revamping": "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop",
+  "Wig Revamping": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157383/0221935d9f358deef46fe3dc2fdd0a36_blbfm8.jpg",
   Dreadlocks: "https://images.unsplash.com/photo-1605497746444-11f81d11ff2b?q=80&w=600&auto=format&fit=crop",
   Weaving: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=600&auto=format&fit=crop",
   "Hair Extensions": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
