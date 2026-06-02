@@ -9,10 +9,11 @@ import { BookingCTA } from "@/components/BookingCTA";
 import { SalonFooter } from "@/components/SalonFooter";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import heroFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
-import fabricImg from "@/assets/gallery-fashion-fabrics.jpg";
-import ankaraImg from "@/assets/gallery-fashion-ankara.jpg";
-import tailoringImg from "@/assets/gallery-fashion-tailoring.jpg";
+
+const fabricImg= { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+const ankaraImg = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+const tailoringImg = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+
 
 const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
 

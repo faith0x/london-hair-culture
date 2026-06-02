@@ -30,7 +30,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/90 backdrop-blur-md">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/90">
             Dazzle Me — Hair &amp; Fashion
           </span>
 
@@ -39,9 +39,9 @@ export function Hero() {
             <span className="block">our story.</span>
           </h1>
 
-          <p className="mt-5 flex flex-col items-center gap-1 font-display text-xl text-primary sm:flex-row sm:justify-center sm:gap-4 sm:text-2xl">
+          <p className="mt-5 flex flex-col items-center gap-1 font-display text-xl font-bold text-foreground sm:flex-row sm:justify-center sm:gap-4 sm:text-2xl">
             <span>Heritage hair.</span>
-            <span aria-hidden className="hidden text-foreground/30 sm:inline">·</span>
+            <span aria-hidden className="hidden text-foreground/40 sm:inline">·</span>
             <span>Heritage fashion.</span>
           </p>
 
