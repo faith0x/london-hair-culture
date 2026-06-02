@@ -255,7 +255,7 @@ export function HomeServicesToggle() {
       exit={{ height: 0, opacity: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       /* Backed off the saturation to a clean, subtle muted oatmeal linen tone */
-      className="border-t border-[#DECFA7]/30 bg-[hsl(42,25%,92%)]
+      className="border-t border-[#DECFA7]/30 bg-[hsl(42,30%,92%)]
  px-6 py-5 overflow-hidden"
     >
       {/* Internal details divider using a soft tint to match the lighter base */}
