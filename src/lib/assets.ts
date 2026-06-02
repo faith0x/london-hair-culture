@@ -47,4 +47,3 @@ export const gallery = {
   fashionTailoring: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", // TODO: replace with tailoring photo
   fashionFabrics:   "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", // TODO: replace with fabrics photo
 };
-fj
