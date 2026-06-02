@@ -10,17 +10,24 @@ const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/uplo
 export function Hero() {
   return (
     <section id="top" className="relative min-h-screen overflow-hidden">
-      {/* Single full-bleed hero image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroHomeAsset.url}
-          alt="Heritage hair and African fashion at Dazzle Me"
-          className="h-full w-full animate-hero-drift object-cover object-center"
-        />
-      </div>
+  {/* Single full-bleed hero image */}
+  <div className="absolute inset-0">
+    <img
+      src={heroHomeAsset.url}
+      alt="Heritage hair and African fashion at Dazzle Me"
+      className="h-full w-full animate-hero-drift object-cover object-center"
+    />
+  </div>
 
-      {/* Bottom-only readability fade — the rest of your image stays fully visible */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+  {/* 1. TOP-DOWN GRADIENT: Protects your glass header text */}
+  <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/60 via-white/20 to-transparent pointer-events-none" />
+
+  {/* 2. CENTER RADIAL SPOTLIGHT: Illuminates the background exactly behind your brown hero text */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(253,251,247,0.75)_0%,rgba(253,251,247,0.3)_45%,transparent_70%)] pointer-events-none blend-multiply" />
+
+  {/* 3. BOTTOM FADE: Smooth transition to the next section */}
+  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
+
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28 pb-16">
         <motion.div
