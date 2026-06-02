@@ -63,7 +63,7 @@ function CircleLayer({
     <motion.div
       style={{ y: yParallax }}
       // Shift up on desktop so circles sit near her head, not her waist
-      className="absolute inset-0 flex items-center justify-center pointer-events-none md:items-start md:pt-[15vh]"
+      className="absolute inset-0 flex items-center justify-center pointer-events-none"
     >
       <motion.div
         animate={{ y: config.float.y }}
@@ -102,7 +102,7 @@ export function Hero() {
       className="relative min-h-screen overflow-hidden bg-[#1E1A16]"
     >
       {/* ── CIRCLE STACK (z-10) ── */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="absolute inset-0 z-10 pointer-events-none" style={{ transform: "translateY(-8%)" }}>
         {CIRCLES.map((circle, i) => (
           <CircleLayer key={i} config={circle} scrollY={scrollY} />
         ))}
