@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { hairServices, fashionServices } from "@/lib/salon";
 import { useServiceFocus, type ServiceFocus } from "@/components/ServiceFocusContext";
+import { serviceAssets } from "@/lib/assets";
 
 const serviceAssets: Record<string, string> = {
   "Braiding": "https://images.unsplash.com/photo-1646615570534-1188046b85ff?q=80&w=600&auto=format&fit=crop",
