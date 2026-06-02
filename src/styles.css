@@ -1,11 +1,4 @@
-/*
- * FONT IMPORTS
- * Bodoni Moda — high-contrast editorial serif with thick strokes that hold
- *               at every size (replaces Cormorant Garamond which was too hairline)
- * Jost         — geometric humanist sans, warm and clean (replaces Karla)
- */
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,600;1,6..96,700&family=Jost:wght@300;400;500;600&display=swap");
-
+@import "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,600;1,6..96,700&family=Jost:wght@300;400;500;600&display=swap";
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
