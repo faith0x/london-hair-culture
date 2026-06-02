@@ -26,7 +26,7 @@ export function Hero() {
       <div 
         className="absolute inset-0 pointer-events-none" 
           style={{
-  background: "radial-gradient(ellipse 90% 55% at 50% 45%, rgba(224, 236, 255, 0.4) 0%, rgba(253, 246, 238, 0.2) 50%, transparent 80%)"
+  background: "radial-gradient(ellipse 90% 55% at 50% 45%, rgba(224, 236, 255, 0.4) 0%, rgba(253, 246, 238, 0.2) 50%, transparent 99%)"
 }}
 
 
