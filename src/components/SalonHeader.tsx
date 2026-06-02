@@ -3,8 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-
-const logo = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780073104/Picsart_26-05-29_06-07-56-040_buicng.png" };
+import logo from "@/assets/logo-dazzlemehair.png";
 
 const links = [
   { label: "Hair", to: "/hair" as const, kind: "route" as const },
@@ -25,10 +24,6 @@ export function SalonHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const linkTextClass = scrolled
-    ? "text-foreground/80 hover:text-foreground"
-    : "text-amber-50/90 hover:text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]";
-
   return (
     <header
       className={`fixed z-50 transition-all duration-500 ${
@@ -38,18 +33,18 @@ export function SalonHeader() {
       }`}
     >
       <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between transition-all duration-500 ${
-          scrolled ? "px-4 py-2.5 md:px-6 md:py-3" : "px-5 py-6"
+        className={`mx-auto flex max-w-6xl items-center justify-between ${
+          scrolled ? "px-4 py-2.5 md:px-6 md:py-3" : "px-5 py-4"
         }`}
       >
         <Link to="/" className="flex items-center gap-2">
           <img
-            src={logo.url}
+            src={logo}
             alt={salon.fullName}
             className={`h-9 w-auto transition-all duration-500 md:h-10 ${
               scrolled
                 ? "[filter:invert(15%)_sepia(8%)_saturate(800%)_hue-rotate(350deg)_brightness(40%)]"
-                : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] [filter:brightness(0)_invert(1)]"
+                : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
             }`}
           />
           <span className="sr-only">{salon.fullName}</span>
@@ -61,7 +56,7 @@ export function SalonHeader() {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className={`group relative text-sm font-medium transition-colors duration-300 ${linkTextClass}`}
+                  className="group relative text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
                   activeProps={{ className: "text-foreground" }}
                 >
                   {link.label}
@@ -72,24 +67,18 @@ export function SalonHeader() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`group relative text-sm font-medium transition-colors duration-300 ${linkTextClass}`}
+                  className="group relative text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 h-0.5 w-full origin-bottom-right scale-x-0 bg-primary transition-transform duration-300 group-hover:origin-bottom-left group-hover:scale-x-100" />
                 </a>
               </li>
-            )
+            ),
           )}
         </ul>
 
         <div className="hidden md:block">
-          <Button
-            asChild
-            variant={scrolled ? "glass-dark" : "glass"}
-            className={`rounded-full px-6 transition-all duration-500 ${
-              scrolled ? "" : "bg-white/10 text-white hover:bg-white/20 border-white/20 drop-shadow-sm"
-            }`}
-          >
+          <Button asChild variant="glass-dark" className="rounded-full px-6">
             <a href={whatsappUrl} target="_blank" rel="noreferrer">
               Book Appointment
             </a>
@@ -97,9 +86,7 @@ export function SalonHeader() {
         </div>
 
         <button
-          className={`transition-colors duration-300 md:hidden ${
-            scrolled ? "text-foreground" : "text-amber-50 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
-          }`}
+          className={`md:hidden ${scrolled ? "text-foreground" : "text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"}`}
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
         >
@@ -108,7 +95,7 @@ export function SalonHeader() {
       </nav>
 
       {open && (
-        <div className="md:hidden mt-2 mx-3 rounded-3xl border border-white/30 bg-background/95 shadow-lg backdrop-blur-xl">
+        <div className="md:hidden mt-2 mx-3 rounded-3xl border border-white/30 bg-background/90 shadow-lg backdrop-blur-xl">
           <ul className="flex flex-col px-5 py-3">
             {links.map((link) =>
               link.kind === "route" ? (
@@ -131,7 +118,7 @@ export function SalonHeader() {
                     {link.label}
                   </a>
                 </li>
-              )
+              ),
             )}
             <li className="pt-2 pb-1">
               <Button asChild variant="glass-dark" className="w-full rounded-full">

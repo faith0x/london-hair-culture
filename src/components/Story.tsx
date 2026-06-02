@@ -1,10 +1,8 @@
 import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "@/components/Reveal";
 import { useServiceFocus } from "@/components/ServiceFocusContext";
-
-
-const storyFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780335773/Picsart_26-06-01_18-42-01-996_bmux3e.jpg" };
-const storyHairAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780335773/Picsart_26-06-01_18-42-01-996_bmux3e.jpg" };
+import storyHairAsset from "@/assets/story-hair.jpg.asset.json";
+import storyFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
 
 export function Story() {
   const { active } = useServiceFocus();
