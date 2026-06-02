@@ -9,47 +9,55 @@ const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/uplo
 const modelPng = "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780393279/Picsart_26-06-02_10-40-27-192_fomkh8.webp";
 
 // ─── Oval layer config ─────────────────────────────────────────────
-// Back → Front: larger/darker → smaller/brighter
+// All three ovals: same crème fill, same lighter inner glow.
+// Only size changes dramatically so all three rings are clearly visible.
+//
+// CIRCLE COLOR:  #4A4138  — warm crème-brown, clearly lighter than #1E1A16 bg
+// INNER GLOW:    rgba(239,224,190,0.45) — noticeably lighter crème than the fill
+// OUTER DROP:    heavy dark shadow so each disc sits in space
+//
+// Size steps (w × h):
+//   Back  — 860 × 660   (largest,  outermost ring visible)
+//   Mid   — 620 × 480   (medium)
+//   Front — 400 × 310   (smallest, frontmost, also has outer ambient glow)
+const OVAL_COLOR = "#4A4138";
 const OVALS = [
   {
-    // Layer 1 — back, largest, faintest
-    size: "w-[680px] h-[520px] sm:w-[820px] sm:h-[620px]",
-    bg: "bg-[#3A332A]",
-    // Inward glow: subtle warm crème ring
-    shadow: "shadow-[inset_0_0_40px_6px_rgba(239,233,217,0.10),0_60px_120px_-20px_rgba(0,0,0,0.85)]",
-    // Outer ambient glow against background — matches last oval spec (applied to all, strongest on back)
-    outerGlow: "",
-    float: { y: [0, -14, 0], duration: 9, delay: 0 },
-    parallax: [0, -25],
+    // Layer 1 — back, largest
+    w: 860, h: 660,
+    float: { y: [0, -16, 0],        duration: 9,  delay: 0   },
+    parallax: [0, -22] as [number, number],
   },
   {
-    // Layer 2 — mid, noticeably lighter
-    size: "w-[520px] h-[400px] sm:w-[640px] sm:h-[490px]",
-    bg: "bg-[#4A4137]",
-    shadow: "shadow-[inset_0_0_50px_10px_rgba(239,233,217,0.16),0_50px_100px_-16px_rgba(0,0,0,0.80)]",
-    outerGlow: "",
-    float: { y: [0, 18, 0], duration: 11, delay: 1.2 },
-    parallax: [0, -50],
+    // Layer 2 — mid
+    w: 620, h: 480,
+    float: { y: [0, 20, 0],         duration: 11, delay: 1.4 },
+    parallax: [0, -50] as [number, number],
   },
   {
-    // Layer 3 — front, smallest, brightest, glows outward against background
-    size: "w-[380px] h-[290px] sm:w-[480px] sm:h-[360px]",
-    bg: "bg-[#5E5346]",
-    shadow: "shadow-[inset_0_0_60px_14px_rgba(239,233,217,0.22),0_0_80px_30px_rgba(239,233,217,0.07),0_40px_80px_-12px_rgba(0,0,0,0.75)]",
-    outerGlow: "",
-    float: { y: [0, -20, 6, 0], duration: 13, delay: 0.6 },
-    parallax: [0, -80],
+    // Layer 3 — front, smallest; extra outer ambient glow bleeding into bg
+    w: 400, h: 310,
+    float: { y: [0, -22, 8, 0],     duration: 13, delay: 0.7 },
+    parallax: [0, -82] as [number, number],
   },
 ];
 
 function OvalLayer({
   config,
+  index,
   scrollY,
 }: {
   config: (typeof OVALS)[number];
+  index: number;
   scrollY: ReturnType<typeof useScroll>["scrollY"];
 }) {
   const yParallax = useTransform(scrollY, [0, 600], config.parallax);
+
+  // Inner glow is noticeably lighter than the fill — crème highlight ring.
+  // Front oval (index 2) also bleeds a soft outer glow against the dark bg.
+  const boxShadow = index === 2
+    ? "inset 0 0 55px 18px rgba(239,224,190,0.50), 0 0 90px 35px rgba(239,224,190,0.10), 0 40px 80px -10px rgba(0,0,0,0.80)"
+    : "inset 0 0 55px 18px rgba(239,224,190,0.45), 0 40px 80px -10px rgba(0,0,0,0.80)";
 
   return (
     <motion.div
@@ -64,12 +72,14 @@ function OvalLayer({
           ease: "easeInOut",
           delay: config.float.delay,
         }}
-        className={`
-          rounded-[50%]
-          ${config.size}
-          ${config.bg}
-          ${config.shadow}
-        `}
+        style={{
+          width: config.w,
+          height: config.h,
+          borderRadius: "50%",
+          backgroundColor: OVAL_COLOR,
+          boxShadow,
+          flexShrink: 0,
+        }}
       />
     </motion.div>
   );
@@ -91,7 +101,7 @@ export function Hero() {
       {/* ── OVAL STACK (z-10) ── */}
       <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
         {OVALS.map((oval, i) => (
-          <OvalLayer key={i} config={oval} scrollY={scrollY} />
+          <OvalLayer key={i} config={oval} index={i} scrollY={scrollY} />
         ))}
       </div>
 
