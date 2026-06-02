@@ -10,39 +10,32 @@ const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/uplo
 export function Hero() {
   return (
     <section id="top" className="relative min-h-screen overflow-hidden">
-      {/* Single full-bleed hero image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroHomeAsset.url}
-          alt="Heritage hair and African fashion at Dazzle Me"
-          className="h-full w-full animate-hero-drift object-cover object-center"
-        />
-      </div>
+  {/* Single full-bleed hero image */}
+  <div className="absolute inset-0">
+    <img
+      src={heroHomeAsset.url}
+      alt="Heritage hair and African fashion at Dazzle Me"
+      className="h-full w-full animate-hero-drift object-cover object-center"
+    />
+  </div>
 
-      {/* 1. TOP GRADIENT: Extra headroom safety for your header elements */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
+  {/* 1. TOP-DOWN GRADIENT: Protects your glass header text */}
+  <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/60 via-white/20 to-transparent pointer-events-none" />
 
-      {/* 2. FOOLPROOF RADIAL STUDIO FLARE (Using inline styles to prevent Tailwind compilation drops) */}
-      <div 
-        className="absolute inset-0 pointer-events-none" 
-          style={{
-  background: "radial-gradient(ellipse 90% 55% at 50% 45%, rgba(224, 236, 255, 0.4) 0%, rgba(253, 246, 238, 0.2) 50%, transparent 99%)"
-}}
+  {/* 2. CENTER RADIAL SPOTLIGHT: Illuminates the background exactly behind your brown hero text */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(253,251,247,0.75)_0%,rgba(253,251,247,0.3)_45%,transparent_70%)] pointer-events-none blend-multiply" />
+
+  {/* 3. BOTTOM FADE: Smooth transition to the next section */}
+  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
 
 
-      />
-
-      {/* 3. BOTTOM FADE: Clean transition to the rest of the layout */}
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
-
-      {/* Content Container — Text is fully exposed and reads perfectly in brown against the light flare */}
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28 pb-16">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-3xl text-center"
-        >
+  initial={{ opacity: 0, y: 24 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+  className="mx-auto max-w-3xl text-center backdrop-blur-md bg-white/30 rounded-3xl p-8 md:p-12 border border-white/40 shadow-2xl shadow-brown-900/5"
+>
           <p className="font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
             Dazzle Me — Hair &amp; Fashion
           </p>
