@@ -19,9 +19,8 @@ export function Hero() {
         />
       </div>
 
-      {/* Color washes */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/10 to-background/50" />
+      {/* Bottom-only readability fade — the rest of your image stays fully visible */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28 pb-16">
         <motion.div
@@ -30,16 +29,16 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/90">
+          <p className="font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
             Dazzle Me — Hair &amp; Fashion
-          </span>
+          </p>
 
-          <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
+          <h1 className="mt-4 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
             <span className="block">Our crown,</span>
             <span className="block">our story.</span>
           </h1>
 
-          <p className="mt-5 flex flex-col items-center gap-1 font-display text-xl font-bold text-foreground sm:flex-row sm:justify-center sm:gap-4 sm:text-2xl">
+          <p className="mt-6 flex flex-col items-center gap-1 font-display text-xl font-bold tracking-wide text-foreground sm:flex-row sm:justify-center sm:gap-4 sm:text-2xl">
             <span>Heritage hair.</span>
             <span aria-hidden className="hidden text-foreground/40 sm:inline">·</span>
             <span>Heritage fashion.</span>
