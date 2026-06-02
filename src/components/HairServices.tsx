@@ -33,18 +33,18 @@ export function HairServices() {
                 variants={staggerItem}
                 className="group relative flex h-44 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-400 hover:-translate-y-1 hover:border-primary/30"
               >
-                {/* 1. IMMOVABLE CONTAINER BOX */}
-                <div className="relative h-full flex-none w-44 min-w-44 max-w-44 sm:w-64 sm:min-w-64 sm:max-w-64 overflow-hidden">
-                  
-                  {/* 2. ABSOLUTE POSITIONED IMAGE (Zero layout authority) */}
+                {/* 
+                  NUCLEAR LOCK: 
+                  Container is rigid. Image is absolute so it cannot influence the width. 
+                */}
+                <div className="relative h-full w-36 shrink-0 sm:w-64">
                   <img
                     src={imageUrl}
                     alt={service.name}
                     className="absolute inset-0 h-full w-full object-cover object-center"
                   />
-                  
-                  {/* 3. DENSE GRADIENT OVERLAY */}
-                  <div className="absolute inset-y-0 right-0 w-28 sm:w-36 bg-gradient-to-r from-transparent via-card/70 to-card z-20" />
+                  {/* FADE: Locked to the right edge, transitioning strongly into the card background */}
+                  <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent via-card/70 to-card sm:w-28 pointer-events-none" />
                 </div>
 
                 {/* Text Track Container */}
