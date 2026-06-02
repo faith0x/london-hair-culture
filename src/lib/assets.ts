@@ -28,7 +28,7 @@ export const gallery = {
 
 // ─── Hair page ─────────────────────────────────────────────────────
 export const hair = {
-  heroHair: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", // replace with hair-specific hero
+  heroHair: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780385768/hero-dazzlemehair-Eqo8Q7iR6NGNiYRykRrwui_g11erz.webp", // replace with hair-specific hero
 };
 
 // ─── Fashion page ──────────────────────────────────────────────────
