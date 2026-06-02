@@ -152,19 +152,24 @@ export function HomeServicesToggle() {
         </div>
         <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
 
-        {/* ─── Themed Divider: two lines with runes at inner ends, gap under heading ─── */}
-        <div className="mt-6 flex items-center">
-          {/* Left segment: edge → rune (ends before Heritage hair) */}
-          <span className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-border/70" />
-          <Rune className="mx-2" />
+        {/* Interactive Diamond Divider — Anchored at ends, fading to center */}
+<div className="mt-10 flex items-center justify-between w-full max-w-2xl mx-auto px-4 text-foreground/30 pointer-events-none select-none">
+  {/* Left Outer Diamond */}
+  <span className="w-1.5 h-1.5 rotate-45 border border-current flex-none" />
+  
+  {/* Left Track: Solid at outer edge, fades to transparent at center */}
+  <div className="h-[1px] flex-1 bg-gradient-to-r from-border via-border/50 to-transparent ml-3" />
+  
+  {/* Central Fade Cushion Gap */}
+  <div className="w-12 flex-none" />
+  
+  {/* Right Track: Transparent at center, fades to solid at outer edge */}
+  <div className="h-[1px] flex-1 bg-gradient-to-l from-border via-border/50 to-transparent mr-3" />
+  
+  {/* Right Outer Diamond */}
+  <span className="w-1.5 h-1.5 rotate-45 border border-current flex-none" />
+</div>
 
-          {/* Gap where Heritage hair sits above */}
-          <div className="w-40 flex-none sm:w-56" />
-
-          {/* Right segment: rune → edge (starts after Heritage hair) */}
-          <Rune className="mx-2" />
-          <span className="h-px flex-1 bg-gradient-to-l from-transparent via-border to-border/70" />
-        </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           <AnimatePresence mode="popLayout">
