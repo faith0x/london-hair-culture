@@ -18,16 +18,9 @@ export function HairServices() {
     <section id="hair-services" className="relative bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            Hair services
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-            Heritage hair, hand-crafted
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Braids, wigs, locs and extensions — every look built with patience,
-            precision and a deep respect for Black hair.
-          </p>
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Hair services</span>
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Heritage hair, hand-crafted</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Braids, wigs, locs and extensions — every look built with patience, precision and a deep respect for Black hair.</p>
         </Reveal>
 
         <Stagger className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -38,22 +31,22 @@ export function HairServices() {
               <motion.article
                 key={service.name}
                 variants={staggerItem}
-                className="group relative flex h-44 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-400 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_16px_36px_-12px_rgba(0,0,0,0.08)]"
+                className="group relative flex h-44 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-400 hover:-translate-y-1 hover:border-primary/30"
               >
-                {/* Guaranteed Sizing Frame with Fallback Gray Background Color */}
-                <div className="relative h-full w-[140px] min-w-[140px] shrink-0 overflow-hidden bg-muted/10 sm:w-[220px] sm:min-w-[220px]">
+                {/* FIXED FRAME CONTAINER: Absolutely locked width, image fills completely */}
+                <div className="relative h-full w-32 shrink-0 overflow-hidden sm:w-48">
                   <img
                     src={imageUrl}
                     alt={service.name}
-                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="h-full w-full object-cover object-center"
                   />
-                  {/* Master 3-Stop Horizontal Fade Layer */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-card/30 via-card/85 to-card" />
+                  {/* SIMPLE RIGHT EDGE FADE OVERLAY */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card" />
                 </div>
 
-                {/* Content Track */}
-                <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-2 pr-6">
-                  <h3 className="font-display text-xl font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">
+                {/* Text Container */}
+                <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-4 pr-6">
+                  <h3 className="font-display text-xl font-semibold text-foreground">
                     {service.name}
                   </h3>
                   <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
