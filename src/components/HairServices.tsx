@@ -33,15 +33,18 @@ export function HairServices() {
                 variants={staggerItem}
                 className="group relative flex h-44 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-400 hover:-translate-y-1 hover:border-primary/30"
               >
-                {/* STRETCHED LANDSCAPE CONTAINER FRAME */}
-                <div className="relative h-full w-36 shrink-0 overflow-hidden sm:w-60">
+                {/* 1. IMMOVABLE CONTAINER BOX */}
+                <div className="relative h-full flex-none w-44 min-w-44 max-w-44 sm:w-64 sm:min-w-64 sm:max-w-64 overflow-hidden">
+                  
+                  {/* 2. ABSOLUTE POSITIONED IMAGE (Zero layout authority) */}
                   <img
                     src={imageUrl}
                     alt={service.name}
-                    className="h-full w-full object-cover object-center"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
                   />
-                  {/* ACCELERATED GRADIENT OVERLAY FOR A VISIBLE DISOLVE FADE */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-card/40 to-card" />
+                  
+                  {/* 3. DENSE GRADIENT OVERLAY */}
+                  <div className="absolute inset-y-0 right-0 w-28 sm:w-36 bg-gradient-to-r from-transparent via-card/70 to-card z-20" />
                 </div>
 
                 {/* Text Track Container */}
