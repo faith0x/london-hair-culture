@@ -1,60 +1,131 @@
 import { AnimatePresence, motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { useServiceFocus } from "@/components/ServiceFocusContext";
+import { hairServices, fashionServices } from "@/lib/salon";
+import { useServiceFocus, type ServiceFocus } from "@/components/ServiceFocusContext";
 
+const serviceAssets: Record<string, string> = {
+  "Braiding": "https://images.unsplash.com/photo-1646615570534-1188046b85ff?q=80&w=600&auto=format&fit=crop",
+  "Wig Making": "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=600&auto=format&fit=crop",
+  "Wig Revamping": "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop",
+  "Dreadlocks": "https://images.unsplash.com/photo-1605497746444-11f81d11ff2b?q=80&w=600&auto=format&fit=crop",
+  "Weaving": "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=600&auto=format&fit=crop",
+  "Hair Extensions": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
+  "Custom-Made Clothing": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=600&auto=format&fit=crop",
+  "Alterations": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop",
+  "African Fashion": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600&auto=format&fit=crop",
+};
 
-const storyFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780335773/Picsart_26-06-01_18-42-01-996_bmux3e.jpg" };
-const storyHairAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780335773/Picsart_26-06-01_18-42-01-996_bmux3e.jpg" };
+const defaultPlaceholder = "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop";
 
-export function Story() {
-  const { active } = useServiceFocus();
-  const image = active === "hair" ? storyHairAsset.url : storyFashionAsset.url;
-  const alt =
-    active === "hair"
-      ? "Braider creating heritage hair styles"
-      : "Custom-made African fashion piece";
+const categories: {
+  id: ServiceFocus;
+  label: string;
+  heading: string;
+  tagline: string;
+  href: "/hair" | "/fashion";
+}[] = [
+  { id: "hair", label: "Hair", heading: "Heritage hair", tagline: "Braids, wigs, locs & extensions", href: "/hair" },
+  { id: "fashion", label: "Fashion", heading: "Heritage fashion", tagline: "Custom African fashion & alterations", href: "/fashion" },
+];
+
+export function HomeServicesToggle() {
+  const { active, setActive } = useServiceFocus();
+  const items = active === "hair" ? hairServices.slice(0, 4) : fashionServices;
+  const current = categories.find((c) => c.id === active)!;
 
   return (
-    <section id="story" className="relative overflow-hidden bg-secondary/40 py-24 sm:py-32">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
-        <Reveal>
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            Our Story
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-            Our crown, our cloth, our culture
-          </h2>
-          <p className="mt-6 font-display text-2xl leading-snug text-foreground/90 sm:text-3xl">
-            Black hair and African fashion are more than style — they are
-            history, identity and belonging.
-          </p>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            At Dazzle Me we celebrate both. From intricate braids, locs and
-            beautifully crafted wigs to ankara gowns and bespoke pieces sewn by
-            hand, every look is a continuation of generations of craft — a
-            quiet act of pride, care and self-expression.
-          </p>
+    <section id="services" className="relative bg-background py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5">
+        <Reveal className="max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">What we do</span>
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Two crafts, one studio</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Tap a category to preview what we offer — then explore the full collection on its dedicated page.</p>
         </Reveal>
 
-        <div className="relative">
-          <div className="relative overflow-hidden rounded-[2rem] border border-border shadow-[0_30px_70px_-30px_oklch(0.31_0.035_30_/_0.5)]">
-            <div className="aspect-[4/5] w-full">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={image}
-                  src={image}
-                  alt={alt}
-                  loading="lazy"
-                  initial={{ opacity: 0, scale: 1.04 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.02 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </AnimatePresence>
-            </div>
+        {/* Toggle */}
+        <div className="mt-10 flex justify-center">
+          <div className="relative inline-flex rounded-full border border-border bg-card/70 p-1 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)] backdrop-blur-md">
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setActive(c.id)}
+                className={`relative z-10 rounded-full px-6 py-2.5 text-sm font-medium transition-colors duration-300 sm:px-8 ${
+                  active === c.id ? "text-background" : "text-foreground/70 hover:text-foreground"
+                }`}
+              >
+                {active === c.id && (
+                  <motion.span layoutId="toggle-pill" transition={{ type: "spring", stiffness: 350, damping: 30 }} className="absolute inset-0 -z-10 rounded-full bg-foreground" />
+                )}
+                {c.label}
+              </button>
+            ))}
           </div>
-          <div className="absolute -bottom-5 -left-5 -z-10 h-32 w-32 rounded-full bg-accent/40 blur-2xl" />
+        </div>
+
+        <div className="mt-8 flex h-12 items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.h3
+              key={current.heading}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            >
+              {current.heading}
+            </motion.h3>
+          </AnimatePresence>
+        </div>
+        <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
+
+        <AnimatePresence mode="wait">
+          <div key={active} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {items.map((service, i) => {
+              const imageUrl = serviceAssets[service.name] || defaultPlaceholder;
+
+              return (
+                <motion.article
+                  key={service.name}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="group relative flex h-40 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
+                >
+                  {/* 1. IMMOVABLE CONTAINER BOX */}
+                  <div className="relative h-full flex-none w-44 min-w-44 max-w-44 sm:w-64 sm:min-w-64 sm:max-w-64 overflow-hidden">
+                    
+                    {/* 2. ABSOLUTE POSITIONED IMAGE (Zero layout authority) */}
+                    <img
+                      src={imageUrl}
+                      alt={service.name}
+                      className="absolute inset-0 h-full w-full object-cover object-center"
+                    />
+                    
+                    {/* 3. DENSE GRADIENT OVERLAY */}
+                    <div className="absolute inset-y-0 right-0 w-28 sm:w-36 bg-gradient-to-r from-transparent via-card/70 to-card z-20" />
+                  </div>
+
+                  {/* Text Container */}
+                  <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-4 pr-6">
+                    <h4 className="font-display text-lg font-semibold text-foreground sm:text-xl">
+                      {service.name}
+                    </h4>
+                    <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                      {service.blurb}
+                    </p>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </AnimatePresence>
+
+        <div className="mt-10 flex justify-center">
+          <Link to={current.href} className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:bg-foreground/10">
+            See all {current.label.toLowerCase()} services
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
         </div>
       </div>
     </section>
