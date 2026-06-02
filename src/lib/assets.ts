@@ -50,4 +50,4 @@ export const serviceAssets: Record<string, string> = {
 };
 
 // ─── Logo ──────────────────────────────────────────────────────────────────
-export const logo = "@/assets/logo-dazzlemehair.png";
+export const logo = "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780073104/Picsart_26-05-29_06-07-56-040_buicng.png";
