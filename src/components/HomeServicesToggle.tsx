@@ -4,6 +4,23 @@ import { Reveal } from "@/components/Reveal";
 import { hairServices, fashionServices } from "@/lib/salon";
 import { useServiceFocus, type ServiceFocus } from "@/components/ServiceFocusContext";
 
+// Consolidated high-quality asset mapping for all services across both categories
+const serviceAssets: Record<string, string> = {
+  // Hair Services
+  "Braiding": "https://images.unsplash.com/photo-1646615570534-1188046b85ff?q=80&w=600&auto=format&fit=crop",
+  "Wig Making": "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=600&auto=format&fit=crop",
+  "Wig Revamping": "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop",
+  "Dreadlocks": "https://images.unsplash.com/photo-1605497746444-11f81d11ff2b?q=80&w=600&auto=format&fit=crop",
+  "Weaving": "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=600&auto=format&fit=crop",
+  "Hair Extensions": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
+  // Fashion Services
+  "Custom-Made Clothing": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=600&auto=format&fit=crop",
+  "Alterations": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop",
+  "African Fashion": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600&auto=format&fit=crop",
+};
+
+const defaultPlaceholder = "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop";
+
 const categories: {
   id: ServiceFocus;
   label: string;
@@ -89,25 +106,43 @@ export function HomeServicesToggle() {
         </div>
         <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
 
-        {/* Sequential preview cards (one-by-one) */}
+        {/* Sequential preview cards — Optimized layout matrix */}
         <AnimatePresence mode="wait">
-          <div key={active} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {items.map((service, i) => (
-              <motion.article
-                key={service.name}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="group rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
-              >
-                <h4 className="font-display text-xl font-semibold text-foreground">
-                  {service.name}
-                </h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {service.blurb}
-                </p>
-              </motion.article>
-            ))}
+          <div key={active} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {items.map((service, i) => {
+              const imageUrl = serviceAssets[service.name] || defaultPlaceholder;
+
+              return (
+                <motion.article
+                  key={service.name}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="group relative flex h-40 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_30px_-12px_rgba(0,0,0,0.05)]"
+                >
+                  {/* Fixed-Width Image Base (Fills space seamlessly with object-cover) */}
+                  <div className="relative h-full w-36 shrink-0 overflow-hidden sm:w-48">
+                    <img
+                      src={imageUrl}
+                      alt={service.name}
+                      className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    {/* Linear Fade Component: Extends across the complete block width to blend directly to solid bg-card */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-card/40 to-card" />
+                  </div>
+
+                  {/* Text Interface Node */}
+                  <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-0 pr-6">
+                    <h4 className="font-display text-lg font-semibold text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl">
+                      {service.name}
+                    </h4>
+                    <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                      {service.blurb}
+                    </p>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
         </AnimatePresence>
 
