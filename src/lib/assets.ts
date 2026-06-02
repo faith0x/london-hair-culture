@@ -18,7 +18,7 @@ export const story = {
 export const gallery = {
   knotless: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Knotless braids" },
   boxBraids: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Box braids" },
-  dreadlocks: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Dreadlocks" },
+  dreadlocks: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157385/d9699b8184f25e1562ccbe96b73ab314_z9dchb.jpg", alt: "Dreadlocks" },
   wig: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Wig styling" },
   twists: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Twists" },
   fashionAnkara: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", alt: "Ankara two-piece" },
