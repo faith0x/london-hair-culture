@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { ServicePeek } from "@/components/ServicePeek";
-import { images } from "@/lib/assets";
+import { hero } from "@/lib/assets";
 
 //const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-//
 //01_23-54-24-806_anqn9v.jpg" };
@@ -27,6 +27,7 @@ import { images } from "@/lib/assets";
 //
 // Gap between back & mid  ≈ (820-590)/2 = 115px of glowing ring
 // Gap between mid & front ≈ (590-380)/2 = 105px of glowing ring
+const { heroHomeAsset, heroFashionAsset, modelPng } = hero;
 const CIRCLE_COLOR = "#4A4138";
 const CIRCLES = [
   {
