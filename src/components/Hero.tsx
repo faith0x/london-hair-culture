@@ -1,59 +1,205 @@
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { ServicePeek } from "@/components/ServicePeek";
-import heroHomeAsset from "@/assets/hero-home.jpg.asset.json";
-import heroFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
+
+const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg" };
+const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
+const modelPng = "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780393279/Picsart_26-06-02_10-40-27-192_fomkh8.webp";
+
+// ─── Circle config ─────────────────────────────────────────────────
+// Perfect circles (size = diameter). All same fill color.
+// Each circle has an OUTER glow — so the crème light shows in the GAP
+// between each stacked ring (the smaller circle covers the center of
+// the larger one, leaving only the glowing rim visible between them).
+//
+// FILL:       #4A4138  — warm crème-brown, clearly above #1E1A16 bg
+// OUTER GLOW: rgba(239,224,190,N) — crème, lighter than the fill
+//             N increases toward front so front glows hardest
+//
+// Back  → 820px  (outermost, heaviest ambient glow into bg)
+// Mid   → 590px
+// Front → 380px  (frontmost, sharp bright ring)
+//
+// Gap between back & mid  ≈ (820-590)/2 = 115px of glowing ring
+// Gap between mid & front ≈ (590-380)/2 = 105px of glowing ring
+const CIRCLE_COLOR = "#4A4138";
+const CIRCLES = [
+  {
+    // Layer 1 — back, largest; bleeds glow into raw background
+    size: 820,
+    // outer glow: wide + soft, bleeds farthest into dark bg
+    outerGlow: "0 0 80px 40px rgba(239,224,190,0.18), 0 0 160px 80px rgba(239,224,190,0.07)",
+    float: { y: [0, -16, 0],     duration: 9,  delay: 0   },
+    parallax: [0, -22] as [number, number],
+  },
+  {
+    // Layer 2 — mid
+    size: 590,
+    outerGlow: "0 0 60px 30px rgba(239,224,190,0.22)",
+    float: { y: [0, 20, 0],      duration: 11, delay: 1.4 },
+    parallax: [0, -50] as [number, number],
+  },
+  {
+    // Layer 3 — front, smallest; sharpest, brightest outer ring
+    size: 380,
+    outerGlow: "0 0 45px 22px rgba(239,224,190,0.30)",
+    float: { y: [0, -22, 8, 0],  duration: 13, delay: 0.7 },
+    parallax: [0, -82] as [number, number],
+  },
+];
+
+function CircleLayer({
+  config,
+  scrollY,
+}: {
+  config: (typeof CIRCLES)[number];
+  scrollY: ReturnType<typeof useScroll>["scrollY"];
+}) {
+  const yParallax = useTransform(scrollY, [0, 600], config.parallax);
+
+  return (
+    <motion.div
+      style={{ y: yParallax }}
+      // Shift up on desktop so circles sit near her head, not her waist
+      className="absolute inset-0 flex items-center justify-center pointer-events-none"
+    >
+      <motion.div
+        animate={{ y: config.float.y }}
+        transition={{
+          duration: config.float.duration,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: config.float.delay,
+        }}
+        style={{
+          width: config.size,
+          height: config.size,
+          borderRadius: "50%",
+          backgroundColor: CIRCLE_COLOR,
+          // Pure outer glow — no inset. The light radiates outward into the gap
+          // between this circle and the smaller one on top.
+          boxShadow: config.outerGlow,
+          flexShrink: 0,
+        }}
+      />
+    </motion.div>
+  );
+}
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+
+  // Model parallax — slower than deepest oval
+  const yModel = useTransform(scrollY, [0, 600], [0, -40]);
+
   return (
-    <section id="top" className="relative min-h-screen overflow-hidden">
-      {/* Single full-bleed hero image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroHomeAsset.url}
-          alt="Heritage hair and African fashion at Dazzle Me"
-          className="h-full w-full animate-hero-drift object-cover object-center"
-        />
+    <section
+      id="top"
+      ref={containerRef}
+      className="relative min-h-screen overflow-hidden bg-[#1E1A16]"
+    >
+      {/* ── CIRCLE STACK (z-10) ── */}
+      <div className="absolute inset-0 z-10 pointer-events-none" style={{ transform: "translateY(-8%)" }}>
+        {CIRCLES.map((circle, i) => (
+          <CircleLayer key={i} config={circle} scrollY={scrollY} />
+        ))}
       </div>
 
-      {/* Color washes */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/10 to-background/50" />
+      {/* ── MODEL PNG (z-20) ── */}
+      <motion.div
+        style={{ y: yModel }}
+        className="absolute inset-0 z-20 pointer-events-none"
+      >
+        {/* On mobile: contain from bottom. On desktop: cover+zoom so no gaps. */}
+        <img
+          src={modelPng}
+          alt="Dazzle Me model portrait"
+          className="
+            h-full w-full select-none
+            object-contain object-bottom
+            md:object-cover md:object-top md:scale-110
+          "
+          style={{ transformOrigin: "top center" }}
+          draggable={false}
+        />
+        {/* Ground fade */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1E1A16] via-[#1E1A16]/70 to-transparent" />
+      </motion.div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28 pb-16">
+      {/* ── CONTENT (z-30) ── */}
+      <div className="relative z-30 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-5 pt-28 pb-16">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-3xl text-center"
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full max-w-2xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/90 backdrop-blur-md">
-            Dazzle Me — Hair &amp; Fashion
-          </span>
+          {/* Brand name — most pronounced */}
+          <p
+            className="font-display text-3xl font-bold tracking-[0.18em] uppercase sm:text-4xl"
+            style={{
+              color: "#EFE4C8",
+              textShadow:
+                "0 0 40px rgba(239,228,200,0.55), 0 2px 8px rgba(0,0,0,0.9)",
+              letterSpacing: "0.22em",
+            }}
+          >
+            Dazzle Me
+          </p>
 
-          <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
+          <p
+            className="mt-1 text-xs font-semibold tracking-[0.35em] uppercase"
+            style={{ color: "#B09D7A" }}
+          >
+            Hair &amp; Fashion
+          </p>
+
+          {/* Main headline */}
+          <h1
+            className="mt-7 font-display text-6xl font-semibold leading-[1.0] tracking-tight sm:text-7xl md:text-8xl"
+            style={{
+              color: "#F5EDDA",
+              textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 1px 2px rgba(0,0,0,0.6)",
+            }}
+          >
             <span className="block">Our crown,</span>
             <span className="block">our story.</span>
           </h1>
 
-          <p className="mt-5 flex flex-col items-center gap-1 font-display text-xl text-primary sm:flex-row sm:justify-center sm:gap-4 sm:text-2xl">
+          {/* Sub-tagline */}
+          <p
+            className="mt-5 flex flex-col items-center gap-1 text-base font-medium tracking-widest sm:flex-row sm:justify-center sm:gap-5 sm:text-lg"
+            style={{
+              color: "#C4AA80",
+              textShadow: "0 2px 12px rgba(0,0,0,0.7)",
+            }}
+          >
             <span>Heritage hair.</span>
-            <span aria-hidden className="hidden text-foreground/30 sm:inline">·</span>
+            <span aria-hidden className="hidden opacity-40 sm:inline">·</span>
             <span>Heritage fashion.</span>
           </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {/* CTAs */}
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
             <ServicePeek
               imageUrl={heroHomeAsset.url}
               label="Hair services"
               href="/hair"
               button={
-                <Button asChild size="lg" variant="glass-dark" className="w-full rounded-full px-8 text-base">
-                  <Link to="/hair">
-                    Browse hair services
-                    <span className="ml-1">→</span>
-                  </Link>
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full rounded-full px-8 text-sm font-semibold tracking-wider"
+                  style={{
+                    background: "#EFE4C8",
+                    color: "#1E1A16",
+                    boxShadow: "0 0 28px rgba(239,228,200,0.25)",
+                  }}
+                >
+                  <Link to="/hair">Browse hair services →</Link>
                 </Button>
               }
             />
@@ -62,18 +208,33 @@ export function Hero() {
               label="Fashion collective"
               href="/fashion"
               button={
-                <Button asChild size="lg" variant="glass" className="w-full rounded-full px-8 text-base">
-                  <Link to="/fashion">
-                    Browse our fashion collective
-                    <span className="ml-1">→</span>
-                  </Link>
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full rounded-full border px-8 text-sm font-semibold tracking-wider backdrop-blur-sm"
+                  style={{
+                    background: "rgba(239,228,200,0.08)",
+                    border: "1px solid rgba(239,228,200,0.25)",
+                    color: "#EFE4C8",
+                  }}
+                >
+                  <Link to="/fashion">Browse our fashion collective →</Link>
                 </Button>
               }
             />
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <Button asChild size="lg" variant="glass" className="rounded-full px-10 text-base">
+          <div className="mt-6 flex justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full border px-10 text-sm font-medium tracking-wider backdrop-blur-sm"
+              style={{
+                background: "rgba(239,228,200,0.06)",
+                border: "1px solid rgba(239,228,200,0.18)",
+                color: "#C4AA80",
+              }}
+            >
               <a href="#visit">Visit us</a>
             </Button>
           </div>
