@@ -245,59 +245,64 @@ export function HomeServicesToggle() {
                     </div>
                   </div>
 
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="border-t border-border/60 bg-neutral-900/20 px-6 py-5 overflow-hidden"
-                      >
-                        <div className="grid grid-cols-2 gap-4 text-xs border-b border-border/40 pb-4">
-                          <div>
-                            <span className="block font-medium text-muted-foreground">Est. Duration</span>
-                            <span className="text-foreground font-semibold">{details?.duration || "Variable"}</span>
-                          </div>
-                          <div>
-                            <span className="block font-medium text-muted-foreground">Preparation</span>
-                            <span className="text-foreground font-semibold">{details?.prep || "Standard"}</span>
-                          </div>
-                        </div>
+                  {/* Bottom Half: Interactive Utility Drawer on Expansion */}
+<AnimatePresence>
+  {isExpanded && (
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      /* Swapped the gray tone out for a rich, saturated studio heritage cream background */
+      className="border-t border-[#DECFA7]/40 bg-[#EADFC9]/60 px-6 py-5 overflow-hidden"
+    >
+      {/* Internal details separator adjusted to a warm tone to blend naturally */}
+      <div className="grid grid-cols-2 gap-4 text-xs border-b border-[#DECFA7]/30 pb-4">
+        <div>
+          <span className="block font-medium text-muted-foreground">Est. Duration</span>
+          <span className="text-foreground font-semibold">{details?.duration || "Variable"}</span>
+        </div>
+        <div>
+          <span className="block font-medium text-muted-foreground">Preparation</span>
+          <span className="text-foreground font-semibold">{details?.prep || "Standard"}</span>
+        </div>
+      </div>
 
-                        <div className="mt-4">
-                          <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Service Execution:</span>
-                          <ul className="space-y-1.5">
-                            {details?.steps.map((step, idx) => (
-                              <li key={idx} className="flex items-center gap-2 text-xs text-foreground/90">
-                                <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
-                                {step}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+      <div className="mt-4">
+        <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Service Execution:</span>
+        <ul className="space-y-1.5">
+          {details?.steps.map((step, idx) => (
+            <li key={idx} className="flex items-center gap-2 text-xs text-foreground/90">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
+              {step}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-                        <div className="mt-6 flex flex-wrap gap-2.5">
-                          <a
-                            href={customWhatsAppUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="flex-1 min-w-[140px] rounded-full bg-foreground px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-background shadow-md transition-transform active:scale-95 hover:bg-foreground/90"
-                          >
-                            Inquire via WhatsApp
-                          </a>
+      {/* Custom Interactive Floating Action Ovals */}
+      <div className="mt-6 flex flex-wrap gap-2.5">
+        <a
+          href={customWhatsAppUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="flex-1 min-w-[140px] rounded-full bg-foreground px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-background shadow-md transition-transform active:scale-95 hover:bg-foreground/90"
+        >
+          Inquire via WhatsApp
+        </a>
+        
+        <button
+          onClick={handleScrollToMap}
+          className="rounded-full border border-foreground/10 bg-card px-5 py-2.5 text-xs font-medium tracking-wide text-foreground transition-all hover:bg-neutral-100"
+        >
+          Visit us (Map)
+        </button>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
-                          <button
-                            onClick={handleScrollToMap}
-                            className="rounded-full border border-foreground/10 bg-card px-5 py-2.5 text-xs font-medium tracking-wide text-foreground transition-all hover:bg-neutral-900"
-                          >
-                            Visit us (Map)
-                          </button>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </motion.article>
               );
             })}
