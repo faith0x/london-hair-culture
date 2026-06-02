@@ -23,8 +23,7 @@ export function BookingCTA() {
                 <Button asChild size="lg" variant="glass" className="rounded-full px-8 text-base text-primary-foreground">
                   <a href={whatsappUrl} target="_blank" rel="noreferrer">
                     <MessageCircle className="size-5" />
-                    Book on WhatsApp
-                  </a>
+                    Book appointment                  </a>
                 </Button>
                 <Button
                   asChild
