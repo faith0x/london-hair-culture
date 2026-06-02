@@ -1,3 +1,11 @@
+/*
+ * FONT IMPORTS
+ * Bodoni Moda — high-contrast editorial serif with thick strokes that hold
+ *               at every size (replaces Cormorant Garamond which was too hairline)
+ * Jost         — geometric humanist sans, warm and clean (replaces Karla)
+ */
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,600;1,6..96,700&family=Jost:wght@300;400;500;600&display=swap");
+
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -12,15 +20,18 @@
  *
  * The :root and .dark blocks define the actual color values using oklch.
  * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
 @theme inline {
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Karla", system-ui, sans-serif;
+  /* ── FONTS ─────────────────────────────────────────────────────────
+   * Bodoni Moda: editorial high-contrast serif — commands attention at
+   *              every size from card headings to hero display.
+   * Jost:        geometric humanist sans — pairs cleanly without fighting
+   *              the display font, warm enough to match the crème palette.
+   */
+  --font-display: "Bodoni Moda", Georgia, serif;
+  --font-body: "Jost", system-ui, sans-serif;
+
   --color-gold: var(--gold);
   --color-rose: var(--rose);
   --color-mauve: var(--mauve);
@@ -106,7 +117,6 @@
   --sidebar-ring: oklch(0.52 0.035 55);
 }
 
-
 .dark {
   --background: oklch(0.22 0.02 30);
   --foreground: oklch(0.95 0.012 75);
@@ -154,16 +164,36 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  /*
+   * Bodoni Moda needs optical sizing enabled to get the thick-stroke
+   * behaviour at display sizes. font-optical-sizing: auto triggers this.
+   * We also lock headings to weight 700 minimum — anything below 600 on
+   * Bodoni reads too thin just like Cormorant did.
+   */
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /*
+   * Tailwind's font-display utility class — used on p/span for brand
+   * moments (taglines, sub-labels). Allow lighter weights here since
+   * these are short strings at larger sizes.
+   */
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
   }
 }
 
 @keyframes hero-drift {
-  0% { transform: scale(1.08) translate3d(0, 0, 0); }
+  0%   { transform: scale(1.08) translate3d(0, 0, 0); }
   100% { transform: scale(1.16) translate3d(-1.5%, -2%, 0); }
 }
 
