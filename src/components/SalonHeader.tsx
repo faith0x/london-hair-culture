@@ -3,7 +3,8 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import logo from "@/assets/logo-dazzlemehair.png";
+
+import { logo } from "@/lib/assets";
 
 const links = [
   { label: "Hair", to: "/hair" as const, kind: "route" as const },
