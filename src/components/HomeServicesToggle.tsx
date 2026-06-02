@@ -246,6 +246,7 @@ export function HomeServicesToggle() {
                   </div>
 
                   {/* Bottom Half: Interactive Utility Drawer on Expansion */}
+{/* Bottom Half: Interactive Utility Drawer on Expansion */}
 <AnimatePresence>
   {isExpanded && (
     <motion.div
@@ -253,11 +254,11 @@ export function HomeServicesToggle() {
       animate={{ height: "auto", opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      /* Swapped to a solid, highly-saturated warm honey-biscuit tone with darker borders */
-      className="border-t border-[#CBB689]/40 bg-[#E6D2B1] px-6 py-5 overflow-hidden"
+      /* Backed off the saturation to a clean, subtle muted oatmeal linen tone */
+      className="border-t border-[#DECFA7]/30 bg-[#F0EAD8] px-6 py-5 overflow-hidden"
     >
-      {/* internal content dividers shifted slightly darker to stay legible against the rich background */}
-      <div className="grid grid-cols-2 gap-4 text-xs border-b border-[#CBB689]/50 pb-4">
+      {/* Internal details divider using a soft tint to match the lighter base */}
+      <div className="grid grid-cols-2 gap-4 text-xs border-b border-[#DECFA7]/40 pb-4">
         <div>
           <span className="block font-medium text-neutral-600">Est. Duration</span>
           <span className="text-neutral-900 font-semibold">{details?.duration || "Variable"}</span>
@@ -302,6 +303,7 @@ export function HomeServicesToggle() {
     </motion.div>
   )}
 </AnimatePresence>
+
 
 
                 </motion.article>
