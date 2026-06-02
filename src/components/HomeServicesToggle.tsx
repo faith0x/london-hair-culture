@@ -103,7 +103,7 @@ export function HomeServicesToggle() {
                       className="h-full w-full object-cover object-center"
                     />
                     {/* RICH VISIBLE RIGHT-EDGE FADE BLEND */}
-                    <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent via-card/50 to-card sm:w-32 z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-r from-transparent via-card/50 to-card sm:w-48 z-10 pointer-events-none" />
                   </div>
 
                   {/* Text Container */}
