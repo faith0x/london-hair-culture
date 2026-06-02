@@ -24,7 +24,8 @@ export function Hero() {
 
       {/* 2. REFINED PHOTOGRAPHIC FLARE: Choose your variation below */}
       <div 
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,253,245,0.85)_0%,rgba(255,253,245,0.5)_30%,rgba(255,253,245,0.15)_55%,transparent_75%)] pointer-events-none" 
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,253,245,0.85)_0%,rgba(255,253,245,0.5)_30%,rgba(255,253,245,0.15)_55%,transparent_75%)]
+ pointer-events-none" 
       />
 
       {/* 3. BOTTOM FADE: Smooth transition to the next section */}
