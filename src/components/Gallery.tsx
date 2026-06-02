@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
-import knotless from "@lib/assets/gallery-knotless.jpg";
-import boxbraids from "@lib/assets/gallery-boxbraids.jpg";
-import dreadlocks from "@lib/assets/gallery-dreadlocks.jpg";
-import wig from "@lib/assets/gallery-wig.jpg";
-import fashionAnkara from "@lib/assets/gallery-fashion-ankara.jpg";
-import fashionTailoring from "@lib/assets/gallery-fashion-tailoring.jpg";
-import fashionFabrics from "@lib/assets/gallery-fashion-fabrics.jpg";
-import twists from "@lib/assets/gallery-twists.jpg";
+import knotless from "@/assets/gallery-knotless.jpg.asset.json";
+import boxBraids from "@/assets/gallery-boxbraids.jpg.asset.json";
+import dreadlocks from "@/assets/gallery-dreadlocks.jpg.asset.json";
+import wig from "@/assets/gallery-wig.jpg.asset.json";
+import twists from "@/assets/gallery-twists.jpg.asset.json";
+import fashionAnkara from "@/assets/gallery-fashion-ankara.jpg.asset.json";
+import fashionTailoring from "@/assets/gallery-fashion-tailoring.jpg.asset.json";
+import fashionFabrics from "@/assets/gallery-fashion-fabrics.jpg.asset.json";
 
 type Item = {
   src: string;
@@ -19,14 +19,14 @@ type Item = {
 };
 
 const items: Item[] = [
-  { src: knotless, alt: "Long knotless box braids", label: "Knotless braids", tag: "Hair", to: "/hair" },
-  { src: fashionAnkara, alt: "African ankara two-piece", label: "Ankara two-piece", tag: "Fashion", to: "/fashion" },
-  { src: boxbraids, alt: "Sleek box braids", label: "Box braids", tag: "Hair", to: "/hair" },
-  { src: fashionTailoring, alt: "Hands sewing custom garment", label: "Custom tailoring", tag: "Fashion", to: "/fashion" },
-  { src: dreadlocks, alt: "Long natural dreadlocks", label: "Dreadlocks", tag: "Hair", to: "/hair" },
-  { src: fashionFabrics, alt: "Stack of African wax-print fabrics", label: "African prints", tag: "Fashion", to: "/fashion" },
-  { src: wig, alt: "Natural-looking curly wig", label: "Wig styling", tag: "Hair", to: "/hair" },
-  { src: twists, alt: "Passion twists styled in an updo", label: "Twists", tag: "Hair", to: "/hair" },
+  { src: knotless.url,         alt: knotless.alt,         label: "Knotless braids",  tag: "Hair",    to: "/hair"    },
+  { src: fashionAnkara.url,    alt: fashionAnkara.alt,    label: "Ankara two-piece", tag: "Fashion", to: "/fashion" },
+  { src: boxBraids.url,        alt: boxBraids.alt,        label: "Box braids",       tag: "Hair",    to: "/hair"    },
+  { src: fashionTailoring.url, alt: fashionTailoring.alt, label: "Custom tailoring", tag: "Fashion", to: "/fashion" },
+  { src: dreadlocks.url,       alt: dreadlocks.alt,       label: "Dreadlocks",       tag: "Hair",    to: "/hair"    },
+  { src: fashionFabrics.url,   alt: fashionFabrics.alt,   label: "African prints",   tag: "Fashion", to: "/fashion" },
+  { src: wig.url,              alt: wig.alt,              label: "Wig styling",       tag: "Hair",    to: "/hair"    },
+  { src: twists.url,           alt: twists.alt,           label: "Twists",           tag: "Hair",    to: "/hair"    },
 ];
 
 export function Gallery() {
