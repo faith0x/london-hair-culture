@@ -48,7 +48,7 @@ export const serviceAssets: Record<string, string> = {
   Weaving: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=600&auto=format&fit=crop",
   "Hair Extensions": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
   "Custom-Made Clothing": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/1142d08f34ed0195ad415f127aab9664_1_um9uuy.jpg",
-  Alterations: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop",
+  Alterations: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/2b95cc0f68a60ee1fea7b938574f6063_lbqf9s.jpg",
   "African Fashion": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600&auto=format&fit=crop",
 };
 
