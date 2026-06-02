@@ -152,23 +152,24 @@ export function HomeServicesToggle() {
         </div>
         <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
 
-        {/* Interactive Diamond Divider — Anchored at ends, fading to center */}
-<div className="mt-10 flex items-center justify-between w-full max-w-2xl mx-auto px-4 text-foreground/30 pointer-events-none select-none">
-  {/* Left Outer Diamond */}
-  <span className="w-1.5 h-1.5 rotate-45 border border-current flex-none" />
+    {/* Interactive Diamond Divider — Anchored at ends, fading to center */}
+<div className="mt-10 flex items-center justify-between w-full max-w-2xl mx-auto px-6 text-foreground/50 pointer-events-none select-none">
+  {/* Left Outer Diamond - Bumper size and clear 2px outline */}
+  <span className="w-2.5 h-2.5 rotate-45 border-2 border-current flex-none" />
   
   {/* Left Track: Solid at outer edge, fades to transparent at center */}
-  <div className="h-[1px] flex-1 bg-gradient-to-r from-border via-border/50 to-transparent ml-3" />
+  <div className="h-[1px] flex-1 bg-gradient-to-r from-border via-border/40 to-transparent ml-4" />
   
   {/* Central Fade Cushion Gap */}
-  <div className="w-12 flex-none" />
+  <div className="w-16 flex-none" />
   
   {/* Right Track: Transparent at center, fades to solid at outer edge */}
-  <div className="h-[1px] flex-1 bg-gradient-to-l from-border via-border/50 to-transparent mr-3" />
+  <div className="h-[1px] flex-1 bg-gradient-to-l from-border via-border/40 to-transparent mr-4" />
   
-  {/* Right Outer Diamond */}
-  <span className="w-1.5 h-1.5 rotate-45 border border-current flex-none" />
+  {/* Right Outer Diamond - Bumper size and clear 2px outline */}
+  <span className="w-2.5 h-2.5 rotate-45 border-2 border-current flex-none" />
 </div>
+
 
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
