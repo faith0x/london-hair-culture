@@ -31,11 +31,11 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28 pb-16">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-3xl text-center"
-        >
+  initial={{ opacity: 0, y: 24 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+  className="mx-auto max-w-3xl text-center backdrop-blur-md bg-white/30 rounded-3xl p-8 md:p-12 border border-white/40 shadow-2xl shadow-brown-900/5"
+>
           <p className="font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
             Dazzle Me — Hair &amp; Fashion
           </p>
