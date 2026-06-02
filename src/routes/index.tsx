@@ -15,7 +15,7 @@ import { salon, fullAddress } from "@/lib/salon";
 
 const title = "Dazzle Me — Hair & African Fashion in Middlesbrough";
 const description =
-  "Dazzle Me is a Middlesbrough atelier blending heritage Black hair — braids, wigs, locs, weaving, extensions — with custom-made African fashion and alterations. Book on WhatsApp.";
+  "Dazzle Me is a Middlesbrough atelier blending heritage Black hair — braids, wigs, locs, weaving, extensions — with custom-made African fashion and alterations. Book Today.";
 
 const jsonLd = {
   "@context": "https://schema.org",
