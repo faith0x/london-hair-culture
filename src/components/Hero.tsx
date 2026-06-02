@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { ServicePeek } from "@/components/ServicePeek";
 
 // Default placeholder URLs — replace with final assets when ready
-const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780393011/Picsart_26-06-02_10-35-56-182_szizgo.jpg" };
+const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780393279/Picsart_26-06-02_10-40-27-192_fomkh8.webp" };
 const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
 
 export function Hero() {
