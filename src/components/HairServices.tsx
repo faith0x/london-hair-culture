@@ -33,18 +33,18 @@ export function HairServices() {
                 variants={staggerItem}
                 className="group relative flex h-44 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-400 hover:-translate-y-1 hover:border-primary/30"
               >
-                {/* FIXED FRAME CONTAINER: Absolutely locked width, image fills completely */}
-                <div className="relative h-full w-32 shrink-0 overflow-hidden sm:w-48">
+                {/* STRETCHED LANDSCAPE CONTAINER FRAME */}
+                <div className="relative h-full w-36 shrink-0 overflow-hidden sm:w-60">
                   <img
                     src={imageUrl}
                     alt={service.name}
                     className="h-full w-full object-cover object-center"
                   />
-                  {/* SIMPLE RIGHT EDGE FADE OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card" />
+                  {/* ACCELERATED GRADIENT OVERLAY FOR A VISIBLE DISOLVE FADE */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-card/40 to-card" />
                 </div>
 
-                {/* Text Container */}
+                {/* Text Track Container */}
                 <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-4 pr-6">
                   <h3 className="font-display text-xl font-semibold text-foreground">
                     {service.name}
