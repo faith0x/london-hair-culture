@@ -53,4 +53,4 @@ export const serviceAssets: Record<string, string> = {
 };
 
 // ─── Logo – now a Cloudinary URL (replace with your actual uploaded logo URL) ──
-export const logo = "https://res.cloudinary.com/dnkzhdbomage/upload/v1780354485/logo-dazzlemehair.png"; // TODO: upload logo and replace
+export const logo = "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/logo-dazzlemehair.png"; // TODO: upload logo and replace
