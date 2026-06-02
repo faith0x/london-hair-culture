@@ -5,7 +5,7 @@ import { ServicePeek } from "@/components/ServicePeek";
 
 // Default placeholder URLs — replace with final assets when ready
 const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg" };
-const heroFashionAsset = { url: "https://placehold.co/1920x1080/b45309/ffffff?text=Fashion+Collective" };
+const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
 
 export function Hero() {
   return (

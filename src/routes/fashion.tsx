@@ -14,6 +14,9 @@ import fabricImg from "@/assets/gallery-fashion-fabrics.jpg";
 import ankaraImg from "@/assets/gallery-fashion-ankara.jpg";
 import tailoringImg from "@/assets/gallery-fashion-tailoring.jpg";
 
+const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
+
+
 const title = "African Fashion & Custom Clothing — Dazzle Me Middlesbrough";
 const description =
   "Custom-made African fashion, bespoke clothing and expert alterations in Middlesbrough — ankara, lace and wax-print pieces tailored by hand at Dazzle Me.";
