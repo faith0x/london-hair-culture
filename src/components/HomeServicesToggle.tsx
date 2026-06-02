@@ -152,23 +152,44 @@ export function HomeServicesToggle() {
         </div>
         <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
 
-    {/* Interactive Diamond Divider — Anchored at ends, fading to center */}
-<div className="mt-10 flex items-center justify-between w-full max-w-2xl mx-auto px-6 text-foreground/50 pointer-events-none select-none">
-  {/* Left Outer Diamond - Bumper size and clear 2px outline */}
-  <span className="w-2.5 h-2.5 rotate-45 border-2 border-current flex-none" />
+{/* Heritage Diamond Divider — Detailed Ends, Fading to Center */}
+<div className="mt-10 flex items-center justify-between w-full max-w-2xl mx-auto px-4 text-foreground/40 pointer-events-none select-none">
   
-  {/* Left Track: Solid at outer edge, fades to transparent at center */}
-  <div className="h-[1px] flex-1 bg-gradient-to-r from-border via-border/40 to-transparent ml-4" />
+  {/* LEFT DIAMOND EMBLEM (From 1000538075.jpg) */}
+  <div className="flex items-center flex-none">
+    {/* Outer accent whisker */}
+    <span className="w-3 h-[1px] bg-current opacity-50" />
+    {/* Diamond with centered dynamic dot core */}
+    <div className="relative w-3 h-3 mx-2 border border-current rotate-45 flex items-center justify-center">
+      <span className="absolute w-1 h-1 bg-current rounded-full" />
+    </div>
+    {/* Inner accent whisker */}
+    <span className="w-3 h-[1px] bg-current opacity-50" />
+  </div>
   
-  {/* Central Fade Cushion Gap */}
+  {/* Left Track: Starts solid from emblem point, completely fades out to center */}
+  <div className="h-[1px] flex-1 bg-gradient-to-r from-border via-border/30 to-transparent ml-2" />
+  
+  {/* Central Fade Cushion Gap for Breathing Space */}
   <div className="w-16 flex-none" />
   
-  {/* Right Track: Transparent at center, fades to solid at outer edge */}
-  <div className="h-[1px] flex-1 bg-gradient-to-l from-border via-border/40 to-transparent mr-4" />
+  {/* Right Track: Starts transparent at center, returns to solid at emblem point */}
+  <div className="h-[1px] flex-1 bg-gradient-to-l from-border via-border/30 to-transparent mr-2" />
   
-  {/* Right Outer Diamond - Bumper size and clear 2px outline */}
-  <span className="w-2.5 h-2.5 rotate-45 border-2 border-current flex-none" />
+  {/* RIGHT DIAMOND EMBLEM (From 1000538075.jpg) */}
+  <div className="flex items-center flex-none">
+    {/* Inner accent whisker */}
+    <span className="w-3 h-[1px] bg-current opacity-50" />
+    {/* Diamond with centered dynamic dot core */}
+    <div className="relative w-3 h-3 mx-2 border border-current rotate-45 flex items-center justify-center">
+      <span className="absolute w-1 h-1 bg-current rounded-full" />
+    </div>
+    {/* Outer accent whisker */}
+    <span className="w-3 h-[1px] bg-current opacity-50" />
+  </div>
+
 </div>
+
 
 
 
