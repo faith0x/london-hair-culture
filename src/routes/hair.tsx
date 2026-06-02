@@ -10,7 +10,7 @@ import { BookingCTA } from "@/components/BookingCTA";
 import { SalonFooter } from "@/components/SalonFooter";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import heroHair from "@/assets/hero-dazzlemehair.webp";
+import { hair } from "@/lib/assets";
 
 const title = "Hair Services — Dazzle Me Middlesbrough";
 const description =
@@ -39,7 +39,7 @@ function HairPage() {
         <section className="relative min-h-[80vh] overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src={heroHair}
+              src={hair.heroHair}
               alt="Heritage Black hair braiding studio"
               className="h-full w-full animate-hero-drift object-cover object-center"
             />

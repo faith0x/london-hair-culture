@@ -119,16 +119,12 @@ export function Hero() {
       >
         {/* On mobile: contain from bottom. On desktop: cover+zoom so no gaps. */}
         <img
-          src={modelPng}
-          alt="Dazzle Me model portrait"
-          className="
-            h-full w-full select-none
-            object-contain object-bottom
-            md:object-cover md:object-top md:scale-110
-          "
-          style={{ transformOrigin: "top center" }}
-          draggable={false}
-        />
+  src={modelPng}
+  alt="Dazzle Me model portrait"
+  className="h-full w-full select-none object-cover"
+  style={{ objectPosition: "50% 100%" }}
+  draggable={false}
+/>
         {/* Ground fade */}
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1E1A16] via-[#1E1A16]/70 to-transparent" />
       </motion.div>
