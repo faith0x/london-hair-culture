@@ -19,19 +19,21 @@ export function Hero() {
         />
       </div>
 
-      {/* 1. TOP GRADIENT: Smooth blend from your header down */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
+      {/* 1. TOP GRADIENT: Extra headroom safety for your header elements */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
 
-      {/* 2. REFINED PHOTOGRAPHIC FLARE: Choose your variation below */}
+      {/* 2. FOOLPROOF RADIAL STUDIO FLARE (Using inline styles to prevent Tailwind compilation drops) */}
       <div 
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,253,245,0.85)_0%,rgba(255,253,245,0.5)_30%,rgba(255,253,245,0.15)_55%,transparent_75%)]
- pointer-events-none" 
+        className="absolute inset-0 pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle at 50% 42%, rgba(255, 254, 250, 0.92) 0%, rgba(255, 254, 250, 0.65) 20%, rgba(255, 254, 250, 0.3) 45%, transparent 70%)"
+        }}
       />
 
-      {/* 3. BOTTOM FADE: Smooth transition to the next section */}
+      {/* 3. BOTTOM FADE: Clean transition to the rest of the layout */}
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
 
-      {/* Content Container - Completely clean, no blocking backgrounds */}
+      {/* Content Container — Text is fully exposed and reads perfectly in brown against the light flare */}
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-5 pt-28 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
