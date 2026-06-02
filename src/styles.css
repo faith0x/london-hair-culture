@@ -4,25 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- */
-
 @theme inline {
-  /* ── FONTS ─────────────────────────────────────────────────────────
-   * Bodoni Moda: editorial high-contrast serif — commands attention at
-   *              every size from card headings to hero display.
-   * Jost:        geometric humanist sans — pairs cleanly without fighting
-   *              the display font, warm enough to match the crème palette.
-   */
-  --font-display: "Bodoni Moda", Georgia, serif;
-  --font-body: "Jost", system-ui, sans-serif;
+  /* Cormorant Garamond — kept, but now forced to weight 700 everywhere via
+     base layer so it never goes hairline. The hero looked great because it
+     used font-bold (700) + text-shadow; now the whole site gets that baseline. */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Karla", system-ui, sans-serif;
 
   --color-gold: var(--gold);
   --color-rose: var(--rose);
@@ -71,7 +58,6 @@
 
 :root {
   --radius: 1rem;
-  /* Soft chic pastel — warm greige, muted taupe, champagne */
   --background: oklch(0.965 0.012 80);
   --foreground: oklch(0.28 0.018 60);
   --card: oklch(0.985 0.008 80);
@@ -156,31 +142,23 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
-    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
 
   /*
-   * Bodoni Moda needs optical sizing enabled to get the thick-stroke
-   * behaviour at display sizes. font-optical-sizing: auto triggers this.
-   * We also lock headings to weight 700 minimum — anything below 600 on
-   * Bodoni reads too thin just like Cormorant did.
+   * Force Cormorant Garamond to weight 700 on all headings.
+   * This is the fix: the font was always good — it was just being
+   * rendered at font-semibold (600) which makes it hairline.
+   * 700 gives it the same authority as it has in the hero.
    */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
     font-weight: 700;
-    letter-spacing: -0.01em;
   }
 
-  /*
-   * Tailwind's font-display utility class — used on p/span for brand
-   * moments (taglines, sub-labels). Allow lighter weights here since
-   * these are short strings at larger sizes.
-   */
+  /* .font-display used on p/span for brand taglines — keep flexible */
   .font-display {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
   }
 }
 
