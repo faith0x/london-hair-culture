@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { ServicePeek } from "@/components/ServicePeek";
+import { images } from "@/lib/assets";
 
 //const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-//
 //01_23-54-24-806_anqn9v.jpg" };
