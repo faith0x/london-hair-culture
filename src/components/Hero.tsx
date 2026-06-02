@@ -26,8 +26,10 @@ export function Hero() {
       <div 
         className="absolute inset-0 pointer-events-none" 
         style={{
-          background: "radial-gradient(circle at 50% 42%, rgba(255, 254, 250, 0.92) 0%, rgba(255, 254, 250, 0.65) 20%, rgba(255, 254, 250, 0.3) 45%, transparent 70%)"
-        }}
+          style={{
+  background: "radial-gradient(ellipse 100% 60% at 50% 45%, rgba(255, 254, 252, 0.45) 0%, rgba(255, 254, 252, 0.2) 45%, rgba(255, 254, 252, 0.05) 70%, transparent 100%)"
+}}
+
       />
 
       {/* 3. BOTTOM FADE: Clean transition to the rest of the layout */}
