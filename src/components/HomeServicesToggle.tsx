@@ -92,15 +92,15 @@ export function HomeServicesToggle() {
                   transition={{ delay: i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   className="group relative flex h-40 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
                 >
-                  {/* DESIGNATED IMAGE SECTION: Widened horizontally to claim more space */}
+                  {/* FIXED WIDER FRAME SECTION: Completely non-collapsible slot */}
                   <div className="relative h-full w-44 shrink-0 overflow-hidden sm:w-64">
                     <img
                       src={imageUrl}
                       alt={service.name}
                       className="h-full w-full object-cover object-center"
                     />
-                    {/* VISIBLE OVERLAY FADE: Placed on the right half of the image section */}
-                    <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-transparent to-card" />
+                    {/* RIGHT EDGE FADE OVERLAY: Sitting safely on top of the photo inside the frame */}
+                    <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent to-card z-10" />
                   </div>
 
                   {/* Text Container */}
