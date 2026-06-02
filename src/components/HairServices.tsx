@@ -3,7 +3,7 @@ import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
 import { hairServices } from "@/lib/salon";
 
 const serviceImages: Record<string, string> = {
-  "Braiding": "https://images.unsplash.com/photo-1646615570534-1188046b85ff?q=80&w=600&auto=format&fit=crop",
+  "Braiding": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780337700/Picsart_26-06-01_19-14-14-903_lbdftq.jpg",
   "Wig Making": "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=600&auto=format&fit=crop",
   "Wig Revamping": "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop",
   "Dreadlocks": "https://images.unsplash.com/photo-1605497746444-11f81d11ff2b?q=80&w=600&auto=format&fit=crop",
