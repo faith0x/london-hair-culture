@@ -25,20 +25,8 @@ const categories: {
   tagline: string;
   href: "/hair" | "/fashion";
 }[] = [
-  {
-    id: "hair",
-    label: "Hair",
-    heading: "Heritage hair",
-    tagline: "Braids, wigs, locs & extensions",
-    href: "/hair",
-  },
-  {
-    id: "fashion",
-    label: "Fashion",
-    heading: "Heritage fashion",
-    tagline: "Custom African fashion & alterations",
-    href: "/fashion",
-  },
+  { id: "hair", label: "Hair", heading: "Heritage hair", tagline: "Braids, wigs, locs & extensions", href: "/hair" },
+  { id: "fashion", label: "Fashion", heading: "Heritage fashion", tagline: "Custom African fashion & alterations", href: "/fashion" },
 ];
 
 export function HomeServicesToggle() {
@@ -50,18 +38,12 @@ export function HomeServicesToggle() {
     <section id="services" className="relative bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            What we do
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-            Two crafts, one studio
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Tap a category to preview what we offer — then explore the full
-            collection on its dedicated page.
-          </p>
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">What we do</span>
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Two crafts, one studio</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Tap a category to preview what we offer — then explore the full collection on its dedicated page.</p>
         </Reveal>
 
+        {/* Toggle */}
         <div className="mt-10 flex justify-center">
           <div className="relative inline-flex rounded-full border border-border bg-card/70 p-1 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)] backdrop-blur-md">
             {categories.map((c) => (
@@ -73,11 +55,7 @@ export function HomeServicesToggle() {
                 }`}
               >
                 {active === c.id && (
-                  <motion.span
-                    layoutId="toggle-pill"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    className="absolute inset-0 -z-10 rounded-full bg-foreground"
-                  />
+                  <motion.span layoutId="toggle-pill" transition={{ type: "spring", stiffness: 350, damping: 30 }} className="absolute inset-0 -z-10 rounded-full bg-foreground" />
                 )}
                 {c.label}
               </button>
@@ -112,21 +90,22 @@ export function HomeServicesToggle() {
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="group relative flex h-40 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_12px_30px_-12px_rgba(0,0,0,0.05)]"
+                  className="group relative flex h-40 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
                 >
-                  {/* Identical Layout Parity Configuration Wrapper */}
-                  <div className="relative h-full w-[140px] min-w-[140px] shrink-0 overflow-hidden bg-muted/10 sm:w-[220px] sm:min-w-[220px]">
+                  {/* FIXED FRAME CONTAINER: Absolutely locked width, image fills completely */}
+                  <div className="relative h-full w-32 shrink-0 overflow-hidden sm:w-48">
                     <img
                       src={imageUrl}
                       alt={service.name}
-                      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="h-full w-full object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-card/30 via-card/85 to-card" />
+                    {/* SIMPLE RIGHT EDGE FADE OVERLAY */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card" />
                   </div>
 
-                  {/* Content Element Wrapper */}
-                  <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-2 pr-6">
-                    <h4 className="font-display text-lg font-semibold text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl">
+                  {/* Text Container */}
+                  <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-4 pr-6">
+                    <h4 className="font-display text-lg font-semibold text-foreground sm:text-xl">
                       {service.name}
                     </h4>
                     <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
@@ -140,10 +119,7 @@ export function HomeServicesToggle() {
         </AnimatePresence>
 
         <div className="mt-10 flex justify-center">
-          <Link
-            to={current.href}
-            className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:bg-foreground/10"
-          >
+          <Link to={current.href} className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:bg-foreground/10">
             See all {current.label.toLowerCase()} services
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
