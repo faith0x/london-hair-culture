@@ -90,21 +90,21 @@ export function HomeServicesToggle() {
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="group relative flex h-40 w-full overflow-hidden rounded-3xl border border-border bg-card pl-40 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 sm:pl-64"
+                  className="group relative flex h-40 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
                 >
-                  {/* ABSOLUTE IMAGE FRAME: Completely isolated from content layout flow */}
-                  <div className="absolute inset-y-0 left-0 w-40 overflow-hidden sm:w-64">
+                  {/* FIXED WIDER FRAME SECTION: Images fill completely, width never collapses */}
+                  <div className="relative h-full w-40 shrink-0 overflow-hidden sm:w-60">
                     <img
                       src={imageUrl}
                       alt={service.name}
-                      className="absolute inset-0 h-full w-full object-cover object-center"
+                      className="h-full w-full object-cover object-center"
                     />
-                    {/* SEAMLESS GRADIENT OVERLAY: Anchored right, stacked securely on top */}
-                    <div className="absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-r from-transparent to-card sm:w-36" />
+                    {/* FADE LAYER PINNED TO RIGHT EDGE: Placed explicitly on top using z-10 */}
+                    <div className="absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-r from-transparent to-card sm:w-32" />
                   </div>
 
                   {/* Text Container */}
-                  <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-2 pr-6">
+                  <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-4 pr-6">
                     <h4 className="font-display text-lg font-semibold text-foreground sm:text-xl">
                       {service.name}
                     </h4>
