@@ -88,6 +88,8 @@ import { Link } from "@tanstack/react-router";
 import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
 import { gallery } from "@/lib/assets"; // Import from assets.ts
 
+const { knotless, boxBraids, dreadlocks, wig, twists, fashionAnkara, fashionTailoring, fashionFabrics } = gallery;
+
 type Item = {
   src: string;
   alt: string;
