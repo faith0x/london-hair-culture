@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
-import knotless from "@/assets/gallery-knotless.jpg";
-import boxbraids from "@/assets/gallery-boxbraids.jpg";
-import dreadlocks from "@/assets/gallery-dreadlocks.jpg";
-import wig from "@/assets/gallery-wig.jpg";
-import fashionAnkara from "@/assets/gallery-fashion-ankara.jpg";
-import fashionTailoring from "@/assets/gallery-fashion-tailoring.jpg";
-import fashionFabrics from "@/assets/gallery-fashion-fabrics.jpg";
-import twists from "@/assets/gallery-twists.jpg";
+import knotless from "@lib/assets/gallery-knotless.jpg";
+import boxbraids from "@lib/assets/gallery-boxbraids.jpg";
+import dreadlocks from "@lib/assets/gallery-dreadlocks.jpg";
+import wig from "@lib/assets/gallery-wig.jpg";
+import fashionAnkara from "@lib/assets/gallery-fashion-ankara.jpg";
+import fashionTailoring from "@lib/assets/gallery-fashion-tailoring.jpg";
+import fashionFabrics from "@lib/assets/gallery-fashion-fabrics.jpg";
+import twists from "@lib/assets/gallery-twists.jpg";
 
 type Item = {
   src: string;
