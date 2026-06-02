@@ -3,6 +3,7 @@ import { Reveal } from "@/components/Reveal";
 import { useServiceFocus } from "@/components/ServiceFocusContext";
 import { story } from "@/lib/assets";
 
+const { storyHairAsset, storyFashionAsset } = story;
 export function Story() {
   const { active } = useServiceFocus();
   const image = active === "hair" ? storyHairAsset.url : storyFashionAsset.url;
