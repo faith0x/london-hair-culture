@@ -9,7 +9,7 @@ const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/
 const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
 
 export function Hero() {
-  const containerRef = useRef<<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
 
   // Parallax offsets — each layer moves at different speeds on scroll
