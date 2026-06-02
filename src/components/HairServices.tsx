@@ -2,64 +2,38 @@ import { motion } from "motion/react";
 import { Reveal, Stagger, staggerItem } from "@/components/Reveal";
 import { hairServices } from "@/lib/salon";
 
-const serviceImages: Record<string, string> = {
-  "Braiding": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780337700/Picsart_26-06-01_19-14-14-903_lbdftq.jpg",
-  "Wig Making": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157411/69bd8bfcfccb54d856991d13c6a5a4d8_q7noe1.jpg",
-  "Wig Revamping": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157383/0221935d9f358deef46fe3dc2fdd0a36_blbfm8.jpg",
-  "Dreadlocks": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157385/d9699b8184f25e1562ccbe96b73ab314_z9dchb.jpg",
-  "Weaving": "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=600&auto=format&fit=crop",
-  "Hair Extensions": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
-};
-
-const defaultPlaceholder = "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop";
-
 export function HairServices() {
   return (
     <section id="hair-services" className="relative bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Hair services</span>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Heritage hair, hand-crafted</h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Braids, wigs, locs and extensions — every look built with patience, precision and a deep respect for Black hair.</p>
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            Hair services
+          </span>
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
+            Heritage hair, hand-crafted
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Braids, wigs, locs and extensions — every look built with patience,
+            precision and a deep respect for Black hair.
+          </p>
         </Reveal>
 
-        <Stagger className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {hairServices.map((service) => {
-            const imageUrl = serviceImages[service.name] || defaultPlaceholder;
-
-            return (
-              <motion.article
-                key={service.name}
-                variants={staggerItem}
-                className="group relative flex h-44 w-full overflow-hidden rounded-3xl border border-border bg-card transition-all duration-400 hover:-translate-y-1 hover:border-primary/30"
-              >
-                {/* 
-                  UNBREAKABLE BOUNDARY FRAME:
-                  Using matching w, min-w, and max-w completely locks the size down.
-                  No image dimension can shrink or stretch this box anymore.
-                */}
-                <div className="relative h-full w-40 min-w-40 max-w-40 overflow-hidden sm:w-64 sm:min-w-64 sm:max-w-64 shrink-0">
-                  <img
-                    src={imageUrl}
-                    alt={service.name}
-                    className="h-full w-full object-cover object-center"
-                  />
-                  {/* RICH VISIBLE RIGHT-EDGE FADE BLEND */}
-                  <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent via-card/50 to-card sm:w-32 z-10 pointer-events-none" />
-                </div>
-
-                {/* Text Track Container */}
-                <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-4 pr-6">
-                  <h3 className="font-display text-xl font-semibold text-foreground">
-                    {service.name}
-                  </h3>
-                  <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                    {service.blurb}
-                  </p>
-                </div>
-              </motion.article>
-            );
-          })}
+        <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {hairServices.map((service) => (
+            <motion.article
+              key={service.name}
+              variants={staggerItem}
+              className="group rounded-3xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-rose/60 hover:shadow-[0_22px_50px_-24px_oklch(0.85_0.03_40_/_0.6)]"
+            >
+              <h3 className="font-display text-2xl font-semibold text-foreground">
+                {service.name}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {service.blurb}
+              </p>
+            </motion.article>
+          ))}
         </Stagger>
       </div>
     </section>
