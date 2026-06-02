@@ -8,61 +8,62 @@ const heroHomeAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/
 const heroFashionAsset = { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" };
 const modelPng = "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780393279/Picsart_26-06-02_10-40-27-192_fomkh8.webp";
 
-// ─── Oval layer config ─────────────────────────────────────────────
-// All three ovals: same crème fill, same lighter inner glow.
-// Only size changes dramatically so all three rings are clearly visible.
+// ─── Circle config ─────────────────────────────────────────────────
+// Perfect circles (size = diameter). All same fill color.
+// Each circle has an OUTER glow — so the crème light shows in the GAP
+// between each stacked ring (the smaller circle covers the center of
+// the larger one, leaving only the glowing rim visible between them).
 //
-// CIRCLE COLOR:  #4A4138  — warm crème-brown, clearly lighter than #1E1A16 bg
-// INNER GLOW:    rgba(239,224,190,0.45) — noticeably lighter crème than the fill
-// OUTER DROP:    heavy dark shadow so each disc sits in space
+// FILL:       #4A4138  — warm crème-brown, clearly above #1E1A16 bg
+// OUTER GLOW: rgba(239,224,190,N) — crème, lighter than the fill
+//             N increases toward front so front glows hardest
 //
-// Size steps (w × h):
-//   Back  — 860 × 660   (largest,  outermost ring visible)
-//   Mid   — 620 × 480   (medium)
-//   Front — 400 × 310   (smallest, frontmost, also has outer ambient glow)
-const OVAL_COLOR = "#4A4138";
-const OVALS = [
+// Back  → 820px  (outermost, heaviest ambient glow into bg)
+// Mid   → 590px
+// Front → 380px  (frontmost, sharp bright ring)
+//
+// Gap between back & mid  ≈ (820-590)/2 = 115px of glowing ring
+// Gap between mid & front ≈ (590-380)/2 = 105px of glowing ring
+const CIRCLE_COLOR = "#4A4138";
+const CIRCLES = [
   {
-    // Layer 1 — back, largest
-    w: 860, h: 660,
-    float: { y: [0, -16, 0],        duration: 9,  delay: 0   },
+    // Layer 1 — back, largest; bleeds glow into raw background
+    size: 820,
+    // outer glow: wide + soft, bleeds farthest into dark bg
+    outerGlow: "0 0 80px 40px rgba(239,224,190,0.18), 0 0 160px 80px rgba(239,224,190,0.07)",
+    float: { y: [0, -16, 0],     duration: 9,  delay: 0   },
     parallax: [0, -22] as [number, number],
   },
   {
     // Layer 2 — mid
-    w: 620, h: 480,
-    float: { y: [0, 20, 0],         duration: 11, delay: 1.4 },
+    size: 590,
+    outerGlow: "0 0 60px 30px rgba(239,224,190,0.22)",
+    float: { y: [0, 20, 0],      duration: 11, delay: 1.4 },
     parallax: [0, -50] as [number, number],
   },
   {
-    // Layer 3 — front, smallest; extra outer ambient glow bleeding into bg
-    w: 400, h: 310,
-    float: { y: [0, -22, 8, 0],     duration: 13, delay: 0.7 },
+    // Layer 3 — front, smallest; sharpest, brightest outer ring
+    size: 380,
+    outerGlow: "0 0 45px 22px rgba(239,224,190,0.30)",
+    float: { y: [0, -22, 8, 0],  duration: 13, delay: 0.7 },
     parallax: [0, -82] as [number, number],
   },
 ];
 
-function OvalLayer({
+function CircleLayer({
   config,
-  index,
   scrollY,
 }: {
-  config: (typeof OVALS)[number];
-  index: number;
+  config: (typeof CIRCLES)[number];
   scrollY: ReturnType<typeof useScroll>["scrollY"];
 }) {
   const yParallax = useTransform(scrollY, [0, 600], config.parallax);
 
-  // Inner glow is noticeably lighter than the fill — crème highlight ring.
-  // Front oval (index 2) also bleeds a soft outer glow against the dark bg.
-  const boxShadow = index === 2
-    ? "inset 0 0 55px 18px rgba(239,224,190,0.50), 0 0 90px 35px rgba(239,224,190,0.10), 0 40px 80px -10px rgba(0,0,0,0.80)"
-    : "inset 0 0 55px 18px rgba(239,224,190,0.45), 0 40px 80px -10px rgba(0,0,0,0.80)";
-
   return (
     <motion.div
       style={{ y: yParallax }}
-      className="absolute inset-0 flex items-center justify-center pointer-events-none"
+      // Shift up on desktop so circles sit near her head, not her waist
+      className="absolute inset-0 flex items-center justify-center pointer-events-none md:items-start md:pt-[15vh]"
     >
       <motion.div
         animate={{ y: config.float.y }}
@@ -73,11 +74,13 @@ function OvalLayer({
           delay: config.float.delay,
         }}
         style={{
-          width: config.w,
-          height: config.h,
+          width: config.size,
+          height: config.size,
           borderRadius: "50%",
-          backgroundColor: OVAL_COLOR,
-          boxShadow,
+          backgroundColor: CIRCLE_COLOR,
+          // Pure outer glow — no inset. The light radiates outward into the gap
+          // between this circle and the smaller one on top.
+          boxShadow: config.outerGlow,
           flexShrink: 0,
         }}
       />
@@ -98,26 +101,32 @@ export function Hero() {
       ref={containerRef}
       className="relative min-h-screen overflow-hidden bg-[#1E1A16]"
     >
-      {/* ── OVAL STACK (z-10) ── */}
-      <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
-        {OVALS.map((oval, i) => (
-          <OvalLayer key={i} config={oval} index={i} scrollY={scrollY} />
+      {/* ── CIRCLE STACK (z-10) ── */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        {CIRCLES.map((circle, i) => (
+          <CircleLayer key={i} config={circle} scrollY={scrollY} />
         ))}
       </div>
 
       {/* ── MODEL PNG (z-20) ── */}
       <motion.div
         style={{ y: yModel }}
-        className="absolute inset-0 z-20 flex items-end justify-center pointer-events-none"
+        className="absolute inset-0 z-20 pointer-events-none"
       >
+        {/* On mobile: contain from bottom. On desktop: cover+zoom so no gaps. */}
         <img
           src={modelPng}
           alt="Dazzle Me model portrait"
-          className="h-full w-auto max-w-none object-contain object-bottom select-none"
+          className="
+            h-full w-full select-none
+            object-contain object-bottom
+            md:object-cover md:object-top md:scale-110
+          "
+          style={{ transformOrigin: "top center" }}
           draggable={false}
         />
         {/* Ground fade */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#1E1A16] via-[#1E1A16]/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1E1A16] via-[#1E1A16]/70 to-transparent" />
       </motion.div>
 
       {/* ── CONTENT (z-30) ── */}
