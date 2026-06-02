@@ -10,7 +10,6 @@ import { BookingCTA } from "@/components/BookingCTA";
 import { SalonFooter } from "@/components/SalonFooter";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import heroHair from "@/assets/hero-dazzlemehair.webp";
 
 
 const heroHair = { url: "https://d2xsxph8kpxj0f.cloudfront.net/310519663709315999/Exyg7hbDBaj3oq6YMtNp7f/hero-dazzlemehair-Eqo8Q7iR6NGNiYRykRrwui.webp" };
