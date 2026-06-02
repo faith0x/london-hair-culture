@@ -16,7 +16,7 @@ const categories: {
 }[] = [
   { id: "hair", label: "Hair", heading: "Heritage hair", tagline: "Braids, wigs, locs & extensions", href: "/hair" },
   { id: "fashion", label: "Fashion", heading: "Heritage fashion", tagline: "Custom African fashion & alterations", href: "/fashion" },
-};
+];
 
 const extraServiceDetails: Record<string, { duration: string; prep: string; steps: string[] }> = {
   "Braiding": { duration: "2–6 hrs", prep: "Freshly washed & blown out", steps: ["Custom parting map", "Tension-free installation", "Edges treatment & oiling"] },
@@ -29,6 +29,7 @@ const extraServiceDetails: Record<string, { duration: string; prep: string; step
   "Alterations": { duration: "2–5 days", prep: "Bring the original garment", steps: ["Pinning & fit assessment", "Deconstruction & expert reshaping", "Reinforced premium restitching"] },
   "African Fashion": { duration: "1–2 weeks", prep: "Fabric selection choice", steps: ["Traditional motif alignment", "Heritage-focused pattern cutting", "Custom premium inner lining"] }
 };
+
 
 export const salon = {
   name: "Dazzle Me",
