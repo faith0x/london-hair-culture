@@ -9,11 +9,9 @@ import { BookingCTA } from "@/components/BookingCTA";
 import { SalonFooter } from "@/components/SalonFooter";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import heroFashionAsset from "@/assets/hero-fashion.jpg.asset.json";
-import fabricImg from "@/assets/gallery-fashion-fabrics.jpg";
-import ankaraImg from "@/assets/gallery-fashion-ankara.jpg";
-import tailoringImg from "@/assets/gallery-fashion-tailoring.jpg";
+import { fashion } from "@/lib/assets";
 
+const { heroFashionAsset, fabricImg, ankaraImg, tailoringImg } = fashion;
 const title = "African Fashion & Custom Clothing — Dazzle Me Middlesbrough";
 const description =
   "Custom-made African fashion, bespoke clothing and expert alterations in Middlesbrough — ankara, lace and wax-print pieces tailored by hand at Dazzle Me.";
