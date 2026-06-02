@@ -79,7 +79,7 @@ export function Hero() {
         className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
       >
         <img 
-          src="1000537853.jpg" 
+          src="https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780393279/Picsart_26-06-02_10-40-27-192_fomkh8.webp" 
           alt="Heritage Craftsmanship Portrait" 
           className="h-full w-full object-cover object-center opacity-90 sm:w-auto"
           onError={(e) => {
