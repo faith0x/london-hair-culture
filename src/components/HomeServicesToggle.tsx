@@ -12,7 +12,7 @@ const serviceAssets: Record<string, string> = {
   "Weaving": "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=600&auto=format&fit=crop",
   "Hair Extensions": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
   "Custom-Made Clothing": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/1142d08f34ed0195ad415f127aab9664_1_um9uuy.jpg",
-  "Alterations": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/1142d08f34ed0195ad415f127aab9664_1_um9uuy.jpg",
+  "Alterations": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/2b95cc0f68a60ee1fea7b938574f6063_lbqf9s.jpg",
   "African Fashion": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/5ac922216e8b96e40199593d92f99a11_lpake2.jpg",
 };
 
