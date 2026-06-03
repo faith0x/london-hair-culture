@@ -264,6 +264,23 @@ function FashionPage() {
             </div>
           </div>
         </section>
+        <div className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-4">
+  <div className="flex size-10 items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
+    <Shirt className="size-5" />
+  </div>
+  <div>
+    <h4 className="text-sm font-semibold text-foreground">See Our Latest Designs</h4>
+    <div className="mt-1 flex gap-3 text-xs text-muted-foreground">
+      <a href="https://www.instagram.com/dazzle_me_couture..." target="_blank" rel="noreferrer" className="hover:text-amber-500 transition-colors">
+        Instagram
+      </a>
+      <span>•</span>
+      <a href="https://www.tiktok.com/@dazzle_me_couture" target="_blank" rel="noreferrer" className="hover:text-amber-500 transition-colors">
+        TikTok: @dazzle_me_couture
+      </a>
+    </div>
+  </div>
+</div>
 
         {/* ── STUDIOWIDE NAVIGATION ── */}
         <CrossLinkBand
