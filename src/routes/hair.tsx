@@ -269,6 +269,19 @@ function HairPage() {
             })}
           </div>
         </section>
+        <div className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-4">
+  <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+    <Scissors className="size-5" />
+  </div>
+  <div>
+    <h4 className="text-sm font-semibold text-foreground">Follow Our Hair Journey</h4>
+    <div className="mt-1 flex gap-3 text-xs text-muted-foreground">
+      <a href="https://www.tiktok.com/@dazzlemehair" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+        TikTok: @dazzlemehair
+      </a>
+    </div>
+  </div>
+</div>
 
         <CrossLinkBand
           eyebrow="Also at Dazzle Me"
