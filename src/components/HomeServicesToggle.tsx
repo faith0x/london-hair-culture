@@ -30,7 +30,6 @@ const extraServiceDetails: Record<string, { duration: string; prep: string; step
   "African Fashion": { duration: "1–2 weeks", prep: "Fabric selection choice", steps: ["Traditional motif alignment", "Heritage-focused pattern cutting", "Custom premium inner lining"] }
 };
 
-
 export const salon = {
   name: "Dazzle Me",
   fullName: "Dazzle Me — Hair & Fashion",
@@ -62,7 +61,7 @@ export const fashionServices = [
   { name: "African Fashion", blurb: "Ankara, lace and wax-print pieces — gowns, two-pieces and occasion-wear crafted with heritage and care." },
 ] as const;
 
-/* ─── Small Rune Diamond (sits at line ends) ─── */
+/* ─── Divider Rune SVG (reused for outline corners) ─── */
 function Rune({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -98,226 +97,218 @@ export function HomeServicesToggle() {
   return (
     <section id="services" className="relative bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5">
-        <Reveal className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">What we do</span>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Explore all our services</h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Tap any service card to view preparation details, session durations, or to instantly inquire via WhatsApp.</p>
-        </Reveal>
-
-        {/* 3D Tactile Slider Toggle */}
-        <div className="mt-12 flex justify-center">
-          <div className="relative inline-flex rounded-full border border-neutral-800 bg-[#161412] p-1.5 shadow-[inset_0_3px_6px_rgba(0,0,0,0.6),0_10px_25px_-5px_rgba(0,0,0,0.3)] backdrop-blur-md">
-            {categories.map((c) => {
-              const isSelected = active === c.id;
-              return (
-                <button
-                  key={c.id}
-                  onClick={() => {
-                    setActive(c.id);
-                    setExpandedService(null);
-                  }}
-                  className={`relative z-10 rounded-full px-7 py-3 text-sm font-medium tracking-wide transition-all duration-300 sm:px-9 ${
-                    isSelected
-                      ? "text-[#1E1A16] font-semibold"
-                      : "text-neutral-400 hover:text-neutral-200"
-                  }`}
-                >
-                  {isSelected && (
-                    <motion.span
-                      layoutId="toggle-pill"
-                      transition={{ type: "spring", stiffness: 380, damping: 28 }}
-                      className="absolute inset-0 -z-10 rounded-full bg-[#EFE9E1] shadow-[0_4px_14px_rgba(239,233,225,0.35),inset_0_1px_1px_rgba(255,255,255,0.6)]"
-                    />
-                  )}
-                  {c.label}
-                </button>
-              );
-            })}
+        {/* ─── Themed Section Outline ─── */}
+        <div className="relative px-2 py-10 sm:px-6 sm:py-14">
+          {/* Top line: rune sits at left edge, line runs to center, line runs from center, rune sits at right edge */}
+          <div className="absolute top-0 left-2 right-2 flex items-center sm:left-6 sm:right-6">
+            <Rune />
+            <span className="h-px flex-1 bg-gradient-to-r from-border via-border/60 to-transparent" />
+            <span className="h-px flex-1 bg-gradient-to-l from-border via-border/60 to-transparent" />
+            <Rune />
           </div>
-        </div>
 
-        <div className="mt-10 flex h-12 items-center justify-center">
-          <AnimatePresence mode="wait">
-            <motion.h3
-              key={current.heading}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            >
-              {current.heading}
-            </motion.h3>
-          </AnimatePresence>
-        </div>
-        <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
+          {/* Left vertical line */}
+          <div className="absolute top-2 bottom-2 left-0 w-px bg-gradient-to-b from-border via-border/60 to-transparent sm:top-6 sm:bottom-6" />
 
-{/* Heritage Diamond Divider — Detailed Ends, Fading to Center */}
-<div className="mt-10 flex items-center justify-between w-full max-w-2xl mx-auto px-4 text-foreground/40 pointer-events-none select-none">
-  
-  {/* LEFT DIAMOND EMBLEM (From 1000538075.jpg) */}
-  <div className="flex items-center flex-none">
-    {/* Outer accent whisker */}
-    <span className="w-3 h-[1px] bg-current opacity-50" />
-    {/* Diamond with centered dynamic dot core */}
-    <div className="relative w-3 h-3 mx-2 border border-current rotate-45 flex items-center justify-center">
-      <span className="absolute w-1 h-1 bg-current rounded-full" />
-    </div>
-    {/* Inner accent whisker */}
-    <span className="w-3 h-[1px] bg-current opacity-50" />
-  </div>
-  
-  {/* Left Track: Starts solid from emblem point, completely fades out to center */}
-  <div className="h-[1px] flex-1 bg-gradient-to-r from-border via-border/30 to-transparent ml-2" />
-  
-  {/* Central Fade Cushion Gap for Breathing Space */}
-  <div className="w-16 flex-none" />
-  
-  {/* Right Track: Starts transparent at center, returns to solid at emblem point */}
-  <div className="h-[1px] flex-1 bg-gradient-to-l from-border via-border/30 to-transparent mr-2" />
-  
-  {/* RIGHT DIAMOND EMBLEM (From 1000538075.jpg) */}
-  <div className="flex items-center flex-none">
-    {/* Inner accent whisker */}
-    <span className="w-3 h-[1px] bg-current opacity-50" />
-    {/* Diamond with centered dynamic dot core */}
-    <div className="relative w-3 h-3 mx-2 border border-current rotate-45 flex items-center justify-center">
-      <span className="absolute w-1 h-1 bg-current rounded-full" />
-    </div>
-    {/* Outer accent whisker */}
-    <span className="w-3 h-[1px] bg-current opacity-50" />
-  </div>
+          {/* Right vertical line */}
+          <div className="absolute top-2 bottom-2 right-0 w-px bg-gradient-to-b from-border via-border/60 to-transparent sm:top-6 sm:bottom-6" />
 
-</div>
+          {/* Corner runes */}
+          <div className="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2">
+            <Rune className="rotate-0" />
+          </div>
+          <div className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2">
+            <Rune className="rotate-90" />
+          </div>
+          <div className="absolute -bottom-1.5 -left-1.5 sm:-bottom-2 sm:-left-2">
+            <Rune className="-rotate-90" />
+          </div>
+          <div className="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2">
+            <Rune className="rotate-180" />
+          </div>
 
+          {/* Bottom line */}
+          <div className="absolute bottom-0 left-2 right-2 flex items-center sm:left-6 sm:right-6">
+            <Rune className="rotate-180" />
+            <span className="h-px flex-1 bg-gradient-to-r from-border via-border/60 to-transparent" />
+            <span className="h-px flex-1 bg-gradient-to-l from-border via-border/60 to-transparent" />
+            <Rune className="rotate-180" />
+          </div>
 
+          {/* ─── Content ─── */}
+          <div className="relative z-10">
+            <Reveal className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">What we do</span>
+              <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Two crafts, one studio</h2>
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Tap any service card to view preparation details, session durations, or to instantly inquire via WhatsApp.</p>
+            </Reveal>
 
-
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <AnimatePresence mode="popLayout">
-            {items.map((service) => {
-              const imageUrl = serviceAssets[service.name] || defaultPlaceholder;
-              const isExpanded = expandedService === service.name;
-              const details = extraServiceDetails[service.name];
-
-              const serviceText = encodeURIComponent(`Hi Dazzle Me! I see your "${service.name}" service on your site and want to check availability.`);
-              const customWhatsAppUrl = `https://wa.me/${salon.phoneIntl}?text=${serviceText}`;
-
-              return (
-                <motion.article
-                  key={service.name}
-                  layout="position"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                  onClick={() => setExpandedService(isExpanded ? null : service.name)}
-                  className={`group relative flex w-full flex-col overflow-hidden rounded-3xl border transition-all duration-300 cursor-pointer bg-card ${
-                    isExpanded
-                      ? "border-primary/40 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] ring-1 ring-primary/20"
-                      : "border-border hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg"
-                  }`}
-                >
-                  <div className="flex h-40 w-full flex-row">
-                    <div className="relative h-full flex-none w-36 min-w-36 overflow-hidden sm:w-48 sm:min-w-48">
-                      <motion.img
-                        layout
-                        src={imageUrl}
-                        alt={service.name}
-                        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-card z-20" />
-                    </div>
-
-                    <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-2 pr-6">
-                      <h4 className="font-display text-lg font-semibold text-foreground sm:text-xl">
-                        {service.name}
-                      </h4>
-                      <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                        {service.blurb}
-                      </p>
-
-                      {!isExpanded && (
-                        <span className="mt-2 self-start text-[10px] font-semibold uppercase tracking-wider text-primary/70 opacity-0 transition-opacity group-hover:opacity-100">
-                          Tap to view details ↓
-                        </span>
+            {/* 3D Tactile Slider Toggle */}
+            <div className="mt-12 flex justify-center">
+              <div className="relative inline-flex rounded-full border border-neutral-800 bg-[#161412] p-1.5 shadow-[inset_0_3px_6px_rgba(0,0,0,0.6),0_10px_25px_-5px_rgba(0,0,0,0.3)] backdrop-blur-md">
+                {categories.map((c) => {
+                  const isSelected = active === c.id;
+                  return (
+                    <button
+                      key={c.id}
+                      onClick={() => {
+                        setActive(c.id);
+                        setExpandedService(null);
+                      }}
+                      className={`relative z-10 rounded-full px-7 py-3 text-sm font-medium tracking-wide transition-all duration-300 sm:px-9 ${
+                        isSelected
+                          ? "text-[#1E1A16] font-semibold"
+                          : "text-neutral-400 hover:text-neutral-200"
+                      }`}
+                    >
+                      {isSelected && (
+                        <motion.span
+                          layoutId="toggle-pill"
+                          transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                          className="absolute inset-0 -z-10 rounded-full bg-[#EFE9E1] shadow-[0_4px_14px_rgba(239,233,225,0.35),inset_0_1px_1px_rgba(255,255,255,0.6)]"
+                        />
                       )}
-                    </div>
-                  </div>
+                      {c.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
-                  {/* Bottom Half: Interactive Utility Drawer on Expansion */}
-{/* Bottom Half: Interactive Utility Drawer on Expansion */}
-<AnimatePresence>
-  {isExpanded && (
-    <motion.div
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: "auto", opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
-      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      /* Backed off the saturation to a clean, subtle muted oatmeal linen tone */
-      className="border-t border-[#DECFA7]/30 bg-[hsl(42,35%,92%)]
- px-6 py-5 overflow-hidden"
-    >
-      {/* Internal details divider using a soft tint to match the lighter base */}
-      <div className="grid grid-cols-2 gap-4 text-xs border-b border-[#DECFA7]/40 pb-4">
-        <div>
-          <span className="block font-medium text-neutral-600">Est. Duration</span>
-          <span className="text-neutral-900 font-semibold">{details?.duration || "Variable"}</span>
-        </div>
-        <div>
-          <span className="block font-medium text-neutral-600">Preparation</span>
-          <span className="text-neutral-900 font-semibold">{details?.prep || "Standard"}</span>
-        </div>
-      </div>
+            <div className="mt-10 flex h-12 items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.h3
+                  key={current.heading}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+                >
+                  {current.heading}
+                </motion.h3>
+              </AnimatePresence>
+            </div>
+            <p className="mt-2 text-center text-sm text-muted-foreground">{current.tagline}</p>
 
-      <div className="mt-4">
-        <span className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 mb-2">Service Execution:</span>
-        <ul className="space-y-1.5">
-          {details?.steps.map((step, idx) => (
-            <li key={idx} className="flex items-center gap-2 text-xs text-neutral-800 font-medium">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
-              {step}
-            </li>
-          ))}
-        </ul>
-      </div>
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+              <AnimatePresence mode="popLayout">
+                {items.map((service) => {
+                  const imageUrl = serviceAssets[service.name] || defaultPlaceholder;
+                  const isExpanded = expandedService === service.name;
+                  const details = extraServiceDetails[service.name];
 
-      {/* Custom Interactive Floating Action Ovals */}
-      <div className="mt-6 flex flex-wrap gap-2.5">
-        <a
-          href={customWhatsAppUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="flex-1 min-w-[140px] rounded-full bg-foreground px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-background shadow-md transition-transform active:scale-95 hover:bg-foreground/90"
-        >
-          Inquire via WhatsApp
-        </a>
-        
-        <button
-          onClick={handleScrollToMap}
-          className="rounded-full border border-foreground/10 bg-card px-5 py-2.5 text-xs font-medium tracking-wide text-foreground transition-all hover:bg-neutral-100"
-        >
-          Visit us
-        </button>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                  const serviceText = encodeURIComponent(`Hi Dazzle Me! I see your "${service.name}" service on your site and want to check availability.`);
+                  const customWhatsAppUrl = `https://wa.me/${salon.phoneIntl}?text=${serviceText}`;
 
+                  return (
+                    <motion.article
+                      key={service.name}
+                      layout="position"
+                      initial={{ opacity: 0, y: 18 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                      onClick={() => setExpandedService(isExpanded ? null : service.name)}
+                      className={`group relative flex w-full flex-col overflow-hidden rounded-3xl border transition-all duration-300 cursor-pointer bg-card ${
+                        isExpanded
+                          ? "border-primary/40 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] ring-1 ring-primary/20"
+                          : "border-border hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg"
+                      }`}
+                    >
+                      <div className="flex h-40 w-full flex-row">
+                        <div className="relative h-full flex-none w-36 min-w-36 overflow-hidden sm:w-48 sm:min-w-48">
+                          <motion.img
+                            layout
+                            src={imageUrl}
+                            alt={service.name}
+                            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-card z-20" />
+                        </div>
 
+                        <div className="relative z-10 flex flex-1 flex-col justify-center p-5 pl-2 pr-6">
+                          <h4 className="font-display text-lg font-semibold text-foreground sm:text-xl">
+                            {service.name}
+                          </h4>
+                          <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                            {service.blurb}
+                          </p>
 
-                </motion.article>
-              );
-            })}
-          </AnimatePresence>
-        </div>
+                          {!isExpanded && (
+                            <span className="mt-2 self-start text-[10px] font-semibold uppercase tracking-wider text-primary/70 opacity-0 transition-opacity group-hover:opacity-100">
+                              Tap to view details ↓
+                            </span>
+                          )}
+                        </div>
+                      </div>
 
-        <div className="mt-12 flex justify-center">
-          <Link to={current.href} className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:bg-foreground/10">
-            See all {current.label.toLowerCase()} services
-            <span className="transition-transform group-hover:translate-x-1">→</span>
-          </Link>
+                      <AnimatePresence>
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                            className="border-t border-border/60 bg-neutral-900/20 px-6 py-5 overflow-hidden"
+                          >
+                            <div className="grid grid-cols-2 gap-4 text-xs border-b border-border/40 pb-4">
+                              <div>
+                                <span className="block font-medium text-muted-foreground">Est. Duration</span>
+                                <span className="text-foreground font-semibold">{details?.duration || "Variable"}</span>
+                              </div>
+                              <div>
+                                <span className="block font-medium text-muted-foreground">Preparation</span>
+                                <span className="text-foreground font-semibold">{details?.prep || "Standard"}</span>
+                              </div>
+                            </div>
+
+                            <div className="mt-4">
+                              <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Service Execution:</span>
+                              <ul className="space-y-1.5">
+                                {details?.steps.map((step, idx) => (
+                                  <li key={idx} className="flex items-center gap-2 text-xs text-foreground/90">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
+                                    {step}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="mt-6 flex flex-wrap gap-2.5">
+                              <a
+                                href={customWhatsAppUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex-1 min-w-[140px] rounded-full bg-foreground px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-background shadow-md transition-transform active:scale-95 hover:bg-foreground/90"
+                              >
+                                Inquire via WhatsApp
+                              </a>
+
+                              <button
+                                onClick={handleScrollToMap}
+                                className="rounded-full border border-foreground/10 bg-card px-5 py-2.5 text-xs font-medium tracking-wide text-foreground transition-all hover:bg-neutral-900"
+                              >
+                                Visit us (Map)
+                              </button>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.article>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+
+            <div className="mt-12 flex justify-center">
+              <Link to={current.href} className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:bg-foreground/10">
+                See all {current.label.toLowerCase()} services
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

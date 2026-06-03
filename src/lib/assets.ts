@@ -14,45 +14,21 @@ export const story = {
   storyFashionAsset: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780335773/Picsart_26-06-01_18-42-01-996_bmux3e.jpg" }, // TODO: replace with fashion story
 };
 
-// ─── Gallery (each has .url and .alt – Rendered as premium blur placeholders) ───
+// ─── Gallery (each has .url and .alt) ─────────────────────────────
 export const gallery = {
-  knotless: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", 
-    alt: "Knotless braids" 
-  },
-  boxBraids: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", 
-    alt: "Box braids" 
-  },
-  dreadlocks: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780157385/d9699b8184f25e1562ccbe96b73ab314_z9dchb.jpg", 
-    alt: "Dreadlocks" 
-  },
-  wig: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", 
-    alt: "Wig styling" 
-  },
-  twists: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", 
-    alt: "Twists" 
-  },
-  fashionAnkara: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", 
-    alt: "Ankara two-piece" 
-  },
-  fashionTailoring: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", 
-    alt: "Custom tailoring" 
-  },
-  fashionFabrics: { 
-    url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/e_blur:2000,c_scale,w_500/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", 
-    alt: "African fabrics" 
-  },
+  knotless: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Knotless braids" },
+  boxBraids: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Box braids" },
+  dreadlocks: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780157385/d9699b8184f25e1562ccbe96b73ab314_z9dchb.jpg", alt: "Dreadlocks" },
+  wig: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Wig styling" },
+  twists: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", alt: "Twists" },
+  fashionAnkara: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", alt: "Ankara two-piece" },
+  fashionTailoring: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", alt: "Custom tailoring" },
+  fashionFabrics: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg", alt: "African fabrics" },
 };
 
 // ─── Hair page ─────────────────────────────────────────────────────
 export const hair = {
-  heroHair: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780385768/hero-dazzlemehair-Eqo8Q7iR6NGNiYRykRrwui_g11erz.webp", // replace with hair-specific hero
+  heroHair: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780354485/Picsart_26-06-01_23-54-24-806_anqn9v.jpg", // replace with hair-specific hero
 };
 
 // ─── Fashion page ──────────────────────────────────────────────────
@@ -76,5 +52,5 @@ export const serviceAssets: Record<string, string> = {
   "African Fashion": "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/5ac922216e8b96e40199593d92f99a11_lpake2.jpg",
 };
 
-// ─── Logo ──────────────────────────────────────────────────────────
+// ─── Logo – now a Cloudinary URL (replace with your actual uploaded logo URL) ──
 export const logo = "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780073104/Picsart_26-05-29_06-07-56-040_buicng.png"; // TODO: upload logo and replace
