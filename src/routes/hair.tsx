@@ -12,10 +12,26 @@ import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
 import { hair, serviceAssets } from "@/lib/assets";
 
+const title = "Hair Services — Dazzle Me Middlesbrough";
+const description =
+  "Braiding, wig making, wig revamping, dreadlocks, weaving and hair extensions in Middlesbrough — heritage Black hair, hand-crafted by Dazzle Me.";
+
 export const Route = createFileRoute("/hair")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/hair" },
+    ],
+    links: [{ rel: "canonical", href: "/hair" }],
+  }),
   component: HairPage,
 });
 
+// Interactive hair service schema mapped to specific asset repository keys
 const HAIR_SERVICES_DATA = [
   {
     id: "braiding",
@@ -84,6 +100,7 @@ function HairPage() {
     <div className="min-h-screen bg-background">
       <SalonHeader />
       <main>
+        {/* Hero Section */}
         <section className="relative min-h-[80vh] overflow-hidden">
           <div className="absolute inset-0">
             <img
@@ -115,6 +132,7 @@ function HairPage() {
                 care for the heritage and beauty of Black hair.
               </p>
               
+              {/* Dual Hero Action Buttons */}
               <div className="mt-8 flex flex-wrap gap-4 items-center">
                 <Button asChild size="lg" variant="glass-dark" className="rounded-full px-8 text-base shadow-sm">
                   <a href={whatsappUrl} target="_blank" rel="noreferrer">
@@ -133,6 +151,7 @@ function HairPage() {
           </div>
         </section>
 
+        {/* Heritage Diamond Divider */}
         <div className="mt-14 flex items-center justify-between w-full max-w-2xl mx-auto px-4 text-foreground/40 pointer-events-none select-none">
           <div className="flex items-center flex-none">
             <span className="w-3 h-[1px] bg-current opacity-50" />
@@ -153,6 +172,7 @@ function HairPage() {
           </div>
         </div>
 
+        {/* Dynamic Services Grid Layout */}
         <section className="mx-auto max-w-6xl px-5 py-12">
           <div className="grid gap-6 md:grid-cols-2">
             {HAIR_SERVICES_DATA.map((service) => {
@@ -163,6 +183,7 @@ function HairPage() {
                   onClick={() => toggleService(service.id)}
                   className="flex flex-col overflow-hidden rounded-[24px] border border-foreground/5 bg-card transition-all duration-300 hover:shadow-md cursor-pointer h-fit"
                 >
+                  {/* Summary Header View */}
                   <div className="flex h-44 sm:h-48 items-center relative">
                     <div className="relative w-1/3 h-full flex-none overflow-hidden">
                       <img
@@ -183,6 +204,7 @@ function HairPage() {
                     </div>
                   </div>
 
+                  {/* Oatmeal Linen Context Utilities Drawer */}
                   <AnimatePresence initial={false}>
                     {isExpanded && (
                       <motion.div
