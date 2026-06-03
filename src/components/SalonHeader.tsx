@@ -42,10 +42,10 @@ export function SalonHeader() {
           <img
             src={logo}
             alt={salon.fullName}
-            className={`h-9 w-auto transition-all duration-500 md:h-10 ${
+            className={`w-auto transition-all duration-500 ${
               scrolled
-                ? "[filter:invert(15%)_sepia(8%)_saturate(800%)_hue-rotate(350deg)_brightness(40%)]"
-                : "drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+                ? "h-10 md:h-12 [filter:invert(15%)_sepia(8%)_saturate(800%)_hue-rotate(350deg)_brightness(40%)]"
+                : "h-12 md:h-15 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
             }`}
           />
           <span className="sr-only">{salon.fullName}</span>

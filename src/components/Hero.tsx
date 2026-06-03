@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
+import { MapPin } from "lucide-react";
 import { ServicePeek } from "@/components/ServicePeek";
 import { hero } from "@/lib/assets";
 
@@ -12,21 +13,6 @@ import { hero } from "@/lib/assets";
 //192_fomkh8.webp";
 
 // ─── Circle config ─────────────────────────────────────────────────
-// Perfect circles (size = diameter). All same fill color.
-// Each circle has an OUTER glow — so the crème light shows in the GAP
-// between each stacked ring (the smaller circle covers the center of
-// the larger one, leaving only the glowing rim visible between them).
-//
-// FILL:       #4A4138  — warm crème-brown, clearly above #1E1A16 bg
-// OUTER GLOW: rgba(239,224,190,N) — crème, lighter than the fill
-//             N increases toward front so front glows hardest
-//
-// Back  → 820px  (outermost, heaviest ambient glow into bg)
-// Mid   → 590px
-// Front → 380px  (frontmost, sharp bright ring)
-//
-// Gap between back & mid  ≈ (820-590)/2 = 115px of glowing ring
-// Gap between mid & front ≈ (590-380)/2 = 105px of glowing ring
 const { heroHomeAsset, heroFashionAsset, modelPng } = hero;
 const CIRCLE_COLOR = "#4A4138";
 const CIRCLES = [
@@ -119,12 +105,12 @@ export function Hero() {
       >
         {/* On mobile: contain from bottom. On desktop: cover+zoom so no gaps. */}
         <img
-  src={modelPng}
-  alt="Dazzle Me model portrait"
-  className="h-full w-full select-none object-cover"
-  style={{ objectPosition: "50% 100%" }}
-  draggable={false}
-/>
+          src={modelPng}
+          alt="Dazzle Me model portrait"
+          className="h-full w-full select-none object-cover"
+          style={{ objectPosition: "50% 100%" }}
+          draggable={false}
+        />
         {/* Ground fade */}
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1E1A16] via-[#1E1A16]/70 to-transparent" />
       </motion.div>
@@ -224,18 +210,22 @@ export function Hero() {
             />
           </div>
 
+          {/* Visit CTA Patch */}
           <div className="mt-6 flex justify-center">
             <Button
               asChild
               size="lg"
-              className="rounded-full border px-10 text-sm font-medium tracking-wider backdrop-blur-sm"
+              className="rounded-full border px-8 text-sm font-medium tracking-wider backdrop-blur-sm"
               style={{
                 background: "rgba(239,228,200,0.06)",
                 border: "1px solid rgba(239,228,200,0.18)",
                 color: "#C4AA80",
               }}
             >
-              <a href="#visit">Visit us</a>
+              <a href="#visit" className="flex items-center justify-center gap-2">
+                Visit
+                <MapPin className="size-4" style={{ color: "#EFE4C8" }} />
+              </a>
             </Button>
           </div>
         </motion.div>

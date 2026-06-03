@@ -100,7 +100,7 @@ export function HomeServicesToggle() {
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">What we do</span>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Two crafts, one studio</h2>
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">Explore all our services</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Tap any service card to view preparation details, session durations, or to instantly inquire via WhatsApp.</p>
         </Reveal>
 
@@ -255,7 +255,7 @@ export function HomeServicesToggle() {
       exit={{ height: 0, opacity: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       /* Backed off the saturation to a clean, subtle muted oatmeal linen tone */
-      className="border-t border-[#DECFA7]/30 bg-[hsl(42,45%,92%)]
+      className="border-t border-[#DECFA7]/30 bg-[hsl(42,35%,92%)]
  px-6 py-5 overflow-hidden"
     >
       {/* Internal details divider using a soft tint to match the lighter base */}
@@ -298,7 +298,7 @@ export function HomeServicesToggle() {
           onClick={handleScrollToMap}
           className="rounded-full border border-foreground/10 bg-card px-5 py-2.5 text-xs font-medium tracking-wide text-foreground transition-all hover:bg-neutral-100"
         >
-          Visit us (Map)
+          Visit us
         </button>
       </div>
     </motion.div>

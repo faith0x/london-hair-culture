@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MapPin } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { SalonHeader } from "@/components/SalonHeader";
 import { Divider } from "@/components/Divider";
 import { CrossLinkBand } from "@/components/CrossLinkBand";
@@ -9,7 +10,7 @@ import { BookingCTA } from "@/components/BookingCTA";
 import { SalonFooter } from "@/components/SalonFooter";
 import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
-import { hair } from "@/lib/assets";
+import { hair, serviceAssets } from "@/lib/assets";
 
 const title = "Hair Services — Dazzle Me Middlesbrough";
 const description =
@@ -30,48 +31,70 @@ export const Route = createFileRoute("/hair")({
   component: HairPage,
 });
 
-// Dynamic dataset matching your home structure images & execution points
-const HAIR_SERVICES = [
+// Interactive hair service schema mapped to specific asset repository keys
+const HAIR_SERVICES_DATA = [
   {
     id: "braiding",
     title: "Braiding",
     description: "Box braids, knotless, cornrows, feed-ins, twists — neat parts, clean tension, styles that last.",
-    image: hair.braiding || hair.heroHair,
+    image: serviceAssets["Braiding"],
     duration: "2–6 hrs",
     prep: "Freshly washed & blown out",
-    steps: ["Custom parting map", "Tension-free installation", "Edges treatment & oiling"],
+    steps: ["Custom parting map", "Tension-free installation", "Edges treatment & oiling"]
   },
   {
     id: "wig-making",
     title: "Wig Making",
     description: "Custom wigs built to your measurements, density and texture — natural-looking, comfortable, made to last.",
-    image: hair.wigMaking || hair.heroHair,
+    image: serviceAssets["Wig Making"],
     duration: "3–5 days",
-    prep: "Head measurements sizing check required",
-    steps: ["Head circumference mapping", "Premium lace selection", "Custom knot bleaching & plucking"],
+    prep: "Head measurements required",
+    steps: ["Cap fitting & sizing", "Premium bundle weaving", "Custom hairline customization"]
   },
   {
     id: "wig-revamping",
     title: "Wig Revamping",
     description: "Bring an old wig back to life — washing, restyling, replacing lace and refreshing the parting.",
-    image: hair.wigRevamping || hair.heroHair,
-    duration: "2–4 days",
-    prep: "Drop-off alignment booking",
-    steps: ["Deep conditioning rejuvenation wash", "Lace cleaning & reinforcement", "Precision restyling & hot comb finish"],
+    image: serviceAssets["Wig Revamping"],
+    duration: "24–48 hrs",
+    prep: "Drop off uninstalled wig",
+    steps: ["Deep conditioning bath", "Lace cleaning & minor repairs", "Precision hot-tool styling"]
   },
   {
     id: "dreadlocks",
     title: "Dreadlocks",
     description: "Starts, retwists and maintenance for healthy, well-kept locs in styles that suit you.",
-    image: hair.dreadlocks || hair.heroHair,
+    image: serviceAssets["Dreadlocks"],
     duration: "2–4 hrs",
-    prep: "Clean oil-free scalp recommended",
-    steps: ["Organic locking growth therapy", "Interlocking or precise palm rolling", "Scalp hydration framework & styling"],
+    prep: "Clean hair, no heavy oils",
+    steps: ["Scalp detox assessment", "Organic twisting gel locking", "Under-dryer style setting"]
   },
+  {
+    id: "weaving",
+    title: "Weaving",
+    description: "Flawless traditional, leave-out, or closure sew-ins with precise flat braiding tracks and seamless texturised blending.",
+    image: serviceAssets["Weaving"],
+    duration: "2–4 hrs",
+    prep: "Hair washed, blown out; bundles clean and dry",
+    steps: ["Flat anchor foundation cornrows", "Secure perimeter net application", "Tracks sewing & final blending cut"]
+  },
+  {
+    id: "hair-extensions",
+    title: "Hair Extensions",
+    description: "Premium clip-ins, tape-ins, and bespoke installations engineered to add natural volume, luxurious length, and dynamic movement.",
+    image: serviceAssets["Hair Extensions"],
+    duration: "1.5–3 hrs",
+    prep: "Clarifying wash, completely blown out, no oils",
+    steps: ["Weight-distribution sectioning", "Seamless flat-bond integration", "Custom layered framing and style finish"]
+  }
 ];
 
 function HairPage() {
-  const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const toggleService = (id: string) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,135 +131,141 @@ function HairPage() {
                 Braids, wigs, locs, weaving and extensions — crafted by hand with
                 care for the heritage and beauty of Black hair.
               </p>
-              <div className="mt-8">
-                <Button asChild size="lg" variant="glass-dark" className="rounded-full px-8 text-base">
+              
+              {/* Dual Hero Action Buttons */}
+              <div className="mt-8 flex flex-wrap gap-4 items-center">
+                <Button asChild size="lg" variant="glass-dark" className="rounded-full px-8 text-base shadow-sm">
                   <a href={whatsappUrl} target="_blank" rel="noreferrer">
                     Book your appointment →
                   </a>
+                </Button>
+
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7 text-base border-foreground/20 hover:bg-foreground/5 backdrop-blur-sm transition-all gap-2 text-foreground">
+                  <Link to="/contact">
+                    <MapPin className="size-4 text-primary" />
+                    Visit us
+                  </Link>
                 </Button>
               </div>
             </motion.div>
           </div>
         </section>
 
-        <Divider />
-
-        {/* Interactive Services Section */}
-        <section className="py-24 bg-background">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="text-center mb-16">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary block mb-3">
-                Heritage Studio Menu
-              </span>
-              <h2 className="font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                Our Signature Crafts
-              </h2>
+        {/* Heritage Diamond Divider */}
+        <div className="mt-14 flex items-center justify-between w-full max-w-2xl mx-auto px-4 text-foreground/40 pointer-events-none select-none">
+          <div className="flex items-center flex-none">
+            <span className="w-3 h-[1px] bg-current opacity-50" />
+            <div className="relative w-3 h-3 mx-2 border border-current rotate-45 flex items-center justify-center">
+              <span className="absolute w-1 h-1 bg-current rounded-full" />
             </div>
+            <span className="w-3 h-[1px] bg-current opacity-50" />
+          </div>
+          <div className="h-[1px] flex-1 bg-gradient-to-r from-border via-border/30 to-transparent ml-2" />
+          <div className="w-16 flex-none" />
+          <div className="h-[1px] flex-1 bg-gradient-to-l from-border via-border/30 to-transparent mr-2" />
+          <div className="flex items-center flex-none">
+            <span className="w-3 h-[1px] bg-current opacity-50" />
+            <div className="relative w-3 h-3 mx-2 border border-current rotate-45 flex items-center justify-center">
+              <span className="absolute w-1 h-1 bg-current rounded-full" />
+            </div>
+            <span className="w-3 h-[1px] bg-current opacity-50" />
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {HAIR_SERVICES.map((service) => {
-                const isExpanded = expandedService === service.id;
-
-                return (
-                  <div
-                    key={service.id}
-                    onClick={() => setExpandedService(isExpanded ? null : service.id)}
-                    className="group overflow-hidden rounded-[2rem] border border-foreground/5 bg-white shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer flex flex-col justify-between"
-                  >
-                    {/* Top Layer: Card Image Split & Overview */}
-                    <div className="flex flex-col sm:flex-row min-h-[190px]">
-                      {/* Smooth Image Side Blend Layout */}
-                      <div className="relative h-48 sm:h-auto sm:w-[42%] flex-none overflow-hidden">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-transparent via-white/20 to-white" />
-                      </div>
-
-                      {/* Content Overview Column */}
-                      <div className="p-6 sm:w-[58%] flex flex-col justify-center bg-white">
-                        <h3 className="font-display text-2xl font-semibold text-foreground tracking-tight">
-                          {service.title}
-                        </h3>
-                        <p className="mt-2.5 text-sm leading-relaxed text-foreground/70">
-                          {service.description}
-                        </p>
-                        <div className="mt-4 text-xs font-semibold text-primary/90 tracking-wide">
-                          {isExpanded ? "Collapse details ↑" : "Tap to view options & details →"}
-                        </div>
-                      </div>
+        {/* Dynamic Services Grid Layout */}
+        <section className="mx-auto max-w-6xl px-5 py-12">
+          <div className="grid gap-6 md:grid-cols-2">
+            {HAIR_SERVICES_DATA.map((service) => {
+              const isExpanded = expandedId === service.id;
+              return (
+                <div
+                  key={service.id}
+                  onClick={() => toggleService(service.id)}
+                  className="flex flex-col overflow-hidden rounded-[24px] border border-foreground/5 bg-card transition-all duration-300 hover:shadow-md cursor-pointer h-fit"
+                >
+                  {/* Summary Header View */}
+                  <div className="flex h-44 sm:h-48 items-center relative">
+                    <div className="relative w-1/3 h-full flex-none overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-card/40 to-card" />
                     </div>
 
-                    {/* Bottom Layer: The Saturated Oatmeal Micro-Drawer */}
-                    <AnimatePresence initial={false}>
-                      {isExpanded && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                          onClick={(e) => e.stopPropagation()} // Prevents accidental closing toggles inside drawer
-                          className="border-t border-[#DECFA7]/30 bg-[#F0EAD8] px-6 py-5 overflow-hidden text-left"
-                        >
+                    <div className="flex-1 px-5 py-4">
+                      <h3 className="font-display text-xl font-semibold text-foreground">
+                        {service.title}
+                      </h3>
+                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Oatmeal Linen Context Utilities Drawer */}
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden bg-[hsl(42,40%,92%)]"
+                      >
+                        <div className="border-t border-[#DECFA7]/30 px-6 py-5">
                           <div className="grid grid-cols-2 gap-4 text-xs border-b border-[#DECFA7]/40 pb-4">
                             <div>
-                              <span className="block font-semibold text-neutral-500 uppercase tracking-wider scale-95 origin-left">
-                                Est. Duration
-                              </span>
-                              <span className="text-neutral-900 font-bold text-sm block mt-0.5">
-                                {service.duration}
-                              </span>
+                              <span className="block font-medium text-neutral-600">Est. Duration</span>
+                              <span className="text-neutral-900 font-semibold">{service.duration}</span>
                             </div>
                             <div>
-                              <span className="block font-semibold text-neutral-500 uppercase tracking-wider scale-95 origin-left">
-                                Preparation
-                              </span>
-                              <span className="text-neutral-900 font-bold text-sm block mt-0.5">
-                                {service.prep}
-                              </span>
+                              <span className="block font-medium text-neutral-600">Preparation</span>
+                              <span className="text-neutral-900 font-semibold">{service.prep}</span>
                             </div>
                           </div>
 
                           <div className="mt-4">
-                            <span className="block text-[11px] font-bold uppercase tracking-wider text-neutral-500 mb-2">
+                            <span className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 mb-2">
                               Service Execution:
                             </span>
                             <ul className="space-y-1.5">
                               {service.steps.map((step, idx) => (
-                                <li key={idx} className="flex items-start gap-2.5 text-xs text-neutral-800 font-medium leading-relaxed">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1 flex-none" />
+                                <li key={idx} className="flex items-center gap-2 text-xs text-neutral-800 font-medium">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-primary flex-none" />
                                   {step}
                                 </li>
                               ))}
                             </ul>
                           </div>
 
-                          {/* Action CTA Buttons */}
                           <div className="mt-6 flex flex-wrap gap-2.5">
                             <a
-                              href={`${whatsappUrl}?text=Hi%20Dazzle%20Me,%20I'd%20like%20to%20inquire%20about%20booking%20a%20${encodeURIComponent(service.title)}%20session.`}
+                              href={`${whatsappUrl}&text=Hi,%20I'm%20interested%20in%20booking%20the%20${encodeURIComponent(service.title)}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex-1 min-w-[140px] rounded-full bg-foreground px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-background shadow-sm transition-transform active:scale-95 hover:bg-foreground/90"
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex-1 min-w-[140px] rounded-full bg-foreground px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-background shadow-md transition-transform active:scale-95 hover:bg-foreground/90"
                             >
                               Inquire via WhatsApp
                             </a>
-                            <a
-                              href="#location"
-                              className="rounded-full border border-foreground/10 bg-white/80 backdrop-blur-sm px-5 py-2.5 text-center text-xs font-medium tracking-wide text-foreground transition-all hover:bg-white"
+                            <Link
+                              to="/contact"
+                              onClick={(e) => e.stopPropagation()}
+                              className="rounded-full border border-foreground/10 bg-card px-5 py-2.5 text-center text-xs font-medium tracking-wide text-foreground transition-all hover:bg-neutral-100 flex items-center justify-center gap-1.5"
                             >
-                              Visit us (Map)
-                            </a>
+                              <MapPin className="size-3.5 text-muted-foreground" />
+                              Visit us
+                            </Link>
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </section>
 
@@ -249,9 +278,7 @@ function HairPage() {
           accent="gold"
         />
 
-        <div id="location">
-          <BookingCTA />
-        </div>
+        <BookingCTA />
       </main>
       <SalonFooter />
     </div>

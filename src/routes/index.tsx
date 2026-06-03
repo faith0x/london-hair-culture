@@ -73,8 +73,8 @@ function Index() {
         <main>
           <Hero />
           <Divider />
-          <HomeServicesToggle />
           <Story />
+          <HomeServicesToggle />
           <Gallery />
           <Testimonials />
           <BookingCTA />
