@@ -1,24 +1,6 @@
-import { Instagram, MessageCircle, Scissors, Shirt } from "lucide-react";
+import { Instagram, Facebook, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { salon, fullAddress, whatsappUrl } from "@/lib/salon";
-
-// Custom inline SVG designed to mirror Lucide's stroke dynamics exactly
-function TikTokIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-    </svg>
-  );
-}
 
 export function SalonFooter() {
   return (
@@ -32,52 +14,29 @@ export function SalonFooter() {
             <p className="mt-2 text-sm text-muted-foreground">{fullAddress}</p>
             <p className="mt-1 text-sm text-muted-foreground">{salon.tagline}</p>
 
-            {/* Complete Unified Social Array */}
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="mt-5 flex items-center gap-3">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="WhatsApp Business Connection"
+                aria-label="WhatsApp"
                 className="flex size-10 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-primary hover:text-primary"
               >
                 <MessageCircle className="size-5" />
               </a>
               <a
-                href="https://www.instagram.com/dazzle_me_couture?igsh=MW1pbDFpdmhhMnd2Mw%3D%3D&utm_source=qr"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram Profile"
+                href="#"
+                aria-label="Instagram"
                 className="flex size-10 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-primary hover:text-primary"
               >
                 <Instagram className="size-5" />
               </a>
-
-              {/* Isolated TikTok Handles with Indicator Badges */}
               <a
-                href="https://www.tiktok.com/@dazzlemehair"
-                target="_blank"
-                rel="noreferrer"
-                title="Dazzle Me Hair TikTok"
-                className="relative flex size-10 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-primary hover:text-primary"
+                href="#"
+                aria-label="Facebook"
+                className="flex size-10 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-primary hover:text-primary"
               >
-                <TikTokIcon className="size-5" />
-                <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-primary text-[9px] font-bold text-primary-foreground">
-                  <Scissors className="size-2.5" />
-                </span>
-              </a>
-
-              <a
-                href="https://www.tiktok.com/@dazzle_me_couture"
-                target="_blank"
-                rel="noreferrer"
-                title="Dazzle Me Couture Fashion TikTok"
-                className="relative flex size-10 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-amber-500 hover:text-amber-500"
-              >
-                <TikTokIcon className="size-5" />
-                <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-amber-500 text-[9px] font-bold text-white">
-                  <Shirt className="size-2.5" />
-                </span>
+                <Facebook className="size-5" />
               </a>
             </div>
           </div>
@@ -93,7 +52,7 @@ export function SalonFooter() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-500">Fashion</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Fashion</p>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li><Link to="/fashion" className="hover:text-foreground">Custom-made clothing</Link></li>
               <li><Link to="/fashion" className="hover:text-foreground">Alterations</Link></li>
