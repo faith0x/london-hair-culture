@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { MapPin } from "lucide-react";
+import {ArrowRight, MapPin } from "lucide-react";
 import { ServicePeek } from "@/components/ServicePeek";
 import { hero } from "@/lib/assets";
 
@@ -223,8 +223,9 @@ export function Hero() {
               }}
             >
               <a href="#visit" className="flex items-center justify-center gap-2">
-                Visit
                 <MapPin className="size-4" style={{ color: "#EFE4C8" }} />
+                Visit us
+                <ArrowRight className="size-3.5 opacity-80 text-gold" />
               </a>
             </Button>
           </div>
