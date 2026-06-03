@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { MapPin, ArrowRight, Scissors, Sparkles, Shirt, ChevronDown } from "lucide-react";
+import { Instagram} from "lucide-react";
 import { useState } from "react";
 import { SalonHeader } from "@/components/SalonHeader";
 import { Divider } from "@/components/Divider";
