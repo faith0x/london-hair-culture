@@ -37,7 +37,7 @@ export const fashion = {
   fabricImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780670015/9abf1b4e74ce07e855f9406e7c18d78d_cdb4fy.jpg",
   ankaraImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780670019/57981916beaf799a7f2d189a5fee2d3d_y4iamu.jpg",
   tailoringImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/2b95cc0f68a60ee1fea7b938574f6063_lbqf9s.jpg",
-  "African Fashion",
+  "African Fashion"
 };
 
 // ─── Services toggle ───────────────────────────────────────────────
