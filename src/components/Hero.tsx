@@ -8,22 +8,33 @@ import { hero } from "@/lib/assets";
 
 const { heroHomeAsset, heroFashionAsset, modelPng } = hero;
 const CIRCLE_COLOR = "#4A4138";
+
+// Config containing base settings for our multi-layer aura stack
 const CIRCLES = [
   {
     size: 820,
-    outerGlow: "0 0 80px 40px rgba(239,224,190,0.18), 0 0 160px 80px rgba(239,224,190,0.07)",
+    baseGlowOpacity: 0.18,
+    boostGlowOpacity: 0.32,
+    baseRadius: 80,
+    boostRadius: 140,
     float: { y: [0, -16, 0], duration: 9, delay: 0 },
     parallax: [0, -22] as [number, number],
   },
   {
     size: 590,
-    outerGlow: "0 0 60px 30px rgba(239,224,190,0.22)",
+    baseGlowOpacity: 0.22,
+    boostGlowOpacity: 0.40,
+    baseRadius: 60,
+    boostRadius: 100,
     float: { y: [0, 20, 0], duration: 11, delay: 1.4 },
     parallax: [0, -50] as [number, number],
   },
   {
     size: 380,
-    outerGlow: "0 0 45px 22px rgba(239,224,190,0.30)",
+    baseGlowOpacity: 0.30,
+    boostGlowOpacity: 0.55,
+    baseRadius: 45,
+    boostRadius: 75,
     float: { y: [0, -22, 8, 0], duration: 13, delay: 0.7 },
     parallax: [0, -82] as [number, number],
   },
@@ -37,6 +48,16 @@ function CircleLayer({
   scrollY: ReturnType<typeof useScroll>["scrollY"];
 }) {
   const yParallax = useTransform(scrollY, [0, 600], config.parallax);
+
+  // Dynamic Scroll Mapping: Intensify blur spread and alpha opacity as user scrolls down
+  const glowRadius = useTransform(scrollY, [0, 500], [config.baseRadius, config.boostRadius]);
+  const glowOpacity = useTransform(scrollY, [0, 500], [config.baseGlowOpacity, config.boostGlowOpacity]);
+  
+  // Combine animated attributes into a single fluid string output
+  const boxShadow = useTransform(
+    [glowRadius, glowOpacity],
+    ([radius, opacity]) => `0 0 ${radius}px ${Number(radius) / 2}px rgba(239, 224, 190, ${opacity})`
+  );
 
   return (
     <motion.div
@@ -56,7 +77,7 @@ function CircleLayer({
           height: config.size,
           borderRadius: "50%",
           backgroundColor: CIRCLE_COLOR,
-          boxShadow: config.outerGlow,
+          boxShadow: boxShadow, // Linked to scroll-driven glow calculations
           flexShrink: 0,
         }}
       />
@@ -124,7 +145,7 @@ export function Hero() {
             Hair &amp; Fashion
           </p>
 
-          {/* Cleaned Dynamic Operational Headline */}
+          {/* Elevated H1 Headline (Option A) */}
           <h1
             className="mt-7 font-display text-5xl font-semibold leading-[1.1] tracking-tight sm:text-6xl md:text-7xl"
             style={{
@@ -132,11 +153,11 @@ export function Hero() {
               textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 1px 2px rgba(0,0,0,0.6)",
             }}
           >
-            <span className="block">Expert styling,</span>
-            <span className="block">custom tailoring.</span>
+            <span className="block">Hair artistry,</span>
+            <span className="block">custom creations.</span>
           </h1>
 
-          {/* Explanatory Sub-tagline */}
+          {/* Explanatory Sub-tagline utilizing exact owner keywords */}
           <p
             className="mt-5 flex flex-col items-center gap-1 text-sm font-medium tracking-widest sm:flex-row sm:justify-center sm:gap-4 sm:text-base"
             style={{
@@ -144,14 +165,13 @@ export function Hero() {
               textShadow: "0 2px 12px rgba(0,0,0,0.7)",
             }}
           >
-            <span>Professional Hair Artistry</span>
+            <span>Professional Hair Styling</span>
             <span aria-hidden className="hidden opacity-40 sm:inline">·</span>
-            <span>Bespoke Clothing Design</span>
+            <span>Custom Cloth Sewing Services</span>
           </p>
 
           {/* Service Links Grid */}
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {/* Hair: Blurry styling look matched from image 1000550356.jpg */}
             <ServicePeek
               imageUrl={heroHomeAsset.url}
               label="Hair services"
@@ -171,7 +191,6 @@ export function Hero() {
                 </Button>
               }
             />
-            {/* Fashion: Now updated with matching blurred layout profile */}
             <ServicePeek
               imageUrl={heroFashionAsset.url}
               label="Fashion services"
