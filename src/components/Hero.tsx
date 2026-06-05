@@ -165,7 +165,7 @@ export function Hero() {
             <span>Custom Cloth Sewing Services</span>
           </p>
 
-          {/* Refined, Highly Cohesive Side-by-Side Mobile Layout */}
+          {/* Side-by-Side Mobile Layout Grid */}
           <div className="mt-8 grid grid-cols-2 gap-2 w-full max-w-[290px] mx-auto sm:max-w-xl sm:gap-5">
             <ServicePeek
               imageUrl={heroHomeAsset.url}
@@ -174,7 +174,7 @@ export function Hero() {
               button={
                 <Button
                   asChild
-                  className="w-full rounded-full border h-9 sm:h-12 px-1 text-[10px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-9 sm:h-12 px-2 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -192,7 +192,7 @@ export function Hero() {
               button={
                 <Button
                   asChild
-                  className="w-full rounded-full border h-9 sm:h-12 px-1 text-[10px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-9 sm:h-12 px-2 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -205,11 +205,11 @@ export function Hero() {
             />
           </div>
 
-          {/* Balanced and Un-squeezed Navigation Pill Link */}
-          <div className="mt-4 sm:mt-6 flex justify-center">
+          {/* Responsive Navigation Pill: Wide on mobile, beautifully centered on desktop */}
+          <div className="mt-4 sm:mt-6 flex justify-center w-full">
             <Button
               asChild
-              className="rounded-full h-9 sm:h-12 px-5 sm:px-8 min-w-[130px] sm:min-w-[160px] text-[11px] sm:text-sm font-bold tracking-wide sm:tracking-wider transition-transform active:scale-95"
+              className="rounded-full h-9 sm:h-12 w-full sm:w-auto max-w-[290px] sm:max-w-none px-4 sm:px-8 text-[11px] sm:text-sm font-bold tracking-wide sm:tracking-wider transition-transform active:scale-95"
               style={{
                 background: "#EFE4C8",
                 color: "#1E1A16",
