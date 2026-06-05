@@ -7,9 +7,9 @@ export const salon = {
   city: "Middlesbrough",
   postcode: "TS1", // TODO: confirm full postcode
   // TODO: replace with the real WhatsApp/phone number (international format, no +)
-  phoneIntl: "447000000000",
+  phoneIntl: "447863088786",
   // Display version of the phone number
-  phoneDisplay: "+44 7000 000000",
+  phoneDisplay: "+44 7863 088786",
   // TODO: confirm opening hours
   hours: [
     { day: "Mon – Fri", time: "9:00 — 19:00" },
