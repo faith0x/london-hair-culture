@@ -153,8 +153,8 @@ export function Hero() {
               textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 1px 2px rgba(0,0,0,0.6)",
             }}
           >
-            <span className="block">Hair artistry,</span>
-            <span className="block">custom creations.</span>
+            <span className="block">Expert Styling,</span>
+            <span className="block">custom Tailoring.</span>
           </h1>
 
           {/* Explanatory Sub-tagline utilizing exact owner keywords */}
