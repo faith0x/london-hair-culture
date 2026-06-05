@@ -135,7 +135,7 @@ function FashionPage() {
             >
               <a href="#visit" className="flex items-center justify-center gap-2.5">
                 <MapPin className="size-4 animate-pulse text-gold" />
-                <span>Visit Us Today</span>
+                <span>Visit Us</span>
                 <ArrowRight className="size-3.5 opacity-80 text-gold" />
               </a>
             </Button>
