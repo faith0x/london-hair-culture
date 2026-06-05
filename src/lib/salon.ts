@@ -1,8 +1,8 @@
 // Central salon details. PLACEHOLDERS marked TODO — swap with real values.
 export const salon = {
-  name: "Dazzle Me",
-  fullName: "Dazzle Me — Hair & Fashion",
-  tagline: "Hair & African Fashion in Middlesbrough",
+  name: "Dazzle Me Fashion LTD",
+  fullName: "Dazzle Me Fashion LTD",
+  tagline: "Hair styling and custom cloth sewing services",
   addressLine: "Unit 19a/24 Dundas Arcade Shopping Centre",
   city: "Middlesbrough",
   postcode: "TS1", // TODO: confirm full postcode
