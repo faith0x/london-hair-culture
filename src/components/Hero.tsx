@@ -114,7 +114,7 @@ export function Hero() {
       </motion.div>
 
       {/* ── CONTENT CONTAINER ── */}
-      <div className="relative z-30 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-5 pt-24 pb-12 sm:pt-28 sm:pb-16">
+      <div className="relative z-30 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-4 pt-24 pb-12 sm:px-5 sm:pt-28 sm:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -165,8 +165,8 @@ export function Hero() {
             <span>Custom Cloth Sewing Services</span>
           </p>
 
-          {/* Balanced Service Action Buttons */}
-          <div className="mt-8 flex flex-col items-center gap-3 w-full max-w-[280px] mx-auto sm:max-w-none sm:grid sm:grid-cols-2 sm:gap-5">
+          {/* Forced Side-by-Side Pill Buttons on Mobile Viewports */}
+          <div className="mt-8 grid grid-cols-2 gap-2.5 w-full max-w-[335px] mx-auto sm:max-w-xl sm:gap-5">
             <ServicePeek
               imageUrl={heroHomeAsset.url}
               label="Hair services"
@@ -175,14 +175,14 @@ export function Hero() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full rounded-full border h-11 sm:h-12 px-6 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-10 sm:h-12 px-1 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
                     color: "#EFE4C8",
                   }}
                 >
-                  <Link to="/hair">Browse hair services →</Link>
+                  <Link to="/hair">Hair services →</Link>
                 </Button>
               }
             />
@@ -194,14 +194,14 @@ export function Hero() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full rounded-full border h-11 sm:h-12 px-6 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-10 sm:h-12 px-1 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
                     color: "#EFE4C8",
                   }}
                 >
-                  <Link to="/fashion">Browse fashion services →</Link>
+                  <Link to="/fashion">Fashion services →</Link>
                 </Button>
               }
             />
