@@ -9,7 +9,6 @@ import { hero } from "@/lib/assets";
 const { heroHomeAsset, heroFashionAsset, modelPng } = hero;
 const CIRCLE_COLOR = "#4A4138";
 
-// Config containing base settings for our multi-layer aura stack
 const CIRCLES = [
   {
     size: 820,
@@ -49,11 +48,9 @@ function CircleLayer({
 }) {
   const yParallax = useTransform(scrollY, [0, 600], config.parallax);
 
-  // Dynamic Scroll Mapping: Intensify blur spread and alpha opacity as user scrolls down
   const glowRadius = useTransform(scrollY, [0, 500], [config.baseRadius, config.boostRadius]);
   const glowOpacity = useTransform(scrollY, [0, 500], [config.baseGlowOpacity, config.boostGlowOpacity]);
   
-  // Safe multi-value transformer that prevents container build environments from throwing token errors
   const boxShadow = useTransform(
     () => `0 0 ${glowRadius.get()}px ${glowRadius.get() / 2}px rgba(239, 224, 190, ${glowOpacity.get()})`
   );
@@ -118,16 +115,16 @@ export function Hero() {
       </motion.div>
 
       {/* ── CONTENT CONTAINER ── */}
-      <div className="relative z-30 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-5 pt-28 pb-16">
+      <div className="relative z-30 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-5 pt-24 pb-12 sm:pt-28 sm:pb-16">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="w-full max-w-3xl text-center"
         >
           {/* Main Brand Identifier */}
           <p
-            className="font-display text-3xl font-bold tracking-[0.18em] uppercase sm:text-4xl"
+            className="font-display text-2xl font-bold tracking-[0.18em] uppercase sm:text-4xl"
             style={{
               color: "#EFE4C8",
               textShadow: "0 0 40px rgba(239,228,200,0.55), 0 2px 8px rgba(0,0,0,0.9)",
@@ -138,27 +135,27 @@ export function Hero() {
           </p>
 
           <p
-            className="mt-1 text-xs font-semibold tracking-[0.35em] uppercase"
+            className="mt-1 text-[10px] font-semibold tracking-[0.35em] uppercase sm:text-xs"
             style={{ color: "#B09D7A" }}
           >
             Hair &amp; Fashion
           </p>
 
-          {/* Elevated Luxury Copy Intent */}
+          {/* Optimized Responsive Headline text constraints */}
           <h1
-            className="mt-7 font-display text-5xl font-semibold leading-[1.1] tracking-tight sm:text-6xl md:text-7xl"
+            className="mt-5 font-display text-4xl font-semibold leading-[1.15] tracking-tight sm:mt-7 sm:text-6xl md:text-7xl"
             style={{
               color: "#F5EDDA",
               textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 1px 2px rgba(0,0,0,0.6)",
             }}
           >
-            <span className="block">Expert Styling,</span>
-            <span className="block">Custom Tailoring.</span>
+            <span className="block">Hair Artistry,</span>
+            <span className="block">Custom Creations.</span>
           </h1>
 
-          {/* Explanatory Sub-tagline utilizing exact owner keywords */}
+          {/* Sub-tagline scaled down cleanly for mobile viewports */}
           <p
-            className="mt-5 flex flex-col items-center gap-1 text-sm font-medium tracking-widest sm:flex-row sm:justify-center sm:gap-4 sm:text-base"
+            className="mt-4 flex flex-col items-center gap-0.5 text-xs font-medium tracking-widest opacity-90 sm:mt-5 sm:flex-row sm:justify-center sm:gap-4 sm:text-base"
             style={{
               color: "#C4AA80",
               textShadow: "0 2px 12px rgba(0,0,0,0.7)",
@@ -170,7 +167,7 @@ export function Hero() {
           </p>
 
           {/* Service Links Grid */}
-          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-3.5 sm:mt-10 sm:grid-cols-2 sm:gap-5">
             <ServicePeek
               imageUrl={heroHomeAsset.url}
               label="Hair services"
@@ -179,7 +176,7 @@ export function Hero() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full rounded-full border px-8 text-sm font-semibold tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-11 sm:h-12 px-6 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -198,7 +195,7 @@ export function Hero() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full rounded-full border px-8 text-sm font-semibold tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-11 sm:h-12 px-6 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -212,11 +209,11 @@ export function Hero() {
           </div>
 
           {/* Solidified High-Contrast Visit Component Anchor Link */}
-          <div className="mt-6 flex justify-center">
+          <div className="mt-5 sm:mt-6 flex justify-center">
             <Button
               asChild
               size="lg"
-              className="rounded-full px-8 text-sm font-semibold tracking-wider transition-transform active:scale-95"
+              className="rounded-full h-11 sm:h-12 px-6 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider transition-transform active:scale-95"
               style={{
                 background: "#EFE4C8",
                 color: "#1E1A16",
@@ -224,9 +221,9 @@ export function Hero() {
               }}
             >
               <a href="#visit" className="flex items-center justify-center gap-2">
-                <MapPin className="size-4" />
+                <MapPin className="size-3.5 sm:size-4" />
                 Visit us
-                <ArrowRight className="size-3.5 opacity-90" />
+                <ArrowRight className="size-3 sm:size-3.5 opacity-90" />
               </a>
             </Button>
           </div>
