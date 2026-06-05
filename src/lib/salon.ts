@@ -12,9 +12,9 @@ export const salon = {
   phoneDisplay: "+44 7863 088786",
   // TODO: confirm opening hours
   hours: [
-    { day: "Mon – Fri", time: "9:00 — 19:00" },
-    { day: "Saturday", time: "9:00 — 18:00" },
-    { day: "Sunday", time: "By appointment" },
+    { day: "Mon – Sat", time: "10:00 — 17:00" },
+    { day: "Sunday", time: "Closed" },
+    { day: "Bank Holidays", time: "Closed" },
   ],
 } as const;
 
