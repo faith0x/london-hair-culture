@@ -34,7 +34,7 @@ export const hair = {
 // ─── Fashion page ──────────────────────────────────────────────────
 export const fashion = {
   heroFashionAsset: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" },
-  fabricImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg",
+  fabricImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780670015/9abf1b4e74ce07e855f9406e7c18d78d_cdb4fy.jpg",
   ankaraImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg",
   tailoringImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg",
 };
