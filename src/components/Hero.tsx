@@ -47,7 +47,6 @@ function CircleLayer({
   scrollY: ReturnType<typeof useScroll>["scrollY"];
 }) {
   const yParallax = useTransform(scrollY, [0, 600], config.parallax);
-
   const glowRadius = useTransform(scrollY, [0, 500], [config.baseRadius, config.boostRadius]);
   const glowOpacity = useTransform(scrollY, [0, 500], [config.baseGlowOpacity, config.boostGlowOpacity]);
   
@@ -141,7 +140,7 @@ export function Hero() {
             Hair &amp; Fashion
           </p>
 
-          {/* Optimized Responsive Headline text constraints */}
+          {/* Core Brand Header Focus */}
           <h1
             className="mt-5 font-display text-4xl font-semibold leading-[1.15] tracking-tight sm:mt-7 sm:text-6xl md:text-7xl"
             style={{
@@ -149,8 +148,8 @@ export function Hero() {
               textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 1px 2px rgba(0,0,0,0.6)",
             }}
           >
-            <span className="block">Hair Artistry,</span>
-            <span className="block">Custom Creations.</span>
+            <span className="block">Hair Styling,</span>
+            <span className="block">Custom Tailoring.</span>
           </h1>
 
           {/* Sub-tagline scaled down cleanly for mobile viewports */}
@@ -166,8 +165,8 @@ export function Hero() {
             <span>Custom Cloth Sewing Services</span>
           </p>
 
-          {/* Service Links Grid */}
-          <div className="mt-8 grid grid-cols-1 gap-3.5 sm:mt-10 sm:grid-cols-2 sm:gap-5">
+          {/* Balanced Service Action Buttons */}
+          <div className="mt-8 flex flex-col items-center gap-3 w-full max-w-[280px] mx-auto sm:max-w-none sm:grid sm:grid-cols-2 sm:gap-5">
             <ServicePeek
               imageUrl={heroHomeAsset.url}
               label="Hair services"
@@ -208,7 +207,7 @@ export function Hero() {
             />
           </div>
 
-          {/* Solidified High-Contrast Visit Component Anchor Link */}
+          {/* Anchor Navigation Trigger */}
           <div className="mt-5 sm:mt-6 flex justify-center">
             <Button
               asChild
