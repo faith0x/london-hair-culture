@@ -165,8 +165,8 @@ export function Hero() {
             <span>Custom Cloth Sewing Services</span>
           </p>
 
-          {/* Side-by-Side Mobile Layout Grid */}
-          <div className="mt-8 grid grid-cols-2 gap-2 w-full max-w-[290px] mx-auto sm:max-w-xl sm:gap-5">
+          {/* Ultra-Compact Side-by-Side Mobile Layout Grid */}
+          <div className="mt-8 grid grid-cols-2 gap-2 w-full max-w-[245px] mx-auto sm:max-w-xl sm:gap-5">
             <ServicePeek
               imageUrl={heroHomeAsset.url}
               label="Hair services"
@@ -174,7 +174,7 @@ export function Hero() {
               button={
                 <Button
                   asChild
-                  className="w-full rounded-full border h-9 sm:h-12 px-2 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-8 sm:h-12 px-1 sm:px-8 text-[10px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -192,7 +192,7 @@ export function Hero() {
               button={
                 <Button
                   asChild
-                  className="w-full rounded-full border h-9 sm:h-12 px-2 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-8 sm:h-12 px-1 sm:px-8 text-[10px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -205,11 +205,11 @@ export function Hero() {
             />
           </div>
 
-          {/* Responsive Navigation Pill: Wide on mobile, beautifully centered on desktop */}
-          <div className="mt-4 sm:mt-6 flex justify-center w-full">
+          {/* Fully Fixed Navigation Pill: Full-width matching services on mobile, auto-centered on desktop */}
+          <div className="mt-3.5 sm:mt-6 flex justify-center w-full">
             <Button
               asChild
-              className="rounded-full h-9 sm:h-12 w-full sm:w-auto max-w-[290px] sm:max-w-none px-4 sm:px-8 text-[11px] sm:text-sm font-bold tracking-wide sm:tracking-wider transition-transform active:scale-95"
+              className="rounded-full h-8 sm:h-12 w-full sm:w-auto max-w-[245px] sm:max-w-none px-4 sm:px-8 text-[10px] sm:text-sm font-bold tracking-wide sm:tracking-wider transition-transform active:scale-95"
               style={{
                 background: "#EFE4C8",
                 color: "#1E1A16",
@@ -217,9 +217,9 @@ export function Hero() {
               }}
             >
               <a href="#visit" className="flex items-center justify-center gap-1.5 w-full h-full">
-                <MapPin className="size-3.5 sm:size-4" />
+                <MapPin className="size-3 sm:size-4" />
                 <span>Visit us</span>
-                <ArrowRight className="size-3 sm:size-3.5 opacity-95" />
+                <ArrowRight className="size-2.5 sm:size-3.5 opacity-95" />
               </a>
             </Button>
           </div>
