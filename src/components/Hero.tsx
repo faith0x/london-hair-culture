@@ -165,8 +165,8 @@ export function Hero() {
             <span>Custom Cloth Sewing Services</span>
           </p>
 
-          {/* Forced Side-by-Side Pill Buttons on Mobile Viewports */}
-          <div className="mt-8 grid grid-cols-2 gap-2.5 w-full max-w-[335px] mx-auto sm:max-w-xl sm:gap-5">
+          {/* Refined, Highly Cohesive Side-by-Side Mobile Layout */}
+          <div className="mt-8 grid grid-cols-2 gap-2 w-full max-w-[290px] mx-auto sm:max-w-xl sm:gap-5">
             <ServicePeek
               imageUrl={heroHomeAsset.url}
               label="Hair services"
@@ -174,8 +174,7 @@ export function Hero() {
               button={
                 <Button
                   asChild
-                  size="lg"
-                  className="w-full rounded-full border h-10 sm:h-12 px-1 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-9 sm:h-12 px-1 text-[10px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -193,8 +192,7 @@ export function Hero() {
               button={
                 <Button
                   asChild
-                  size="lg"
-                  className="w-full rounded-full border h-10 sm:h-12 px-1 sm:px-8 text-[11px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
+                  className="w-full rounded-full border h-9 sm:h-12 px-1 text-[10px] sm:text-sm font-semibold tracking-wide sm:tracking-wider backdrop-blur-md"
                   style={{
                     background: "rgba(239,228,200,0.08)",
                     border: "1px solid rgba(239,228,200,0.25)",
@@ -207,22 +205,21 @@ export function Hero() {
             />
           </div>
 
-          {/* Anchor Navigation Trigger */}
-          <div className="mt-5 sm:mt-6 flex justify-center">
+          {/* Balanced and Un-squeezed Navigation Pill Link */}
+          <div className="mt-4 sm:mt-6 flex justify-center">
             <Button
               asChild
-              size="lg"
-              className="rounded-full h-11 sm:h-12 px-6 sm:px-8 text-xs sm:text-sm font-semibold tracking-wider transition-transform active:scale-95"
+              className="rounded-full h-9 sm:h-12 px-5 sm:px-8 min-w-[130px] sm:min-w-[160px] text-[11px] sm:text-sm font-bold tracking-wide sm:tracking-wider transition-transform active:scale-95"
               style={{
                 background: "#EFE4C8",
                 color: "#1E1A16",
                 boxShadow: "0 4px 20px rgba(0, 0, 0, 0.4)",
               }}
             >
-              <a href="#visit" className="flex items-center justify-center gap-2">
+              <a href="#visit" className="flex items-center justify-center gap-1.5 w-full h-full">
                 <MapPin className="size-3.5 sm:size-4" />
-                Visit us
-                <ArrowRight className="size-3 sm:size-3.5 opacity-90" />
+                <span>Visit us</span>
+                <ArrowRight className="size-3 sm:size-3.5 opacity-95" />
               </a>
             </Button>
           </div>
