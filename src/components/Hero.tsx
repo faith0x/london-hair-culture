@@ -53,10 +53,9 @@ function CircleLayer({
   const glowRadius = useTransform(scrollY, [0, 500], [config.baseRadius, config.boostRadius]);
   const glowOpacity = useTransform(scrollY, [0, 500], [config.baseGlowOpacity, config.boostGlowOpacity]);
   
-  // Combine animated attributes into a single fluid string output
+  // Safe multi-value transformer that prevents container build environments from throwing token errors
   const boxShadow = useTransform(
-    [glowRadius, glowOpacity],
-    ([radius, opacity]) => `0 0 ${radius}px ${Number(radius) / 2}px rgba(239, 224, 190, ${opacity})`
+    () => `0 0 ${glowRadius.get()}px ${glowRadius.get() / 2}px rgba(239, 224, 190, ${glowOpacity.get()})`
   );
 
   return (
@@ -77,7 +76,7 @@ function CircleLayer({
           height: config.size,
           borderRadius: "50%",
           backgroundColor: CIRCLE_COLOR,
-          boxShadow: boxShadow, // Linked to scroll-driven glow calculations
+          boxShadow: boxShadow,
           flexShrink: 0,
         }}
       />
@@ -145,7 +144,7 @@ export function Hero() {
             Hair &amp; Fashion
           </p>
 
-          {/* Elevated H1 Headline (Option A) */}
+          {/* Elevated Luxury Copy Intent */}
           <h1
             className="mt-7 font-display text-5xl font-semibold leading-[1.1] tracking-tight sm:text-6xl md:text-7xl"
             style={{
@@ -154,7 +153,7 @@ export function Hero() {
             }}
           >
             <span className="block">Expert Styling,</span>
-            <span className="block">custom Tailoring.</span>
+            <span className="block">Custom Tailoring.</span>
           </h1>
 
           {/* Explanatory Sub-tagline utilizing exact owner keywords */}
