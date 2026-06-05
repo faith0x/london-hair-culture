@@ -3,7 +3,7 @@ export const salon = {
   name: "Dazzle Me",
   fullName: "Dazzle Me — Hair & Fashion",
   tagline: "Hair & African Fashion in Middlesbrough",
-  addressLine: "92 Newport Road",
+  addressLine: "Unit 19a/24 Dundas Arcade Shopping Centre",
   city: "Middlesbrough",
   postcode: "TS1", // TODO: confirm full postcode
   // TODO: replace with the real WhatsApp/phone number (international format, no +)
