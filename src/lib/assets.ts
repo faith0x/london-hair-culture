@@ -36,7 +36,8 @@ export const fashion = {
   heroFashionAsset: { url: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg" },
   fabricImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780670015/9abf1b4e74ce07e855f9406e7c18d78d_cdb4fy.jpg",
   ankaraImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780670019/57981916beaf799a7f2d189a5fee2d3d_y4iamu.jpg",
-  tailoringImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780159998/9c997d9b24d502f0391cc3949ea0d7fd_dih3tg.jpg",
+  tailoringImg: "https://res.cloudinary.com/dnkzhdbo1/image/upload/v1780338346/2b95cc0f68a60ee1fea7b938574f6063_lbqf9s.jpg",
+  "African Fashion",
 };
 
 // ─── Services toggle ───────────────────────────────────────────────
