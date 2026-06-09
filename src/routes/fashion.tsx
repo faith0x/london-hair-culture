@@ -94,7 +94,7 @@ function FashionPage() {
             >
               <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/90 backdrop-blur-md">
                 <MapPin className="size-3.5 text-gold" />
-                Dazzleme · {salon.city}
+                Fashion · {salon.city}
               </span>
               <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
                 <span className="block">Bespoke African</span>
@@ -135,7 +135,7 @@ function FashionPage() {
             >
               <a href="#visit" className="flex items-center justify-center gap-2.5">
                 <MapPin className="size-4 animate-pulse text-gold" />
-                <span>Visit Us</span>
+                <span>Visit Us Today</span>
                 <ArrowRight className="size-3.5 opacity-80 text-gold" />
               </a>
             </Button>

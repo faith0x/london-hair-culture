@@ -1,20 +1,20 @@
 // Central salon details. PLACEHOLDERS marked TODO — swap with real values.
 export const salon = {
-  name: "Dazzle Me Fashion LTD",
-  fullName: "Dazzle Me Fashion LTD",
-  tagline: "Hair styling and custom cloth sewing services",
-  addressLine: "Unit 19a/24 Dundas Arcade Shopping Centre",
+  name: "Dazzle Me",
+  fullName: "Dazzle Me — Hair & Fashion",
+  tagline: "Hair & African Fashion in Middlesbrough",
+  addressLine: "92 Newport Road",
   city: "Middlesbrough",
   postcode: "TS1", // TODO: confirm full postcode
   // TODO: replace with the real WhatsApp/phone number (international format, no +)
-  phoneIntl: "447863088786",
+  phoneIntl: "447000000000",
   // Display version of the phone number
-  phoneDisplay: "+44 7863 088786",
+  phoneDisplay: "+44 7000 000000",
   // TODO: confirm opening hours
   hours: [
-    { day: "Mon – Sat", time: "10:00 — 17:00" },
-    { day: "Sunday", time: "Closed" },
-    { day: "Bank Holidays", time: "Closed" },
+    { day: "Mon – Fri", time: "9:00 — 19:00" },
+    { day: "Saturday", time: "9:00 — 18:00" },
+    { day: "Sunday", time: "By appointment" },
   ],
 } as const;
 
